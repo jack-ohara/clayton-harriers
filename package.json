@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "clayton-harriers",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Info and news for the Clayton-Le-Moors Harriers",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Jack O'Hara <jack@jackohara.io>",
   "dependencies": {
     "gatsby": "^2.24.63",
     "gatsby-image": "^2.4.19",
