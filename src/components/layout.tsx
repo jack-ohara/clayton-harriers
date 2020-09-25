@@ -1,5 +1,4 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React, { FunctionComponent } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import styled from "styled-components"
@@ -10,6 +9,7 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  background: ${props => props.theme.lightGrey};
 `
 
 const ContentWrapper = styled.div`
@@ -26,9 +26,9 @@ const Footer = styled.footer`
   margin-top: 2rem;
 `
 
-const Layout = ({ children }) => {
+const Layout: FunctionComponent = ({ children }) => {
   const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
+    query SiteTitleQuery1 {
       site {
         siteMetadata {
           title
@@ -46,10 +46,6 @@ const Layout = ({ children }) => {
       </ContentWrapper>
     </Container>
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default Layout

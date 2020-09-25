@@ -1,4 +1,4 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -8,7 +8,7 @@ const H1 = styled.h1`
   font-size: 2.35em;
 `
 
-const IndexPage = () => (
+const IndexPage: FunctionComponent = () => (
   <Layout>
     <SEO title="Home" />
     <H1>
