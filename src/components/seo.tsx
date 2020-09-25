@@ -2,30 +2,10 @@ import React, { FunctionComponent } from "react"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-class NamedMetaObject {
-  name: string
-  content: string
-
-  constructor(name: string, content: string) {
-    this.name = name
-    this.content = content
-  }
-}
-
-class MetaObjectWithProperty {
-  property: string
-  content: string
-
-  constructor(property: string, content: string) {
-    this.property = property
-    this.content = content
-  }
-}
-
 type SeoProps = {
   description?: string
   lang?: string
-  meta?: (NamedMetaObject | MetaObjectWithProperty)[]
+  meta?: any[]
   title: string
 }
 
@@ -58,16 +38,16 @@ const SEO: FunctionComponent<SeoProps> = ({
         lang,
       }}
       title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
+      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : ""}
       meta={[
-        new NamedMetaObject(`description`, metaDescription),
-        new MetaObjectWithProperty("og:title", title),
-        new MetaObjectWithProperty("og:description", metaDescription),
-        new MetaObjectWithProperty("og:type", "website"),
-        new NamedMetaObject(`twitter:card`, "summary"),
-        new NamedMetaObject(`creator`, site.siteMetadata?.author || ``),
-        new NamedMetaObject(`title`, title),
-        new NamedMetaObject(`description`, metaDescription),
+        { name: "description", content: metaDescription },
+        { property: "og:title", content: title },
+        { property: "og:description", content: metaDescription },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary" },
+        { name: "twitter:creator", content: site.siteMetadata?.author || `` },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: metaDescription },
       ].concat(meta)}
     />
   )

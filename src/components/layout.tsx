@@ -1,15 +1,16 @@
 import React, { FunctionComponent } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
-import styled from "styled-components"
+import styled, { ThemeProvider } from "styled-components"
 import "./layout.css"
+import { siteTheme } from "../theme"
 
 const Container = styled.div`
   min-height: 100vh;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  background: ${props => props.theme.lightGrey};
+  background: ${props => props.theme.colours.lightGrey};
 `
 
 const ContentWrapper = styled.div`
@@ -38,13 +39,17 @@ const Layout: FunctionComponent = ({ children }) => {
   `)
 
   return (
-    <Container>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <ContentWrapper>
-        <main>{children}</main>
-        <Footer>© {new Date().getFullYear()} Clayton-Le-Moors Harriers</Footer>
-      </ContentWrapper>
-    </Container>
+    <ThemeProvider theme={siteTheme}>
+      <Container>
+        <Header />
+        <ContentWrapper>
+          <main>{children}</main>
+          <Footer>
+            © {new Date().getFullYear()} Clayton-Le-Moors Harriers
+          </Footer>
+        </ContentWrapper>
+      </Container>
+    </ThemeProvider>
   )
 }
 

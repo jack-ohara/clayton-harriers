@@ -1,6 +1,5 @@
-import { Link, useStaticQuery } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
+import { Link, useStaticQuery, graphql } from "gatsby"
+import React, { FunctionComponent } from "react"
 import Img from "gatsby-image"
 import styled from "styled-components"
 
@@ -9,7 +8,7 @@ const StyledHeader = styled.header`
   padding: 1rem 0.5rem;
 `
 
-const Header = () => {
+const Header: FunctionComponent = () => {
   const logoData = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "harriers-logo-transparent.png" }) {
@@ -29,14 +28,6 @@ const Header = () => {
       </Link>
     </StyledHeader>
   )
-}
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
 }
 
 export default Header

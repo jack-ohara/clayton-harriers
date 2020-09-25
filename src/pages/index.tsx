@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from "react"
-import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
@@ -18,7 +17,6 @@ const IndexPage: FunctionComponent = () => (
     </H1>
     <p>Welcome to our club!</p>
     <p>We'd love to have you</p>
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
   </Layout>
 )
 
