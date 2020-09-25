@@ -7,12 +7,19 @@ import "./layout.css"
 
 const Container = styled.div`
   min-height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 `
 
 const ContentWrapper = styled.div`
   margin: 0 auto;
   max-width: 960px;
   padding: 0 1.0875rem 1.45rem;
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 `
 
 const Footer = styled.footer`
