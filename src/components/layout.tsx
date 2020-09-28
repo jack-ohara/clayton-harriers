@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import styled, { ThemeProvider } from "styled-components"
 import "./layout.css"
-import { siteTheme } from "../theme"
+import { siteTheme } from "../utils/theme"
 
 const Container = styled.div`
   min-height: 100vh;
@@ -14,7 +14,7 @@ const Container = styled.div`
 `
 
 const ContentWrapper = styled.div`
-  margin: 0 auto;
+  margin: 0 30px;
   max-width: 960px;
   padding: 0 1.0875rem 1.45rem;
   flex-grow: 1;
