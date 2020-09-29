@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from "react"
-import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import styled, { ThemeProvider } from "styled-components"
 import "./layout.css"
@@ -14,7 +13,6 @@ const Container = styled.div`
 `
 
 const ContentWrapper = styled.div`
-  margin: 0 30px;
   max-width: 960px;
   padding: 0 1.0875rem 1.45rem;
   flex-grow: 1;
@@ -27,30 +25,16 @@ const Footer = styled.footer`
   margin-top: 2rem;
 `
 
-const Layout: FunctionComponent = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery1 {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
-  return (
-    <ThemeProvider theme={siteTheme}>
-      <Container>
-        <Header />
-        <ContentWrapper>
-          <main>{children}</main>
-          <Footer>
-            © {new Date().getFullYear()} Clayton-Le-Moors Harriers
-          </Footer>
-        </ContentWrapper>
-      </Container>
-    </ThemeProvider>
-  )
-}
+const Layout: FunctionComponent = ({ children }) => (
+  <ThemeProvider theme={siteTheme}>
+    <Container>
+      <Header />
+      <ContentWrapper>
+        <main>{children}</main>
+        <Footer>© {new Date().getFullYear()} Clayton-Le-Moors Harriers</Footer>
+      </ContentWrapper>
+    </Container>
+  </ThemeProvider>
+)
 
 export default Layout
