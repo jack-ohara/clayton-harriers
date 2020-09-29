@@ -27,7 +27,12 @@ module.exports = {
         icon: `src/images/whole-banner-square.svg`, // This path is relative to the root of the site.
       },
     },
-    `gatsby-plugin-netlify-cms`,
+    {
+      resolve: `gatsby-plugin-netlify-cms`,
+      options: {
+        modulePath: `${__dirname}/src/utils/cms.js`,
+      },
+    },
     {
       resolve: `gatsby-plugin-typography`,
       options: {
