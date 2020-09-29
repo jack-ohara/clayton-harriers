@@ -4,8 +4,11 @@ import Img from "gatsby-image"
 import styled from "styled-components"
 
 const StyledHeader = styled.header`
-  margin-bottoml: 1.45rem;
   padding: 1rem 0.5rem;
+`
+
+const LogoLink = styled(Link)`
+  background-image: none;
 `
 
 const Header: FunctionComponent = () => {
@@ -23,9 +26,9 @@ const Header: FunctionComponent = () => {
 
   return (
     <StyledHeader>
-      <Link to="/">
+      <LogoLink to="/">
         <Img fixed={logoData.file.childImageSharp.fixed} />
-      </Link>
+      </LogoLink>
     </StyledHeader>
   )
 }
