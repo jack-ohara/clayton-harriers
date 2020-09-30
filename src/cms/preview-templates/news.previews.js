@@ -1,5 +1,6 @@
 import React from "react"
 import { NewsPostTemplate } from "../../templates/news-post"
+import PreviewTemplate from "./preview-template"
 
 const NewsPostPreview = ({ entry, widgetFor }) => {
   const title = entry.getIn(["data", "title"])
@@ -8,12 +9,14 @@ const NewsPostPreview = ({ entry, widgetFor }) => {
   const body = widgetFor("body")
 
   return (
-    <NewsPostTemplate
-      content={body}
-      title={title}
-      author={author}
-      date={date.toString("MMMM DD, YYYY")}
-    />
+    <PreviewTemplate>
+      <NewsPostTemplate
+        content={body}
+        title={title}
+        author={author}
+        date={date.toString("MMMM DD, YYYY")}
+      />
+    </PreviewTemplate>
   )
 }
 
