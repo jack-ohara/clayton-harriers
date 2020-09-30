@@ -16,35 +16,58 @@ collections:
     label: "Announcement"
     folder: "src/pages/news/announcements"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{slug}}"
     fields:
       - {
           label: "Template Key",
           name: "templateKey",
           widget: "hidden",
+          required: true,
           default: "news-post",
         }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Featured Image", name: "featuredimage", widget: image }
-      - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Author", name: "author", widget: "string", required: true }
+      - {
+          label: "Publish Date",
+          name: "date",
+          widget: "datetime",
+          required: true,
+        }
+      - {
+          label: "Featured Image",
+          name: "featuredimage",
+          widget: image,
+          required: false,
+        }
+      - { label: "Body", name: "body", widget: "markdown", required: true }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
 
   - name: "roundup"
     label: "Roundups"
     folder: "src/pages/news/roundups"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{slug}}"
     fields:
       - {
           label: "Template Key",
           name: "templateKey",
           widget: "hidden",
+          required: true,
           default: "news-post",
         }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Author", name: "author", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Featured Image", name: "featuredimage", widget: image }
-      - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Author", name: "author", widget: "string", required: true }
+      - {
+          label: "Publish Date",
+          name: "date",
+          widget: "datetime",
+          required: true,
+        }
+      - {
+          label: "Featured Image",
+          name: "featuredimage",
+          widget: image,
+          required: false,
+        }
+      - { label: "Body", name: "body", widget: "markdown", required: true }
+      - { label: "Tags", name: "tags", widget: "list", required: false }

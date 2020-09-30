@@ -1,12 +1,15 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import { NewsPostTemplate } from "../../templates/news-post"
 
-// type NewsPostPreviewProps = {
-//   entry: any
-//   widgetFor: any
-// }
+type NewsPostPreviewProps = {
+  entry: any
+  widgetFor: any
+}
 
-const NewsPostPreview = ({ entry, widgetFor }) => {
+const NewsPostPreview: FunctionComponent<NewsPostPreviewProps> = ({
+  entry,
+  widgetFor,
+}) => {
   const tags = entry.getIn(["data", "tags"])
   return (
     <NewsPostTemplate
