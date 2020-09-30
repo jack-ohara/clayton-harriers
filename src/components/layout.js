@@ -25,7 +25,7 @@ const Footer = styled.footer`
   margin-top: 2rem;
 `
 
-const Layout: FunctionComponent = ({ children }) => (
+const Layout = ({ children }) => (
   <ThemeProvider theme={siteTheme}>
     <Container>
       <Header />

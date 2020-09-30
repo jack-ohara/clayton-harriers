@@ -1,5 +1,5 @@
 import { Link, useStaticQuery, graphql } from "gatsby"
-import React, { FunctionComponent } from "react"
+import React from "react"
 import Img from "gatsby-image"
 import styled from "styled-components"
 
@@ -11,7 +11,7 @@ const LogoLink = styled(Link)`
   background-image: none;
 `
 
-const Header: FunctionComponent = () => {
+const Header = () => {
   const logoData = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "harriers-logo-transparent.png" }) {

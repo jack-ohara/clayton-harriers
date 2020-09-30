@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from "react"
+import React from "react"
 
-const Banner: FunctionComponent = () => (
+const Banner = () => (
   // <svg
   //   width="130mm"
   //   height="42.937mm"

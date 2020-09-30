@@ -13,7 +13,7 @@ media_library:
 
 collections:
   - name: "announcement"
-    label: "Announcement"
+    label: "Announcements"
     folder: "src/pages/news/announcements"
     create: true
     slug: "{{slug}}"

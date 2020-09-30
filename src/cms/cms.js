@@ -1,9 +1,8 @@
 import CMS from "netlify-cms-app"
-import cloudinary from "netlify-cms-media-library-cloudinary"
+import Cloudinary from "netlify-cms-media-library-cloudinary"
+import NewsPostPreview from "./preview-templates/news.previews"
 
-//import NewsPostPreview from "./preview-templates/NewsPostPreview"
+CMS.registerMediaLibrary(Cloudinary)
 
-CMS.registerMediaLibrary(cloudinary)
-
-// CMS.registerPreviewTemplate("announcement", NewsPostPreview)
-// CMS.registerPreviewTemplate("roundup", NewsPostPreview)
+CMS.registerPreviewTemplate("announcement", NewsPostPreview)
+CMS.registerPreviewTemplate("roundup", NewsPostPreview)

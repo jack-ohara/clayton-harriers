@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react"
+import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
@@ -28,7 +28,7 @@ const BannerWrapper = styled.div`
   justify-content: center;
 `
 
-const IndexPage: FunctionComponent = () => {
+const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Home" />
