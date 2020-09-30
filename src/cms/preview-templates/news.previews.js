@@ -8,13 +8,19 @@ const NewsPostPreview = ({ entry, widgetFor }) => {
   const date = entry.getIn(["data", "date"])
   const body = widgetFor("body")
 
+  const dateString = date.toLocaleString("default", {
+    month: "long",
+    day: "2-digit",
+    year: "numeric",
+  })
+
   return (
     <PreviewTemplate>
       <NewsPostTemplate
         content={body}
         title={title}
         author={author}
-        date={date.toString("MMMM DD, YYYY")}
+        date={dateString}
       />
     </PreviewTemplate>
   )
