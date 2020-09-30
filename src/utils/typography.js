@@ -1,11 +1,14 @@
 import Typography from "typography"
-import lincolnTheme from "typography-theme-lincoln"
 
-const typography = new Typography(lincolnTheme)
+const typography = new Typography()
 
 typography.options.googleFonts = [
   {
     name: "Timmana",
+    styles: ["400"],
+  },
+  {
+    name: "Source Sans Pro",
     styles: ["400"],
   },
 ]
