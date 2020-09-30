@@ -4,6 +4,7 @@ import Layout from "../components/layout"
 import Content, { HTMLContent } from "../components/content"
 import { Helmet } from "react-helmet"
 import { kebabCase } from "lodash"
+import styled from "styled-components"
 
 type NewsPostTemplateProps = {
   content: any
@@ -18,6 +19,14 @@ type NewsPostTemplateProps = {
 type NewsPostProps = {
   data: any
 }
+
+const HorizontalRule = styled.hr`
+  background: linear-gradient(
+    90deg,
+    #bbbbbb 25%,
+    ${props => props.theme.colours.lightGrey} 100%
+  );
+`
 
 export const NewsPostTemplate: FunctionComponent<NewsPostTemplateProps> = ({
   content,
@@ -40,6 +49,7 @@ export const NewsPostTemplate: FunctionComponent<NewsPostTemplateProps> = ({
             <h4>
               {author} | {date}
             </h4>
+            <HorizontalRule />
             <PostContent content={content} />
             {tags && tags.length ? (
               <div style={{ marginTop: `4rem` }}>
