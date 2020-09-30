@@ -1,25 +1,25 @@
-import React, { FunctionComponent } from "react"
+import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import Content, { HTMLContent } from "../components/content"
 import { Helmet } from "react-helmet"
 import { kebabCase } from "lodash"
 
-type NewsPostTemplateProps = {
-  content: any
-  contentComponent?: any
-  tags: string[]
-  title: string
-  helmet?: any
-  author: string
-  date: string
-}
+// type NewsPostTemplateProps = {
+//   content: any
+//   contentComponent?: any
+//   tags: string[]
+//   title: string
+//   helmet?: any
+//   author: string
+//   date: string
+// }
 
-type NewsPostProps = {
-  data: any
-}
+// type NewsPostProps = {
+//   data: any
+// }
 
-export const NewsPostTemplate: FunctionComponent<NewsPostTemplateProps> = ({
+export const NewsPostTemplate = ({
   content,
   contentComponent,
   tags,
@@ -60,7 +60,7 @@ export const NewsPostTemplate: FunctionComponent<NewsPostTemplateProps> = ({
   )
 }
 
-const NewsPost: FunctionComponent<NewsPostProps> = ({ data }) => {
+const NewsPost = ({ data }) => {
   const { markdownRemark: post } = data
 
   return (
