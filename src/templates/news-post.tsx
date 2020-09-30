@@ -12,6 +12,7 @@ type NewsPostTemplateProps = {
   title: string
   helmet?: any
   author: string
+  date: string
 }
 
 type NewsPostProps = {
@@ -25,6 +26,7 @@ export const NewsPostTemplate: FunctionComponent<NewsPostTemplateProps> = ({
   title,
   helmet,
   author,
+  date,
 }) => {
   const PostContent = contentComponent || Content
 
@@ -35,7 +37,9 @@ export const NewsPostTemplate: FunctionComponent<NewsPostTemplateProps> = ({
         <div>
           <div>
             <h1>{title}</h1>
-            <h4>{author}</h4>
+            <h4>
+              {author} | {date}
+            </h4>
             <PostContent content={content} />
             {tags && tags.length ? (
               <div style={{ marginTop: `4rem` }}>
@@ -76,6 +80,7 @@ const NewsPost: FunctionComponent<NewsPostProps> = ({ data }) => {
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
         author={post.frontmatter.author}
+        date={post.frontmatter.date}
       />
     </Layout>
   )
