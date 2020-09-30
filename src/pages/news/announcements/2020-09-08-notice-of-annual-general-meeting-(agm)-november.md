@@ -3,7 +3,6 @@ templateKey: news-post
 title: Notice of Annual General Meeting (AGM) November
 author: Colin Woolford
 date: 2020-09-08T15:04:10.000Z
-description: Details for the Annual General Meeting, which is being held in November
 tags:
   - AGM
 ---

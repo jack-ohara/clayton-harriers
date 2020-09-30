@@ -3,7 +3,6 @@ templateKey: news-post
 title: January 2020 Roundup
 author: Helen Stevens
 date: 2020-02-09T17:30:00.000Z
-description: Details for the Annual General Meeting, which is being held in November
 tags:
   - AGM
 ---
