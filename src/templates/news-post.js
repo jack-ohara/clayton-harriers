@@ -33,7 +33,8 @@ export const NewsPostTemplate = ({
           <div>
             <h1>{title}</h1>
             <h4>
-              {author} | {date}
+              {author} <br />
+              {date}
             </h4>
             <HorizontalRule />
             <PostContent content={content} />
