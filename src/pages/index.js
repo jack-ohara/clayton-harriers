@@ -27,6 +27,7 @@ const IndexPage = ({ data }) => {
     }
 
     post["slug"] = e.node.fields.slug
+    post["excerpt"] = e.node.excerpt
 
     return post
   })
@@ -55,6 +56,7 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
+          excerpt(pruneLength: 300)
           frontmatter {
             author
             title

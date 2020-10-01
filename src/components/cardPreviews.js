@@ -1,5 +1,5 @@
 import { Link } from "gatsby"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import { getLocalFormatFromString } from "../utils/dateFormatter"
 
@@ -25,7 +25,7 @@ const CardContainer = styled(Link)`
 
 const CardImage = styled.img`
   max-height: 200px;
-  margin: 0 auto;
+  margin: 0 auto 0.5rem auto;
 `
 
 const CardBox = styled.div`
@@ -46,20 +46,25 @@ const CardBox = styled.div`
   }
 `
 
-const Card = ({ slug, featuredImage, title, author, date, introText }) => {
+const Article = styled.article`
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+`
+
+const Card = ({ slug, featuredimage, title, author, date, excerpt }) => {
   return (
     <CardContainer to={slug}>
-      <article>
-        <CardImage src={featuredImage} alt="" loading="lazy" />
+      <Article>
+        <CardImage src={featuredimage} alt="" loading="lazy" />
         <CardBox>
           <h4>{title}</h4>
-          <h5>
-            {author} | {getLocalFormatFromString(date)}
-          </h5>
+          <h5>{author}</h5>
+          <h5>{getLocalFormatFromString(date)}</h5>
           <hr />
-          {introText}
+          {excerpt}
         </CardBox>
-      </article>
+      </Article>
     </CardContainer>
   )
 }
