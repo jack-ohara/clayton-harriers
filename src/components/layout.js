@@ -24,6 +24,7 @@ const ContentWrapper = styled.div`
 
 const Footer = styled.footer`
   margin-top: 2rem;
+  text-align: center;
 `
 
 const Layout = ({ children }) => (
