@@ -6,7 +6,7 @@ const StyledMenu = styled.nav`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: #effffa;
+  background: #ffffff;
   transform: ${({ open }) => (open ? "translateY(0)" : "translateY(-100%)")};
   text-align: left;
   padding: 3rem 2rem 0 2rem;
@@ -55,7 +55,7 @@ export const Menu = ({ open }) => {
 
 const StyledBurger = styled.button`
   position: absolute;
-  top: 5%;
+  top: 2rem;
   right: 2rem;
   display: flex;
   flex-direction: column;

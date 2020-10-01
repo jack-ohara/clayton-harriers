@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react"
+import React from "react"
 import Header from "./header"
 import styled, { ThemeProvider } from "styled-components"
 import { siteTheme } from "../utils/theme"
@@ -13,7 +13,8 @@ const Container = styled.div`
 `
 
 const ContentWrapper = styled.div`
-  max-width: 960px;
+  max-width: 1260px;
+  margin: 0 auto;
   padding: 0 1.0875rem 1.45rem;
   flex-grow: 1;
   display: flex;

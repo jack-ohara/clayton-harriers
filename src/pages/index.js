@@ -2,16 +2,10 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
-import Banner from "../components/banner"
-
-const TitleArea = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-content: center;
-`
+import CardPreviews from "../components/cardPreviews"
+import { graphql } from "gatsby"
 
 const H1 = styled.h1`
-  position: relative;
   font-size: 13vw;
   z-index: 1;
   color: #c8c8c8;
@@ -21,31 +15,60 @@ const H1 = styled.h1`
   grid-area: 1 / 1 / 2 / 1;
   margin-top: 17px;
 `
-const BannerWrapper = styled.div`
-  grid-area: 1 / 2 / 2 / 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`
 
-const IndexPage = () => {
+const IndexPage = ({ data }) => {
+  const { allMarkdownRemark: postsData } = data
+
+  const posts = postsData.edges.map(e => {
+    let post = {}
+
+    for (let key in e.node.frontmatter) {
+      post[key] = e.node.frontmatter[key]
+    }
+
+    post["slug"] = e.node.fields.slug
+    post["excerpt"] = e.node.excerpt
+
+    return post
+  })
+
   return (
     <Layout>
       <SEO title="Home" />
-      {/* <TitleArea> */}
       <H1>
         We Are The
         <br />
         Clayton-Le-Moors <br /> Harriers
       </H1>
-      {/* <BannerWrapper>
-          <Banner />
-        </BannerWrapper> */}
-      {/* </TitleArea> */}
-      <p>Welcome to our club!</p>
-      <p>We'd love to have you</p>
+
+      <CardPreviews posts={posts} />
     </Layout>
   )
 }
 
 export default IndexPage
+
+export const pageQuery = graphql`
+  query LastestPostsQuery {
+    allMarkdownRemark(
+      sort: { fields: frontmatter___date, order: DESC }
+      limit: 6
+    ) {
+      edges {
+        node {
+          excerpt(pruneLength: 300)
+          frontmatter {
+            author
+            title
+            date
+            tags
+            featuredimage
+          }
+          fields {
+            slug
+          }
+        }
+      }
+    }
+  }
+`

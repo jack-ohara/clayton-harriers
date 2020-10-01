@@ -1,4 +1,5 @@
 import React from "react"
+import { getLocalFormat } from "../../utils/dateFormatter"
 import { NewsPostTemplate } from "../../templates/news-post"
 import PreviewTemplate from "./preview-template"
 
@@ -8,11 +9,7 @@ const NewsPostPreview = ({ entry, widgetFor }) => {
   const date = entry.getIn(["data", "date"])
   const body = widgetFor("body")
 
-  const dateString = date.toLocaleString("default", {
-    month: "long",
-    day: "2-digit",
-    year: "numeric",
-  })
+  const dateString = getLocalFormat(date)
 
   return (
     <PreviewTemplate>
