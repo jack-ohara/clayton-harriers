@@ -6,7 +6,6 @@ import CardPreviews from "../components/cardPreviews"
 import { graphql } from "gatsby"
 
 const H1 = styled.h1`
-  position: relative;
   font-size: 13vw;
   z-index: 1;
   color: #c8c8c8;
