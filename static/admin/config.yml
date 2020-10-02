@@ -73,7 +73,7 @@ collections:
       - { label: "Tags", name: "tags", widget: "list", required: false }
 
   - name: "training"
-    label: "training"
+    label: "Training"
     folder: "src/pages/news/training"
     slug: "{{slug}}"
     fields:
