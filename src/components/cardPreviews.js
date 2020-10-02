@@ -1,5 +1,5 @@
 import { Link } from "gatsby"
-import React, { useEffect, useState } from "react"
+import React from "react"
 import styled from "styled-components"
 import { getLocalFormatFromString } from "../utils/dateFormatter"
 
@@ -52,11 +52,11 @@ const Article = styled.article`
   align-content: center;
 `
 
-const Card = ({ slug, featuredimage, title, author, date, excerpt }) => {
+const Card = ({ slug, featuredImage, title, author, date, excerpt }) => {
   return (
     <CardContainer to={slug}>
       <Article>
-        <CardImage src={featuredimage} alt="" loading="lazy" />
+        <CardImage src={featuredImage} alt="" loading="lazy" />
         <CardBox>
           <h4>{title}</h4>
           <h5>{author}</h5>

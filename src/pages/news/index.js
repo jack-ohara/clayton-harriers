@@ -52,7 +52,7 @@ export const pageQuery = graphql`
             title
             date
             tags
-            featuredimage
+            featuredImage
           }
           fields {
             slug

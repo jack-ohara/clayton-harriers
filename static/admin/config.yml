@@ -35,7 +35,7 @@ collections:
         }
       - {
           label: "Featured Image",
-          name: "featuredimage",
+          name: "featuredImage",
           widget: image,
           required: false,
         }
@@ -65,7 +65,36 @@ collections:
         }
       - {
           label: "Featured Image",
-          name: "featuredimage",
+          name: "featuredImage",
+          widget: image,
+          required: false,
+        }
+      - { label: "Body", name: "body", widget: "markdown", required: true }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+
+  - name: "training"
+    label: "Training"
+    folder: "src/pages/news/training"
+    slug: "{{slug}}"
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          required: true,
+          default: "news-post",
+        }
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Author", name: "author", widget: "string", required: false }
+      - {
+          label: "Publish Date",
+          name: "date",
+          widget: "datetime",
+          required: true,
+        }
+      - {
+          label: "Featured Image",
+          name: "featuredImage",
           widget: image,
           required: false,
         }
