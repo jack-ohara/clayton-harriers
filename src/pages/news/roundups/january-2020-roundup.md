@@ -3,7 +3,7 @@ templateKey: news-post
 title: January 2020 Roundup
 author: Helen Stevens
 date: 2020-02-09T17:30:00.000Z
-featuredimage: https://res.cloudinary.com/jackohara/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1601410875/ClaytonHarriers/lambslongerleg_l3yvsi.jpg
+featuredImage: https://res.cloudinary.com/jackohara/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1601410875/ClaytonHarriers/lambslongerleg_l3yvsi.jpg
 tags:
   - AGM
 ---
