@@ -3,7 +3,8 @@ templateKey: news-post
 title: Junior Training
 date: 2020-02-10T08:00:00.000Z
 tags:
-  - [training, junior]
+  - training
+  - junior
 ---
 
 We want to encourage as many juniors as possible to come along to our training sessions! If you want to get in touch beforehand you can [contact the junior team](/contact/juniors)
