@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
@@ -102,10 +102,14 @@ const MenuItem = ({ title, to, small }) => (
   </StyledLink>
 )
 
-const CollapsableMenuItem = ({ title, children }) => {
+const CollapsableMenuItem = ({ title, children, resetOpen }) => {
   const [isOpen, setIsOpen] = useState(false)
   const subItems = useRef(null)
   const [scrollHeight, setScrollHeight] = useState()
+
+  useEffect(() => {
+    setIsOpen(false)
+  }, [resetOpen])
 
   return (
     <>
@@ -130,6 +134,10 @@ const CollapsableMenuItem = ({ title, children }) => {
 }
 
 const isActiveRoute = targetRoute => {
+  if (typeof window === "undefined") {
+    return false
+  }
+
   const currentRoute = window.location.pathname
   return (
     (currentRoute === "/" && currentRoute === targetRoute) ||
@@ -142,7 +150,7 @@ const Menu = ({ open }) => {
     <StyledMenu open={open}>
       <MenuItem title="Home" to="/" />
       <ItemDivider />
-      <CollapsableMenuItem title="News &amp; Info" to="/news">
+      <CollapsableMenuItem title="News &amp; Info" to="/news" resetOpen={!open}>
         <MenuItem title="News" to="/news" small />
         <MenuItem title="Training" to="/training" small />
         <MenuItem title="Fixtures" to="/fixtures" small />
