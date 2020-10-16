@@ -1,14 +1,12 @@
-import React, { useState } from "react"
+import React, { useRef, useState } from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
 const StyledMenu = styled.nav`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   background: #ffffff;
   transform: ${({ open }) => (open ? "translateY(0)" : "translateY(-100%)")};
-  text-align: left;
   padding: 3rem 2rem 0 2rem;
   position: absolute;
   top: 0;
@@ -27,8 +25,8 @@ const ItemDivider = styled.hr`
 `
 
 const StyledLink = styled(Link)`
-  font-size: 2rem;
-  padding: 1.5rem 0;
+  font-size: ${props => (props.$small ? "1.5rem" : "2rem")};
+  padding: ${props => (props.$small ? "1rem 0" : "1.5rem 0")};
   font-weight: bold;
   letter-spacing: 0.5rem;
   text-decoration: none;
@@ -39,23 +37,103 @@ const StyledLink = styled(Link)`
 
   @media (max-width: 576px) {
     font-size: 1.5rem;
+    font-size: ${props => (props.$small ? "1.2rem" : "1.5rem")};
   }
 
-  &:hover {
-    text-decoration: underline;
+  &:hover,
+  &:focus {
+    background: lightgrey;
+    outline: none;
   }
 `
 
-const MenuItem = ({ title, to }) => {
-  const currentRoute = window.location.pathname
-  const isActiveRoute =
-    (currentRoute === "/" && currentRoute === to) ||
-    (to !== "/" && currentRoute.startsWith(to))
+const StyledButton = styled.button`
+  font-size: 2rem;
+  padding: 1.5rem 0;
+  font-weight: bold;
+  letter-spacing: 0.5rem;
+  margin: 0;
+  border: 0;
+  background: inherit;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @media (max-width: 576px) {
+    font-size: 1.5rem;
+  }
+
+  &:hover,
+  &:focus {
+    background: lightgrey;
+    outline: none;
+  }
+
+  span div {
+    width: 0.8rem;
+    height: 0.2rem;
+    background: #0d0c1d;
+    border-radius: 10px;
+    transition: all 0.2s linear;
+    position: relative;
+    top: 10px;
+    right: 10px;
+
+    :first-child {
+      transform: ${props => (props.$open ? "rotate(0)" : "rotate(90deg)")};
+      top: 13px;
+    }
+  }
+`
+
+const SubItemsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  transition: max-height 0.2s ease-out;
+  max-height: ${props => `${props.maxHeight}px`};
+  overflow: hidden;
+  padding-left: 1rem;
+`
+
+const MenuItem = ({ title, to, small }) => (
+  <StyledLink to={to} $isActiveRoute={isActiveRoute(to)} $small={small}>
+    {title}
+  </StyledLink>
+)
+
+const CollapsableMenuItem = ({ title, children }) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const subItems = useRef(null)
+  const [scrollHeight, setScrollHeight] = useState()
 
   return (
-    <StyledLink to={to} $isActiveRoute={isActiveRoute}>
-      {title}
-    </StyledLink>
+    <>
+      <StyledButton
+        onClick={e => {
+          setScrollHeight(subItems.current.scrollHeight)
+          setIsOpen(!isOpen)
+        }}
+        $open={isOpen}
+      >
+        {title}
+        <span>
+          <div />
+          <div />
+        </span>
+      </StyledButton>
+      <SubItemsContainer maxHeight={isOpen ? scrollHeight : 0} ref={subItems}>
+        {children}
+      </SubItemsContainer>
+    </>
+  )
+}
+
+const isActiveRoute = targetRoute => {
+  const currentRoute = window.location.pathname
+  return (
+    (currentRoute === "/" && currentRoute === targetRoute) ||
+    (targetRoute !== "/" && currentRoute.startsWith(targetRoute))
   )
 }
 
@@ -64,7 +142,11 @@ const Menu = ({ open }) => {
     <StyledMenu open={open}>
       <MenuItem title="Home" to="/" />
       <ItemDivider />
-      <MenuItem title="News &amp; Info" to="/news" />
+      <CollapsableMenuItem title="News &amp; Info" to="/news">
+        <MenuItem title="News" to="/news" small />
+        <MenuItem title="Training" to="/training" small />
+        <MenuItem title="Fixtures" to="/fixtures" small />
+      </CollapsableMenuItem>
       <ItemDivider />
       <MenuItem title="Training" to="/training" />
       <ItemDivider />
