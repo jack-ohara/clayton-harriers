@@ -109,9 +109,10 @@ const CollapsableMenuItem = ({ title, children, resetOpen }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrollHeight, setScrollHeight] = useState()
   const subItems = useRef(null)
-  const hasActiveChild = children.some(e => isActiveRoute(e.props.to))
 
   useEffect(() => {
+    const hasActiveChild = children.some(e => isActiveRoute(e.props.to))
+
     setIsOpen(hasActiveChild)
   }, [resetOpen])
 
@@ -123,7 +124,6 @@ const CollapsableMenuItem = ({ title, children, resetOpen }) => {
           setIsOpen(!isOpen)
         }}
         $open={isOpen}
-        $hasActiveChild={hasActiveChild}
       >
         {title}
         <span>
@@ -161,9 +161,13 @@ const Menu = ({ open }) => {
         <MenuItem title="Fixtures" to="/fixtures" small />
       </CollapsableMenuItem>
       <ItemDivider />
-      <MenuItem title="Training" to="/training" />
+      <MenuItem title="Juniors" to="/juniors" />
+      <ItemDivider />
+      <MenuItem title="About" to="/about" />
       <ItemDivider />
       <MenuItem title="Join Us" to="/join-us" />
+      <ItemDivider />
+      <MenuItem title="Contact" to="/contact" />
     </StyledMenu>
   )
 }

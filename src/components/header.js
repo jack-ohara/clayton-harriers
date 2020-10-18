@@ -4,7 +4,7 @@ import Img from "gatsby-image"
 import styled from "styled-components"
 import BurberButton from "./menu/burgerButton"
 import Menu from "./menu"
-import OutsideAlerter from "./clickOutsideWrapper"
+import OutsideAlerter from "./eventOutsideWrapper"
 
 const StyledHeader = styled.header`
   padding: 1rem 0.5rem;
@@ -33,23 +33,20 @@ const Header = () => {
   `)
 
   const [open, setOpen] = useState(false)
-  const node = useRef()
 
   return (
     <StyledHeader>
       <LogoLink to="/">
         <Img fixed={logoData.file.childImageSharp.fixed} />
       </LogoLink>
-      <div ref={node}>
+      <OutsideAlerter
+        events={["mousedown", "scroll"]}
+        handleEvent={() => setOpen(false)}
+      >
         <BurberButton open={open} setOpen={setOpen} />
 
-        <OutsideAlerter
-          events={["mousedown", "scroll"]}
-          handleEvent={() => setOpen(false)}
-        >
-          <Menu open={open} setOpen={setOpen} />
-        </OutsideAlerter>
-      </div>
+        <Menu open={open} />
+      </OutsideAlerter>
     </StyledHeader>
   )
 }
