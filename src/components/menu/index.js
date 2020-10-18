@@ -59,6 +59,8 @@ const StyledButton = styled.button`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  color: ${props =>
+    props.$hasActiveChild ? props.theme.colours.orange : "inherit"};
 
   @media (max-width: 576px) {
     font-size: 1.5rem;
@@ -73,7 +75,8 @@ const StyledButton = styled.button`
   span div {
     width: 0.8rem;
     height: 0.2rem;
-    background: #0d0c1d;
+    background: ${props =>
+      props.$hasActiveChild ? props.theme.colours.orange : "black"};
     border-radius: 10px;
     transition: all 0.2s linear;
     position: relative;
@@ -104,11 +107,12 @@ const MenuItem = ({ title, to, small }) => (
 
 const CollapsableMenuItem = ({ title, children, resetOpen }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const subItems = useRef(null)
   const [scrollHeight, setScrollHeight] = useState()
+  const subItems = useRef(null)
+  const hasActiveChild = children.some(e => isActiveRoute(e.props.to))
 
   useEffect(() => {
-    setIsOpen(false)
+    setIsOpen(hasActiveChild)
   }, [resetOpen])
 
   return (
@@ -119,6 +123,7 @@ const CollapsableMenuItem = ({ title, children, resetOpen }) => {
           setIsOpen(!isOpen)
         }}
         $open={isOpen}
+        $hasActiveChild={hasActiveChild}
       >
         {title}
         <span>
