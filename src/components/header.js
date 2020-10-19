@@ -1,5 +1,5 @@
 import { Link, useStaticQuery, graphql } from "gatsby"
-import React, { useState, useRef } from "react"
+import React, { useState } from "react"
 import Img from "gatsby-image"
 import styled from "styled-components"
 import BurberButton from "./menu/burgerButton"
@@ -14,10 +14,10 @@ const LogoLink = styled(Link)`
   background-image: none;
 `
 
-const ImageWrapper = styled.div`
-  text-align: right;
-  padding-right: 1rem;
-`
+// const ImageWrapper = styled.div`
+//   text-align: right;
+//   padding-right: 1rem;
+// `
 
 const Header = () => {
   const logoData = useStaticQuery(graphql`

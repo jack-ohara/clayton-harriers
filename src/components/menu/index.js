@@ -114,7 +114,7 @@ const CollapsableMenuItem = ({ title, children, resetOpen }) => {
     const hasActiveChild = children.some(e => isActiveRoute(e.props.to))
 
     setIsOpen(hasActiveChild)
-  }, [resetOpen])
+  }, [resetOpen, children])
 
   return (
     <>
