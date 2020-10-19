@@ -3,15 +3,6 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Content, { HTMLContent } from "../components/content"
 import { Helmet } from "react-helmet"
-import styled from "styled-components"
-
-const HorizontalRule = styled.hr`
-  background: linear-gradient(
-    90deg,
-    #bbbbbb 25%,
-    ${props => props.theme.colours.lightGrey} 100%
-  );
-`
 
 export const DefaultTemplate = ({
   content,

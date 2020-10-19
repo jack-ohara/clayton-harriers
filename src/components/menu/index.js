@@ -111,7 +111,9 @@ const CollapsableMenuItem = ({ title, children, resetOpen }) => {
   const subItems = useRef(null)
 
   useEffect(() => {
-    const hasActiveChild = children.some(e => isActiveRoute(e.props.to))
+    const hasActiveChild = Array.isArray(children)
+      ? children.some(e => isActiveRoute(e.props.to))
+      : isActiveRoute(children.props.to)
 
     setIsOpen(hasActiveChild)
   }, [resetOpen, children])
@@ -155,13 +157,16 @@ const Menu = ({ open }) => {
     <StyledMenu open={open}>
       <MenuItem title="Home" to="/" />
       <ItemDivider />
-      <CollapsableMenuItem title="News &amp; Info" to="/news" resetOpen={!open}>
+      <CollapsableMenuItem title="News &amp; Info" resetOpen={!open}>
         <MenuItem title="News" to="/news" small />
         <MenuItem title="Training" to="/training" small />
         <MenuItem title="Fixtures" to="/fixtures" small />
+        <MenuItem title="Roll Of Honour" to="/roll-of-honour" small />
       </CollapsableMenuItem>
       <ItemDivider />
-      <MenuItem title="Juniors" to="/juniors" />
+      <CollapsableMenuItem title="Juniors" resetOpen={!open}>
+        <MenuItem title="Welcome" to="/juniors" small />
+      </CollapsableMenuItem>
       <ItemDivider />
       <MenuItem title="About" to="/about" />
       <ItemDivider />

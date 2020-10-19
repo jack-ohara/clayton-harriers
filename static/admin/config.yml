@@ -40,7 +40,13 @@ collections:
           required: false,
         }
       - { label: "Body", name: "body", widget: "markdown", required: true }
-      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - {
+          label: "Tags",
+          name: "tags",
+          widget: "list",
+          required: false,
+          default: ["news, announcement"],
+        }
 
   - name: "roundup"
     label: "Roundups"
@@ -70,7 +76,13 @@ collections:
           required: false,
         }
       - { label: "Body", name: "body", widget: "markdown", required: true }
-      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - {
+          label: "Tags",
+          name: "tags",
+          widget: "list",
+          required: false,
+          default: ["news, roundup"],
+        }
 
   - name: "training"
     label: "Training"
@@ -100,7 +112,29 @@ collections:
           required: false,
         }
       - { label: "Body", name: "body", widget: "markdown", required: true }
-      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - {
+          label: "Tags",
+          name: "tags",
+          widget: "list",
+          required: false,
+          default: ["training"],
+        }
+
+  - name: "roll-of-honour"
+    label: "Roll Of Honour"
+    folder: "src/pages/roll-of-honour"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          required: true,
+          default: "default-template",
+        }
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Body", name: "body", widget: "markdown", required: true }
 
   - name: "juniors"
     label: "Juniors Welcome Page"
