@@ -74,7 +74,8 @@ collections:
 
   - name: "training"
     label: "Training"
-    folder: "src/pages/news/training"
+    folder: "src/pages/training"
+    create: false
     slug: "{{slug}}"
     fields:
       - {
@@ -100,3 +101,19 @@ collections:
         }
       - { label: "Body", name: "body", widget: "markdown", required: true }
       - { label: "Tags", name: "tags", widget: "list", required: false }
+
+  - name: "juniors"
+    label: "Juniors Welcome Page"
+    folder: "src/pages/juniors"
+    create: false
+    slug: "{{slug}}"
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          required: true,
+          default: "default-template",
+        }
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Body", name: "body", widget: "markdown", required: true }
