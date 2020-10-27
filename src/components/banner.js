@@ -110,7 +110,7 @@ const Banner = () => (
         gradientTransform="matrix(.64994 0 0 .64994 -23.25 -39.953)"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#f60" offset="0" />
+        <stop stop-color="#ff8d00" offset="0" />
         <stop stop-color="#d2ab92" offset="1" />
       </linearGradient>
       <linearGradient

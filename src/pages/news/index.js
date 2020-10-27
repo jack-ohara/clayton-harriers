@@ -1,12 +1,8 @@
 import React from "react"
-import styled from "styled-components"
+import { graphql } from "gatsby"
 import CardPreviews from "../../components/cardPreviews"
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
-
-const Header = styled.h1`
-  text-align: center;
-`
 
 const NewsPage = ({ data }) => {
   const { allMarkdownRemark: postsData } = data
@@ -28,7 +24,7 @@ const NewsPage = ({ data }) => {
     <Layout>
       <SEO title="News &amp; Info" />
 
-      <Header>News &amp; Info</Header>
+      <h1>News &amp; Info</h1>
 
       <CardPreviews posts={posts} />
     </Layout>

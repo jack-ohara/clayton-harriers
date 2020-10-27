@@ -1,8 +1,10 @@
 import { Link, useStaticQuery, graphql } from "gatsby"
-import React from "react"
+import React, { useState } from "react"
 import Img from "gatsby-image"
 import styled from "styled-components"
-import { Burger, Menu } from "./burgerMenu"
+import BurberButton from "./menu/burgerButton"
+import Menu from "./menu"
+import OutsideAlerter from "./eventOutsideWrapper"
 
 const StyledHeader = styled.header`
   padding: 1rem 0.5rem;
@@ -11,6 +13,11 @@ const StyledHeader = styled.header`
 const LogoLink = styled(Link)`
   background-image: none;
 `
+
+// const ImageWrapper = styled.div`
+//   text-align: right;
+//   padding-right: 1rem;
+// `
 
 const Header = () => {
   const logoData = useStaticQuery(graphql`
@@ -25,18 +32,21 @@ const Header = () => {
     }
   `)
 
-  const [open, setOpen] = React.useState(false)
-  const node = React.useRef()
+  const [open, setOpen] = useState(false)
 
   return (
     <StyledHeader>
       <LogoLink to="/">
         <Img fixed={logoData.file.childImageSharp.fixed} />
       </LogoLink>
-      <div ref={node}>
-        <Burger open={open} setOpen={setOpen} />
-        <Menu open={open} setOpen={setOpen} />
-      </div>
+      <OutsideAlerter
+        events={["mousedown", "scroll"]}
+        handleEvent={() => setOpen(false)}
+      >
+        <BurberButton open={open} setOpen={setOpen} />
+
+        <Menu open={open} />
+      </OutsideAlerter>
     </StyledHeader>
   )
 }
