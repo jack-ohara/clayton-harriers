@@ -3,6 +3,18 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Content, { HTMLContent } from "../components/content"
 import { Helmet } from "react-helmet"
+import styled from "styled-components"
+
+const TemplateWrapper = styled.section`
+  table {
+    font-size: 0.85rem;
+  }
+
+  td,
+  th {
+    padding: 0.5rem 0.2rem;
+  }
+`
 
 export const DefaultTemplate = ({
   content,
@@ -13,18 +25,12 @@ export const DefaultTemplate = ({
   const PostContent = contentComponent || Content
 
   return (
-    <section>
+    <TemplateWrapper>
       {helmet || ""}
-      <div>
-        <div>
-          <div>
-            <h1>{title}</h1>
-            <hr />
-            <PostContent content={content} />
-          </div>
-        </div>
-      </div>
-    </section>
+      <h1>{title}</h1>
+      <hr />
+      <PostContent content={content} />
+    </TemplateWrapper>
   )
 }
 
