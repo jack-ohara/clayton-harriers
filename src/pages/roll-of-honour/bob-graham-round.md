@@ -15,11 +15,8 @@ Further information can be found at the [Bob Graham Club](http://www.bobgrahamcl
 |      |      |            |               |                |
 | ---- | ---- | ---------- | ------------- | -------------- |
 | 1960 | 001  | Alan       | Heaton        | 22 hrs 18 mins |
-|      | 002  | Stan       | Bradshaw      | 23 hrs 25 mins |
-|      |      |            |               |                |
-| 1961 | 003  | Ken        | Heaton        | 22 hrs 13 mins |
-|      |      |            |               |                |
-| 1971 | 007  | Don        | Talbot*       | 22 hrs 17 mins |
+|      | 002  | Stan       | Bradshaw      | 23 hrs 25 mins 
+| 1961 | 003  | Ken        | Heaton        | 22 hrs 13 mins | 1971 | 007  | Don        | Talbot*       | 22 hrs 17 mins
 |      | 008  | Mick       | Meath         | 22 hrs 44 mins |
 |      |      |            |               |                |
 | 1972 | 010  | Jim        | Loxham*       | 23 hrs 43 mins |
