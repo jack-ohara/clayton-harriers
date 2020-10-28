@@ -3,6 +3,7 @@ import React from "react"
 import CardPreviews from "../../components/cardPreviews"
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
+import HorizontalRule from "../../utils/styles/HorizontalRule.js"
 
 const RollOfHonourPage = ({ data }) => {
   const { allMarkdownRemark: postsData } = data
@@ -25,7 +26,7 @@ const RollOfHonourPage = ({ data }) => {
       <SEO title="Roll Of Honour" />
 
       <h1>Roll Of Honour</h1>
-      <hr />
+      <HorizontalRule />
 
       <p>
         The runners in our club have achieved so many great things over the

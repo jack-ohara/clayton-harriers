@@ -4,6 +4,7 @@ import Layout from "../components/layout"
 import Content, { HTMLContent } from "../components/content"
 import { Helmet } from "react-helmet"
 import styled from "styled-components"
+import HorizontalRule from "../utils/styles/HorizontalRule.js"
 
 const TemplateWrapper = styled.section`
   table {
@@ -28,7 +29,7 @@ export const DefaultTemplate = ({
     <TemplateWrapper>
       {helmet || ""}
       <h1>{title}</h1>
-      <hr />
+      <HorizontalRule />
       <PostContent content={content} />
     </TemplateWrapper>
   )
