@@ -1,6 +1,7 @@
 ---
 templateKey: default-template
 title: International Runners
+date: 2020-10-04T08:48:00.000Z
 ---
 
 This page lists the runners that have earned the chance to represent their country. Some of the accolades listed were achieved when the runner wasn’t a member of Clayton-Le-Moors Harriers
