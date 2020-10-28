@@ -2,6 +2,7 @@ import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 import { getLocalFormatFromString } from "../utils/dateFormatter"
+import HorizontalRule from "../utils/styles/HorizontalRule.js"
 
 const CardContainer = styled(Link)`
   border-radius: 3px;
@@ -36,14 +37,6 @@ const CardBox = styled.div`
   h5 {
     margin: 0 0 0.3rem 0;
   }
-
-  hr {
-    background: linear-gradient(
-      90deg,
-      #bbbbbb 25%,
-      ${props => props.theme.colours.lightGrey} 100%
-    );
-  }
 `
 
 const Article = styled.article`
@@ -61,7 +54,7 @@ const Card = ({ slug, featuredImage, title, author, date, excerpt }) => {
           <h4>{title}</h4>
           <h5>{author}</h5>
           <h5>{getLocalFormatFromString(date)}</h5>
-          <hr />
+          <HorizontalRule />
           {excerpt}
         </CardBox>
       </Article>

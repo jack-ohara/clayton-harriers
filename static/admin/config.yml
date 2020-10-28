@@ -8,8 +8,8 @@ public_folder: /img
 media_library:
   name: cloudinary
   config:
-    cloud_name: jackohara
-    api_key: 182941528276584
+    cloud_name: clayton-le-moors-harriers
+    api_key: 847887322468448
 
 collections:
   - name: "announcement"
