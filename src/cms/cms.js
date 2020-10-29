@@ -6,3 +6,6 @@ CMS.registerMediaLibrary(Cloudinary)
 
 CMS.registerPreviewTemplate("announcement", NewsPostPreview)
 CMS.registerPreviewTemplate("roundup", NewsPostPreview)
+CMS.registerPreviewTemplate("training", NewsPostPreview)
+CMS.registerPreviewTemplate("roll-of-honour", DefaultTemplatePreview)
+CMS.registerPreviewTemplate("juniors", DefaultTemplatePreview)

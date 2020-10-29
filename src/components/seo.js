@@ -37,7 +37,14 @@ const SEO = ({ description = "", lang = "en", meta = [], title }) => {
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: metaDescription },
       ].concat(meta)}
-    />
+    >
+      <link
+        href="//fonts.googleapis.com/css?family=Timmana:400|Source+Sans+Pro:400"
+        rel="stylesheet"
+        type="text/css"
+        data-gatsby-typography="true"
+      />
+    </Helmet>
   )
 }
 
