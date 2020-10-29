@@ -12,7 +12,7 @@ const NewsPostPreview = ({ entry, widgetFor }) => {
   const dateString = getLocalFormat(date)
 
   return (
-    <PreviewTemplate>
+    <PreviewTemplate title={title}>
       <NewsPostTemplate
         content={body}
         title={title}
