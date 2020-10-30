@@ -1,6 +1,8 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import { TypographyStyle, GoogleFont } from "react-typography"
+import typography from "../utils/typography"
 
 const SEO = ({ description = "", lang = "en", meta = [], title }) => {
   const { site } = useStaticQuery(
@@ -39,11 +41,13 @@ const SEO = ({ description = "", lang = "en", meta = [], title }) => {
       ].concat(meta)}
     >
       <link
-        href="//fonts.googleapis.com/css?family=Timmana:400|Source+Sans+Pro:400"
+        href="https://fonts.googleapis.com/css?family=Timmana:400|Source+Sans+Pro:400"
         rel="stylesheet"
         type="text/css"
         data-gatsby-typography="true"
       />
+      {/* <TypographyStyle typography={typography} />
+      <GoogleFont typography={typography} /> */}
     </Helmet>
   )
 }
