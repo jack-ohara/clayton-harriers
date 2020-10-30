@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import React from "react"
 import { createGlobalStyle } from "styled-components"
 
@@ -594,6 +595,20 @@ html {
   th:last-child,
   td:last-child {
     padding-right: 0;
+  }
+  @font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro'), local('Source-Sans-Pro'), url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7l.woff2) format('woff2');
+    display: swap;
+  }
+  @font-face {
+    font-family: 'Timmana';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Timmana'), local('Timmana'), url(https://fonts.gstatic.com/s/timmana/v5/6xKvdShfL9yK-rvpOmzRKQ.woff2) format('woff2');
+    display: swap;
   }
 `
 
