@@ -1,7 +1,9 @@
 import React from "react"
 import SEO from "../../components/seo"
-const { ThemeProvider } = require("styled-components")
-const { siteTheme } = require("../../utils/theme")
+import { ThemeProvider } from "styled-components"
+import { siteTheme } from "../../utils/theme"
+import "typeface-source-sans-pro"
+import "typeface-timmana"
 
 const PreviewTemplate = ({ title, children }) => (
   <ThemeProvider theme={siteTheme}>
