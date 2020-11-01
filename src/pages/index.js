@@ -52,7 +52,7 @@ export const pageQuery = graphql`
   query LastestPostsQuery {
     allMarkdownRemark(
       sort: { fields: frontmatter___date, order: DESC }
-      limit: 6
+      limit: 8
     ) {
       edges {
         node {
