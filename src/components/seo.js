@@ -37,21 +37,7 @@ const SEO = ({ description = "", lang = "en", meta = [], title }) => {
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: metaDescription },
       ].concat(meta)}
-    >
-      <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-      <link
-        rel="preload"
-        href="https://fonts.gstatic.com/s/sourcesanspro/v14/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7l.woff2"
-        as="font"
-        crossorigin
-      />
-      <link
-        rel="preload"
-        href="https://fonts.gstatic.com/s/timmana/v5/6xKvdShfL9yK-rvpOmzRKQ.woff2"
-        as="font"
-        crossorigin
-      />
-    </Helmet>
+    />
   )
 }
 
