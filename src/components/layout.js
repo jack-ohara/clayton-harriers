@@ -2,6 +2,9 @@ import React from "react"
 import Header from "./header"
 import styled, { ThemeProvider } from "styled-components"
 import { siteTheme } from "../utils/theme"
+import GlobalStyles from "../utils/styles/GlobalStyles"
+import "typeface-source-sans-pro"
+import "typeface-timmana"
 
 const Container = styled.div`
   min-height: 100vh;
@@ -35,6 +38,7 @@ const Footer = styled.footer`
 
 const Layout = ({ children }) => (
   <ThemeProvider theme={siteTheme}>
+    <GlobalStyles />
     <Container>
       <Header />
       <ContentWrapper>

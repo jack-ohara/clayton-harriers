@@ -13,6 +13,7 @@ const useOutsideAlerter = (ref, events, handle) => {
     return () => {
       events.forEach(e => document.removeEventListener(e, handleClickOutside))
     }
+    // eslint-disable-next-line
   }, [ref])
 }
 
