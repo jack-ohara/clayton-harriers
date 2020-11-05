@@ -1,14 +1,13 @@
 import React from "react"
-import SEO from "../../components/seo"
 import { ThemeProvider } from "styled-components"
 import { siteTheme } from "../../utils/theme"
+import GlobalStyles from "../../utils/styles/GlobalStyles"
 import "typeface-source-sans-pro"
 import "typeface-timmana"
 
 const PreviewTemplate = ({ title, children }) => (
   <ThemeProvider theme={siteTheme}>
-    <SEO title={title} />
-    {children}
+    <GlobalStyles>{children}</GlobalStyles>
   </ThemeProvider>
 )
 
