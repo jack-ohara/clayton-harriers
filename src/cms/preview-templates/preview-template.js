@@ -1,13 +1,14 @@
 import React from "react"
 import { ThemeProvider } from "styled-components"
-import { siteTheme } from "../../utils/theme"
 import GlobalStyles from "../../utils/styles/GlobalStyles"
+import { siteTheme } from "../../utils/theme"
 import "typeface-source-sans-pro"
 import "typeface-timmana"
 
-const PreviewTemplate = ({ title, children }) => (
+const PreviewTemplate = ({ children }) => (
   <ThemeProvider theme={siteTheme}>
-    <GlobalStyles>{children}</GlobalStyles>
+    <GlobalStyles />
+    {children}
   </ThemeProvider>
 )
 

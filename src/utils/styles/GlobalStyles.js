@@ -203,7 +203,7 @@ html {
   }
   body {
     color: hsla(0, 0%, 0%, 0.8);
-    font-family: 'georgia', serif;
+    font-family: "Source Sans Pro", sans-serif;
     font-weight: normal;
     word-wrap: break-word;
     font-kerning: normal;

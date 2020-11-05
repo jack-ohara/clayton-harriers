@@ -12,7 +12,6 @@ const Container = styled.div`
   justify-content: space-between;
   flex-direction: column;
   background: ${props => props.theme.colours.lightGrey};
-  font-family: "Source Sans Pro", sans-serif;
 `
 
 const ContentWrapper = styled.div`
