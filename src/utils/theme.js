@@ -1,7 +1,7 @@
 const siteTheme = {
   colours: {
-    lightGrey: "#EAEAEA",
-    orange: "#FF8D00"
+    lightGrey: "#F8F8F8",
+    orange: "#FF8D00",
   },
 }
 

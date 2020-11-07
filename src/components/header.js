@@ -14,11 +14,6 @@ const LogoLink = styled(Link)`
   background-image: none;
 `
 
-// const ImageWrapper = styled.div`
-//   text-align: right;
-//   padding-right: 1rem;
-// `
-
 const Header = () => {
   const logoData = useStaticQuery(graphql`
     query {
