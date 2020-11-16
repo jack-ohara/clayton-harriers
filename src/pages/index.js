@@ -6,13 +6,11 @@ import CardPreviews from "../components/cardPreviews"
 import { graphql } from "gatsby"
 
 const H1 = styled.h1`
-  font-size: 13vw;
+  font-size: 2.7rem;
   z-index: 1;
   color: #c8c8c8;
   text-shadow: 2px 2px #959393;
-  font-family: "Timmana", sans-serif;
-  margin: 0;
-  grid-area: 1 / 1 / 2 / 1;
+  font-family: "Raleway", sans-serif;
   margin-top: 17px;
 `
 
@@ -35,11 +33,11 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" />
-      <H1>
-        We Are The
-        <br />
-        Clayton-Le-Moors <br /> Harriers
+      <H1 style={{ textAlign: "left" }}>
+        <i>Welcome to The Clayton-Le-Moors Harriers</i>
       </H1>
+
+      <hr />
 
       <CardPreviews posts={posts} />
     </Layout>

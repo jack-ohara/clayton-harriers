@@ -5,7 +5,7 @@ import { siteTheme } from "../utils/theme"
 import GlobalStyles from "../utils/styles/GlobalStyles"
 import PageContentLayout from "./pageContentLayout"
 import "typeface-source-sans-pro"
-import "typeface-timmana"
+import "typeface-raleway"
 
 const Container = styled.div`
   min-height: 100vh;
