@@ -4,18 +4,27 @@ import SEO from "../components/seo"
 import styled from "styled-components"
 import CardPreviews from "../components/cardPreviews"
 import { graphql } from "gatsby"
+import HorizontalRule from "../utils/styles/HorizontalRule"
+import BackgroundImage from "gatsby-background-image"
 
 const H1 = styled.h1`
-  font-size: 2.7rem;
+  font-size: 2.8rem;
   z-index: 1;
   color: #c8c8c8;
   text-shadow: 2px 2px #959393;
   font-family: "Raleway", sans-serif;
-  margin-top: 17px;
+  margin: 0;
+  padding: 1rem;
+`
+
+const BackgroundImageContainer = styled.div`
+  section {
+    padding: 2rem 0;
+  }
 `
 
 const IndexPage = ({ data }) => {
-  const { allMarkdownRemark: postsData } = data
+  const postsData = data.postsData
 
   const posts = postsData.edges.map(e => {
     let post = {}
@@ -33,11 +42,20 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" />
-      <H1 style={{ textAlign: "left" }}>
-        <i>Welcome to The Clayton-Le-Moors Harriers</i>
-      </H1>
 
-      <hr />
+      <BackgroundImageContainer>
+        <BackgroundImage
+          Tag="section"
+          fluid={data.mobileImage.childImageSharp.fluid}
+          backgroundColor={`#F8F8F8`}
+        >
+          <H1 style={{ textAlign: "left" }}>
+            <i>Welcome to The Clayton-Le-Moors Harriers</i>
+          </H1>
+        </BackgroundImage>
+      </BackgroundImageContainer>
+
+      <HorizontalRule />
 
       <CardPreviews posts={posts} />
     </Layout>
@@ -47,8 +65,8 @@ const IndexPage = ({ data }) => {
 export default IndexPage
 
 export const pageQuery = graphql`
-  query LastestPostsQuery {
-    allMarkdownRemark(
+  query HomePageQuery {
+    postsData: allMarkdownRemark(
       sort: { fields: frontmatter___date, order: DESC }
       limit: 8
     ) {
@@ -65,6 +83,13 @@ export const pageQuery = graphql`
           fields {
             slug
           }
+        }
+      }
+    }
+    mobileImage: file(relativePath: { eq: "clayton-runner-landscape.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1000, quality: 100) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
