@@ -7,7 +7,7 @@ import Menu from "./menu"
 import OutsideAlerter from "./eventOutsideWrapper"
 
 const StyledHeader = styled.header`
-  padding: 1rem 0.5rem;
+  padding: 0.5rem;
 `
 
 const LogoLink = styled(Link)`

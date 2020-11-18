@@ -5,7 +5,7 @@ import { siteTheme } from "../utils/theme"
 import GlobalStyles from "../utils/styles/GlobalStyles"
 import PageContentLayout from "./pageContentLayout"
 import "typeface-source-sans-pro"
-import "typeface-timmana"
+import "typeface-raleway"
 
 const Container = styled.div`
   min-height: 100vh;
@@ -15,11 +15,12 @@ const Container = styled.div`
   background: ${props => props.theme.colours.lightGrey};
 `
 
-const Layout = ({ children }) => (
+const Layout = ({ bannerImage, children }) => (
   <ThemeProvider theme={siteTheme}>
     <GlobalStyles />
     <Container>
       <Header />
+      {bannerImage}
       <PageContentLayout>{children}</PageContentLayout>
     </Container>
   </ThemeProvider>

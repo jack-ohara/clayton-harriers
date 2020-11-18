@@ -3,21 +3,50 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
 import CardPreviews from "../components/cardPreviews"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
+import HorizontalRule from "../utils/styles/HorizontalRule"
+import BackgroundImage from "gatsby-background-image"
 
 const H1 = styled.h1`
-  font-size: 13vw;
+  font-size: 2.6rem;
   z-index: 1;
-  color: #c8c8c8;
-  text-shadow: 2px 2px #959393;
-  font-family: "Timmana", sans-serif;
+  color: ${props => props.theme.colours.lightGrey};
+  text-shadow: 2px 2px ${props => props.theme.colours.orange};
+  font-family: "Raleway", sans-serif;
   margin: 0;
-  grid-area: 1 / 1 / 2 / 1;
-  margin-top: 17px;
+  padding: 0 1.0875rem;
+`
+
+const StyledBackgroundImage = styled(BackgroundImage)`
+  padding-top: 4.8rem;
+  min-height: 235px;
+
+  * {
+    text-align: center;
+  }
+`
+
+const BannerTextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`
+
+const StyledLink = styled(Link)`
+  padding: 0.5rem 1.1rem;
+  background: ${props => props.theme.colours.lightGrey};
+  border-radius: 3px;
+  margin: 0.5rem auto 0.5rem auto;
+  color: ${props => props.theme.colours.orange};
+  text-decoration: none;
+`
+
+const StyledHR = styled.hr`
+  margin: 1.45rem 2rem;
 `
 
 const IndexPage = ({ data }) => {
-  const { allMarkdownRemark: postsData } = data
+  const postsData = data.postsData
 
   const posts = postsData.edges.map(e => {
     let post = {}
@@ -32,15 +61,27 @@ const IndexPage = ({ data }) => {
     return post
   })
 
-  return (
-    <Layout>
-      <SEO title="Home" />
-      <H1>
-        We Are The
-        <br />
-        Clayton-Le-Moors <br /> Harriers
-      </H1>
+  const backgroundImage = (
+    <StyledBackgroundImage
+      Tag="section"
+      fluid={data.mobileImage.childImageSharp.fluid}
+      backgroundColor={`#F8F8F8`}
+    >
+      <BannerTextContainer>
+        <H1>Clayton-Le-Moors Harriers</H1>
 
+        <StyledLink to="/join-us">Join Us</StyledLink>
+      </BannerTextContainer>
+    </StyledBackgroundImage>
+  )
+
+  return (
+    <Layout bannerImage={backgroundImage}>
+      <SEO title="Home" />
+
+      <StyledHR />
+
+      <h3>Latest Updates</h3>
       <CardPreviews posts={posts} />
     </Layout>
   )
@@ -49,8 +90,8 @@ const IndexPage = ({ data }) => {
 export default IndexPage
 
 export const pageQuery = graphql`
-  query LastestPostsQuery {
-    allMarkdownRemark(
+  query HomePageQuery {
+    postsData: allMarkdownRemark(
       sort: { fields: frontmatter___date, order: DESC }
       limit: 8
     ) {
@@ -67,6 +108,13 @@ export const pageQuery = graphql`
           fields {
             slug
           }
+        }
+      }
+    }
+    mobileImage: file(relativePath: { eq: "clayton-runner-landscape.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1000, quality: 100) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
