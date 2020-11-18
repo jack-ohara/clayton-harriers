@@ -6,6 +6,14 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+
+  a:first-child {
+    margin-top: 0;
+  }
+
+  a:last-child {
+    margin-bottom: 0;
+  }
 `
 
 const CardPreviews = ({ posts }) => {

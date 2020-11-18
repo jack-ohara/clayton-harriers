@@ -3,24 +3,45 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
 import CardPreviews from "../components/cardPreviews"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import HorizontalRule from "../utils/styles/HorizontalRule"
 import BackgroundImage from "gatsby-background-image"
 
 const H1 = styled.h1`
-  font-size: 2.8rem;
+  font-size: 2.6rem;
   z-index: 1;
-  color: #c8c8c8;
-  text-shadow: 2px 2px #959393;
+  color: ${props => props.theme.colours.lightGrey};
+  text-shadow: 2px 2px ${props => props.theme.colours.orange};
   font-family: "Raleway", sans-serif;
   margin: 0;
-  padding: 1rem;
+  padding: 0 1.0875rem;
 `
 
-const BackgroundImageContainer = styled.div`
-  section {
-    padding: 2rem 0;
+const StyledBackgroundImage = styled(BackgroundImage)`
+  padding-top: 4.8rem;
+
+  * {
+    text-align: center;
   }
+`
+
+const BannerTextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`
+
+const StyledLink = styled(Link)`
+  padding: 0.5rem 1.1rem;
+  background: ${props => props.theme.colours.lightGrey};
+  border-radius: 3px;
+  margin: 0.5rem auto 0.5rem auto;
+  color: ${props => props.theme.colours.orange};
+  text-decoration: none;
+`
+
+const StyledHR = styled(HorizontalRule)`
+  margin: 1.5rem 0;
 `
 
 const IndexPage = ({ data }) => {
@@ -39,24 +60,27 @@ const IndexPage = ({ data }) => {
     return post
   })
 
+  const backgroundImage = (
+    <StyledBackgroundImage
+      Tag="section"
+      fluid={data.mobileImage.childImageSharp.fluid}
+      backgroundColor={`#F8F8F8`}
+    >
+      <BannerTextContainer>
+        <H1>We are Clayton-Le-Moors Harriers</H1>
+
+        <StyledLink to="/join-us">Join Us</StyledLink>
+      </BannerTextContainer>
+    </StyledBackgroundImage>
+  )
+
   return (
-    <Layout>
+    <Layout bannerImage={backgroundImage}>
       <SEO title="Home" />
 
-      <BackgroundImageContainer>
-        <BackgroundImage
-          Tag="section"
-          fluid={data.mobileImage.childImageSharp.fluid}
-          backgroundColor={`#F8F8F8`}
-        >
-          <H1 style={{ textAlign: "left" }}>
-            <i>Welcome to The Clayton-Le-Moors Harriers</i>
-          </H1>
-        </BackgroundImage>
-      </BackgroundImageContainer>
+      <StyledHR />
 
-      <HorizontalRule />
-
+      <h3>Latest Updates</h3>
       <CardPreviews posts={posts} />
     </Layout>
   )

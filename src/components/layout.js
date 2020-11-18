@@ -15,11 +15,12 @@ const Container = styled.div`
   background: ${props => props.theme.colours.lightGrey};
 `
 
-const Layout = ({ children }) => (
+const Layout = ({ bannerImage, children }) => (
   <ThemeProvider theme={siteTheme}>
     <GlobalStyles />
     <Container>
       <Header />
+      {bannerImage}
       <PageContentLayout>{children}</PageContentLayout>
     </Container>
   </ThemeProvider>
