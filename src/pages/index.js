@@ -41,7 +41,7 @@ const StyledLink = styled(Link)`
 `
 
 const StyledHR = styled(HorizontalRule)`
-  margin: 1.5rem 0;
+  margin: 1.45rem 0;
 `
 
 const IndexPage = ({ data }) => {
@@ -67,7 +67,7 @@ const IndexPage = ({ data }) => {
       backgroundColor={`#F8F8F8`}
     >
       <BannerTextContainer>
-        <H1>We are Clayton-Le-Moors Harriers</H1>
+        <H1>Clayton-Le-Moors Harriers</H1>
 
         <StyledLink to="/join-us">Join Us</StyledLink>
       </BannerTextContainer>
