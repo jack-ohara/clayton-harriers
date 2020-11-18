@@ -41,8 +41,8 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `
 
-const StyledHR = styled(HorizontalRule)`
-  margin: 1.45rem 0;
+const StyledHR = styled.hr`
+  margin: 1.45rem 2rem;
 `
 
 const IndexPage = ({ data }) => {
