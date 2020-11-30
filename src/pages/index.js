@@ -2,10 +2,9 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
-import CardPreviews from "../components/cardPreviews"
 import { graphql, Link } from "gatsby"
-import HorizontalRule from "../utils/styles/HorizontalRule"
 import BackgroundImage from "gatsby-background-image"
+import HoriztonalCardScroll from "../components/horizontalCardScroll"
 
 const H1 = styled.h1`
   font-size: 2.6rem;
@@ -81,8 +80,8 @@ const IndexPage = ({ data }) => {
 
       <StyledHR />
 
-      <h3>Latest Updates</h3>
-      <CardPreviews posts={posts} />
+      <HoriztonalCardScroll title="Highlights" posts={posts} />
+      <HoriztonalCardScroll title="Latest Updates" posts={posts} />
     </Layout>
   )
 }
@@ -97,7 +96,7 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
-          excerpt(pruneLength: 300)
+          excerpt(pruneLength: 100)
           frontmatter {
             author
             title

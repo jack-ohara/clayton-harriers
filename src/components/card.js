@@ -6,7 +6,7 @@ import HorizontalRule from "../utils/styles/HorizontalRule.js"
 
 const cardStyles = css`
   border-radius: 3px;
-  box-shadow: rgba(0, 0, 0, 0.25) 6px 8px 20px;
+  box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 15px;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -20,7 +20,7 @@ const cardStyles = css`
   &:hover,
   &:active,
   &:focus {
-    transform: scale(1.05);
+    transform: scale(1.03);
   }
 `
 
