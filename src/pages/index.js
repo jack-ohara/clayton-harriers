@@ -80,8 +80,16 @@ const IndexPage = ({ data }) => {
 
       <StyledHR />
 
-      <HoriztonalCardScroll title="Highlights" posts={posts} />
-      <HoriztonalCardScroll title="Latest Updates" posts={posts} />
+      <HoriztonalCardScroll
+        title="Highlights"
+        posts={posts}
+        useDefaultCardImage
+      />
+      <HoriztonalCardScroll
+        title="Latest Updates"
+        posts={posts}
+        useDefaultCardImage
+      />
     </Layout>
   )
 }

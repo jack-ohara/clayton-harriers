@@ -27,15 +27,15 @@ const StyledHR = styled(HorizontalRule)`
   margin-bottom: 0.2rem;
 `
 
-const HoriztonalCardScroll = ({ title, posts }) => (
+const HoriztonalCardScroll = ({ title, posts, useDefaultCardImage }) => (
   <Container>
     <Title style={{ textAlign: "left" }}>{title}</Title>
     <StyledHR />
 
     <CardContainer>
       {posts.map((post, index) => (
-        <CardWrapper>
-          <Card key={index} {...post} />
+        <CardWrapper key={index}>
+          <Card {...post} useDefaultImage={useDefaultCardImage} />
         </CardWrapper>
       ))}
     </CardContainer>
