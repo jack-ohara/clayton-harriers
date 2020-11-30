@@ -15,9 +15,11 @@ const LogoLink = styled(Link)`
 `
 
 const Header = () => {
-  const logoData = useStaticQuery(graphql`
+  const images = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "harriers-logo-transparent.png" }) {
+      harriersLogo: file(
+        relativePath: { eq: "harriers-logo-transparent.png" }
+      ) {
         childImageSharp {
           fixed(width: 65, height: 65) {
             ...GatsbyImageSharpFixed
@@ -27,12 +29,14 @@ const Header = () => {
     }
   `)
 
+  console.log(images)
+
   const [open, setOpen] = useState(false)
 
   return (
     <StyledHeader>
       <LogoLink to="/">
-        <Img fixed={logoData.file.childImageSharp.fixed} />
+        <Img fixed={images.harriersLogo.childImageSharp.fixed} />
       </LogoLink>
       <OutsideAlerter
         events={["mousedown", "scroll"]}

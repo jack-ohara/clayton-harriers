@@ -3,10 +3,11 @@ import React from "react"
 import styled, { css } from "styled-components"
 import { getLocalFormatFromString } from "../utils/dateFormatter"
 import HorizontalRule from "../utils/styles/HorizontalRule.js"
+import cardBannerSVG from "../images/card-banner.svg"
 
 const cardStyles = css`
   border-radius: 3px;
-  box-shadow: rgba(0, 0, 0, 0.25) 6px 8px 20px;
+  box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 15px;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -16,11 +17,12 @@ const cardStyles = css`
   color: inherit;
   text-decoration: none;
   transition: transform 0.2s ease-in-out;
+  overflow: hidden;
 
   &:hover,
   &:active,
   &:focus {
-    transform: scale(1.05);
+    transform: scale(1.03);
   }
 `
 
@@ -33,11 +35,15 @@ const NonLinkCardContainer = styled.div`
 `
 
 const CardImage = styled.img`
-  max-height: 200px;
+  max-height: 160px;
   margin: 0 auto 0.5rem auto;
+  max-width: ${props => (props.useBannerImage ? "120%" : "100%")};
+  flex-grow: 1;
 `
 
 const CardBox = styled.div`
+  flex-grow: 1;
+
   h4 {
     margin: 0 0 0.5rem 0;
   }
@@ -48,15 +54,31 @@ const CardBox = styled.div`
 `
 
 const Article = styled.article`
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-content: center;
+  justify-content: space-between;
 `
 
-const Card = ({ slug, featuredImage, title, author, date, excerpt }) => {
+const Card = ({
+  slug,
+  featuredImage,
+  title,
+  author,
+  date,
+  excerpt,
+  useDefaultImage,
+}) => {
+  const useBannerImage = !featuredImage && useDefaultImage
+
   const cardContent = (
     <Article>
-      <CardImage src={featuredImage} alt="" loading="lazy" />
+      <CardImage
+        useBannerImage={useBannerImage}
+        src={useBannerImage ? cardBannerSVG : featuredImage}
+        alt=""
+      />
       <CardBox>
         <h4>{title}</h4>
         <h5>{author}</h5>

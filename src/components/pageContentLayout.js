@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 
 const ContentWrapper = styled.div`
-  max-width: 1260px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 0 1.0875rem 1.45rem;
   flex-grow: 1;
