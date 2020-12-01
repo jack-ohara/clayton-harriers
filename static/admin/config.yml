@@ -41,6 +41,12 @@ collections:
         }
       - { label: "Body", name: "body", widget: "markdown", required: true }
       - {
+          label: "Highlighted",
+          name: "highlighted",
+          widget: "boolean",
+          default: false,
+        }
+      - {
           label: "Tags",
           name: "tags",
           widget: "list",
@@ -76,6 +82,12 @@ collections:
           required: false,
         }
       - { label: "Body", name: "body", widget: "markdown", required: true }
+      - {
+          label: "Highlighted",
+          name: "highlighted",
+          widget: "boolean",
+          default: false,
+        }
       - {
           label: "Tags",
           name: "tags",
@@ -113,6 +125,12 @@ collections:
         }
       - { label: "Body", name: "body", widget: "markdown", required: true }
       - {
+          label: "Highlighted",
+          name: "highlighted",
+          widget: "boolean",
+          default: false,
+        }
+      - {
           label: "Tags",
           name: "tags",
           widget: "list",
@@ -147,6 +165,12 @@ collections:
           required: false,
         }
       - { label: "Body", name: "body", widget: "markdown", required: true }
+      - {
+          label: "Highlighted",
+          name: "highlighted",
+          widget: "boolean",
+          default: false,
+        }
 
   - name: "juniors"
     label: "Juniors Welcome Page"

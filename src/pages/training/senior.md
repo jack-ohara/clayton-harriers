@@ -5,6 +5,7 @@ date: 2020-02-10T08:00:00.000Z
 tags:
   - training
   - senior
+highlighted: true
 ---
 
 The following sessions are available to all members of the club.

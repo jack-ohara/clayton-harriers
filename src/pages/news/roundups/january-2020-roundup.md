@@ -6,6 +6,7 @@ date: 2020-02-09T17:30:00.000Z
 featuredImage: https://res.cloudinary.com/clayton-le-moors-harriers/image/upload/c_crop,e_grayscale,h_1300,q_auto,w_1300,x_250,y_443/v1603995283/lambslongerleg_l3yvsi_exl5nn.jpg
 tags:
   - AGM
+highlighted: true
 ---
 
 Welcome to the new decade and the January 2020 Roundup.

@@ -29,8 +29,6 @@ const Header = () => {
     }
   `)
 
-  console.log(images)
-
   const [open, setOpen] = useState(false)
 
   return (
