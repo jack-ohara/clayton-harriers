@@ -2,6 +2,7 @@
 templateKey: default-template
 title: Bob Graham Round
 date: 2020-10-04T08:48:00.000Z
+highlighted: true
 ---
 
 Clayton has a long and impressive history with the Bob Graham Round - dubbed the "classic challenge" by many.

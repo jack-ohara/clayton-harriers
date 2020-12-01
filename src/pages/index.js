@@ -45,9 +45,20 @@ const StyledHR = styled.hr`
 `
 
 const IndexPage = ({ data }) => {
-  const postsData = data.postsData
+  const highlightedPosts = data.highlightedPostsData.edges.map(e => {
+    let post = {}
 
-  const posts = postsData.edges.map(e => {
+    for (let key in e.node.frontmatter) {
+      post[key] = e.node.frontmatter[key]
+    }
+
+    post["slug"] = e.node.fields.slug
+    post["excerpt"] = e.node.excerpt
+
+    return post
+  })
+
+  const latestPosts = data.latestPostsData.edges.map(e => {
     let post = {}
 
     for (let key in e.node.frontmatter) {
@@ -82,12 +93,12 @@ const IndexPage = ({ data }) => {
 
       <HoriztonalCardScroll
         title="Highlights"
-        posts={posts}
+        posts={highlightedPosts}
         useDefaultCardImage
       />
       <HoriztonalCardScroll
         title="Latest Updates"
-        posts={posts}
+        posts={latestPosts}
         useDefaultCardImage
       />
     </Layout>
@@ -98,7 +109,28 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query HomePageQuery {
-    postsData: allMarkdownRemark(
+    highlightedPostsData: allMarkdownRemark(
+      filter: { fields: {}, frontmatter: { highlighted: { eq: true } } }
+      sort: { fields: frontmatter___date, order: DESC }
+      limit: 8
+    ) {
+      edges {
+        node {
+          excerpt(pruneLength: 100)
+          frontmatter {
+            author
+            title
+            date
+            tags
+            featuredImage
+          }
+          fields {
+            slug
+          }
+        }
+      }
+    }
+    latestPostsData: allMarkdownRemark(
       sort: { fields: frontmatter___date, order: DESC }
       limit: 8
     ) {
