@@ -13,9 +13,11 @@ const NewsPostPreview = ({ entry, widgetFor }) => {
 
   const dateString = getLocalFormat(date)
 
-  const first300Chars = body.props.value.substr(0, 300)
+  const first300Chars = body?.props?.value.substr(0, 300)
 
-  const excerpt = `${first300Chars}${first300Chars.length === 300 ? "..." : ""}`
+  const excerpt = first300Chars
+    ? `${first300Chars}${first300Chars.length === 300 ? "..." : ""}`
+    : ""
 
   const card = (
     <Card
