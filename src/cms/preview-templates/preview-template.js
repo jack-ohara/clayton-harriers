@@ -30,7 +30,7 @@ const DesktopView = styled.div`
 const MobileView = styled.div`
   max-height: 736px;
   min-height: 736px;
-  max-width: 414px;
+  width: 414px;
   overflow: auto;
   padding: 1rem 0 0 0;
   box-shadow: rgba(0, 0, 0, 0.25) 6px 8px 20px;
