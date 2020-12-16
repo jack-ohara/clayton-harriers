@@ -1,5 +1,5 @@
 export const getLocalFormat = date =>
-  date.toLocaleString("default", {
+  date?.toLocaleString("default", {
     month: "long",
     day: "2-digit",
     year: "numeric",
