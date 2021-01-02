@@ -127,7 +127,7 @@ const CollapsableMenuItem = ({ title, children, resetOpen }) => {
       : isActiveRoute(children.props.to)
 
     setIsOpen(hasActiveChild)
-  }, [resetOpen, children, window.location.pathname])
+  }, [resetOpen, children])
 
   return (
     <>
@@ -152,6 +152,7 @@ const CollapsableMenuItem = ({ title, children, resetOpen }) => {
 }
 
 const isActiveRoute = targetRoute => {
+  console.log(window?.location?.pathname)
   if (typeof window === "undefined") {
     return false
   }
