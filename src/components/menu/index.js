@@ -161,6 +161,8 @@ const isActiveRoute = targetRoute => {
 
   const currentRoute = window.location.pathname
 
+  console.log(`currentRoute: ${currentRoute}    targetRoute: ${targetRoute}`)
+
   return currentRoute === targetRoute
 }
 
