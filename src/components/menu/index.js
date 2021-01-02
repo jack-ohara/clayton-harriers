@@ -99,11 +99,22 @@ const SubItemsContainer = styled.div`
   padding-left: 1rem;
 `
 
-const MenuItem = ({ title, to, small }) => (
-  <StyledLink to={to} $isActiveRoute={isActiveRoute(to)} $small={small}>
-    {title}
-  </StyledLink>
-)
+const MenuItem = ({ title, to, small, closeFunction }) => {
+  const isActive = isActiveRoute(to)
+
+  return (
+    <StyledLink
+      to={to}
+      $isActiveRoute={isActive}
+      $small={small}
+      onClick={() => {
+        isActive && closeFunction()
+      }}
+    >
+      {title}
+    </StyledLink>
+  )
+}
 
 const CollapsableMenuItem = ({ title, children, resetOpen }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -146,33 +157,68 @@ const isActiveRoute = targetRoute => {
   }
 
   const currentRoute = window.location.pathname
-  return (
-    (currentRoute === "/" && currentRoute === targetRoute) ||
-    (targetRoute !== "/" && currentRoute.startsWith(targetRoute))
-  )
+
+  return currentRoute === targetRoute
 }
 
-const Menu = ({ open }) => {
+const Menu = ({ open, setOpen }) => {
+  const closeMenuFunction = () => {
+    setOpen(false)
+  }
+
   return (
     <StyledMenu open={open}>
-      <MenuItem title="Home" to="/" />
+      <MenuItem title="Home" to="/" closeFunction={closeMenuFunction} />
       <ItemDivider />
       <CollapsableMenuItem title="News &amp; Info" resetOpen={!open}>
-        <MenuItem title="News" to="/news" small />
-        <MenuItem title="Training" to="/training" small />
-        <MenuItem title="Fixtures" to="/fixtures" small />
-        <MenuItem title="Roll Of Honour" to="/roll-of-honour" small />
+        <MenuItem
+          title="News"
+          to="/news"
+          small
+          closeFunction={closeMenuFunction}
+        />
+        <MenuItem
+          title="Training"
+          to="/training"
+          small
+          closeFunction={closeMenuFunction}
+        />
+        <MenuItem
+          title="Fixtures"
+          to="/fixtures"
+          small
+          closeFunction={closeMenuFunction}
+        />
+        <MenuItem
+          title="Roll Of Honour"
+          to="/roll-of-honour"
+          small
+          closeFunction={closeMenuFunction}
+        />
       </CollapsableMenuItem>
       <ItemDivider />
       <CollapsableMenuItem title="Juniors" resetOpen={!open}>
-        <MenuItem title="Welcome" to="/juniors" small />
+        <MenuItem
+          title="Welcome"
+          to="/juniors"
+          small
+          closeFunction={closeMenuFunction}
+        />
       </CollapsableMenuItem>
       <ItemDivider />
-      <MenuItem title="About" to="/about" />
+      <MenuItem title="About" to="/about" closeFunction={closeMenuFunction} />
       <ItemDivider />
-      <MenuItem title="Join Us" to="/join-us" />
+      <MenuItem
+        title="Join Us"
+        to="/join-us"
+        closeFunction={closeMenuFunction}
+      />
       <ItemDivider />
-      <MenuItem title="Contact" to="/contact" />
+      <MenuItem
+        title="Contact"
+        to="/contact"
+        closeFunction={closeMenuFunction}
+      />
     </StyledMenu>
   )
 }

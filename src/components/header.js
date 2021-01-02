@@ -2,7 +2,7 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import React, { useState } from "react"
 import Img from "gatsby-image"
 import styled from "styled-components"
-import BurberButton from "./menu/burgerButton"
+import BurgerButton from "./menu/burgerButton"
 import Menu from "./menu"
 import OutsideAlerter from "./eventOutsideWrapper"
 
@@ -40,9 +40,9 @@ const Header = () => {
         events={["mousedown", "scroll"]}
         handleEvent={() => setOpen(false)}
       >
-        <BurberButton open={open} setOpen={setOpen} />
+        <BurgerButton open={open} setOpen={setOpen} />
 
-        <Menu open={open} />
+        <Menu open={open} setOpen={setOpen} />
       </OutsideAlerter>
     </StyledHeader>
   )
