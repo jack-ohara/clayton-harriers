@@ -152,10 +152,12 @@ const CollapsableMenuItem = ({ title, children, resetOpen }) => {
 }
 
 const isActiveRoute = targetRoute => {
-  console.log(window?.location?.pathname)
   if (typeof window === "undefined") {
+    console.log("window is undefined")
     return false
   }
+
+  console.log(window?.location?.pathname)
 
   const currentRoute = window.location.pathname
 
