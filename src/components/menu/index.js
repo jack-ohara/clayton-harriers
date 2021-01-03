@@ -153,6 +153,10 @@ const CollapsableMenuItem = ({ title, children, resetOpen }) => {
 
 const isActiveRoute = targetRoute => {
   if (typeof window === "undefined") {
+    // On build (where window is undefined), they all get set to
+    // inactive, so this sets the home page to active by default
+    // and ensures it's orange on the first load
+
     return targetRoute === "/"
   }
 
