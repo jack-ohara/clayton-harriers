@@ -34,7 +34,7 @@ const Header = () => {
       <LogoLink to="/">
         <GatsbyImage
           image={images.harriersLogo.childImageSharp.gatsbyImageData}
-          alt={""}
+          alt={"Clayton Harriers logo"}
         />
       </LogoLink>
       <OutsideAlerter
