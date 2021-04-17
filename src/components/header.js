@@ -1,6 +1,6 @@
 import { Link, useStaticQuery, graphql } from "gatsby"
 import React, { useState } from "react"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import BurgerButton from "./menu/burgerButton"
 import Menu from "./menu"
@@ -21,9 +21,7 @@ const Header = () => {
         relativePath: { eq: "harriers-logo-transparent.png" }
       ) {
         childImageSharp {
-          fixed(width: 65, height: 65) {
-            ...GatsbyImageSharpFixed
-          }
+          gatsbyImageData(layout: FIXED, width: 65, height: 65)
         }
       }
     }
@@ -34,7 +32,10 @@ const Header = () => {
   return (
     <StyledHeader>
       <LogoLink to="/">
-        <Img fixed={images.harriersLogo.childImageSharp.fixed} />
+        <GatsbyImage
+          image={images.harriersLogo.childImageSharp.gatsbyImageData}
+          alt={""}
+        />
       </LogoLink>
       <OutsideAlerter
         events={["mousedown", "scroll"]}

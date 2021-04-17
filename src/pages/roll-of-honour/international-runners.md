@@ -1,5 +1,5 @@
 ---
-templateKey: default-template
+templateKey: default-page
 title: International Runners
 date: 2020-10-04T08:48:00.000Z
 highlighted: true

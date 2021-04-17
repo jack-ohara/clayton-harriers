@@ -1,49 +1,9 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
-import Content, { HTMLContent } from "../components/content"
+import NewsPostTemplate from "../template-page-content/news-post-template"
+import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
-import { kebabCase } from "lodash"
-import HorizontalRule from "../utils/styles/HorizontalRule.js"
-
-export const NewsPostTemplate = ({
-  content,
-  contentComponent,
-  tags,
-  title,
-  helmet,
-  author,
-  date,
-}) => {
-  const PostContent = contentComponent || Content
-
-  return (
-    <section>
-      {helmet || ""}
-      <div>
-        <h1>{title}</h1>
-        <h4>
-          {author} <br />
-          {date}
-        </h4>
-        <HorizontalRule />
-        <PostContent content={content} />
-        {tags && tags.length ? (
-          <div style={{ marginTop: `4rem` }}>
-            <h4>Tags</h4>
-            <ul>
-              {tags.map(tag => (
-                <li key={tag + `tag`}>
-                  <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
-      </div>
-    </section>
-  )
-}
+import { HTMLContent } from "../components/content"
 
 const NewsPost = ({ data }) => {
   const { markdownRemark: post } = data
