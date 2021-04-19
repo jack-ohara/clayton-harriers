@@ -1,8 +1,8 @@
 import React from "react"
-import { getLocalFormat } from "../../utils/dateFormatter"
-import { NewsPostTemplate } from "../../templates/news-post"
 import PreviewTemplate from "./preview-template"
 import Card from "../../components/card"
+import NewsPostTemplate from "../../template-page-content/news-post-template"
+import { getLocalFormat } from "../../utils/dateFormatter"
 
 const NewsPostPreview = ({ entry, widgetFor }) => {
   const title = entry.getIn(["data", "title"])

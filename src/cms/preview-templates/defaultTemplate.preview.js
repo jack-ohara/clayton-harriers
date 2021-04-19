@@ -1,6 +1,6 @@
 import React from "react"
 import Card from "../../components/card"
-import { DefaultTemplate } from "../../templates/default-template"
+import DefaultTemplateContent from "../../template-page-content/default-page-template"
 import PreviewTemplate from "./preview-template"
 
 const DefaultTemplatePreview = ({ entry, widgetFor }) => {
@@ -18,7 +18,7 @@ const DefaultTemplatePreview = ({ entry, widgetFor }) => {
 
   return (
     <PreviewTemplate card={card}>
-      <DefaultTemplate content={body} title={title} />
+      <DefaultTemplateContent content={body} title={title} />
     </PreviewTemplate>
   )
 }
