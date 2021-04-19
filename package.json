@@ -31,6 +31,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-helmet": "^6.1.0",
+    "react-is": "^17.0.2",
     "styled-components": "^5.2.0",
     "typeface-raleway": "^1.1.13",
     "typeface-source-sans-pro": "^1.1.13",
