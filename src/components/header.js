@@ -21,12 +21,7 @@ const Header = () => {
         relativePath: { eq: "harriers-logo-transparent.png" }
       ) {
         childImageSharp {
-          gatsbyImageData(
-            layout: FIXED
-            width: 65
-            height: 65
-            placeholder: BLURRED
-          )
+          gatsbyImageData(aspectRatio: 1, width: 65, placeholder: BLURRED)
         }
       }
     }
@@ -39,7 +34,7 @@ const Header = () => {
       <LogoLink to="/">
         <GatsbyImage
           image={images.harriersLogo.childImageSharp.gatsbyImageData}
-          alt={"Clayton Harriers logo"}
+          alt="Clayton Harriers logo"
           loading="eager"
         />
       </LogoLink>
