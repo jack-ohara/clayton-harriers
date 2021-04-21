@@ -6,20 +6,20 @@ import SEO from "../../components/seo"
 import HorizontalRule from "../../utils/styles/HorizontalRule.js"
 
 const RollOfHonourPage = ({ data }) => {
-  const { allMarkdownRemark: postsData } = data
+  // const { allMarkdownRemark: postsData } = data
 
-  const posts = postsData.edges.map(e => {
-    let post = {}
+  // const posts = postsData.edges.map(e => {
+  //   let post = {}
 
-    for (let key in e.node.frontmatter) {
-      post[key] = e.node.frontmatter[key]
-    }
+  //   for (let key in e.node.frontmatter) {
+  //     post[key] = e.node.frontmatter[key]
+  //   }
 
-    post["slug"] = e.node.fields.slug
-    post["excerpt"] = e.node.excerpt
+  //   post["slug"] = e.node.fields.slug
+  //   post["excerpt"] = e.node.excerpt
 
-    return post
-  })
+  //   return post
+  // })
 
   return (
     <Layout>
@@ -39,32 +39,32 @@ const RollOfHonourPage = ({ data }) => {
         If you think you should be on any of the lists, please get in touch!
       </p>
 
-      <CardPreviews posts={posts} />
+      {/* <CardPreviews posts={posts} /> */}
     </Layout>
   )
 }
 
 export default RollOfHonourPage
 
-export const pageQuery = graphql`
-  query RollOfHonourPostsQuery {
-    allMarkdownRemark(
-      sort: { fields: frontmatter___date, order: DESC }
-      filter: { fields: { slug: { regex: "/roll-of-honour/" } } }
-    ) {
-      edges {
-        node {
-          excerpt(pruneLength: 300)
-          frontmatter {
-            title
-            date
-            featuredImage
-          }
-          fields {
-            slug
-          }
-        }
-      }
-    }
-  }
-`
+// export const pageQuery = graphql`
+//   query RollOfHonourPostsQuery {
+//     allMarkdownRemark(
+//       sort: { fields: frontmatter___date, order: DESC }
+//       filter: { fields: { slug: { regex: "/roll-of-honour/" } } }
+//     ) {
+//       edges {
+//         node {
+//           excerpt(pruneLength: 300)
+//           frontmatter {
+//             title
+//             date
+//             featuredImage
+//           }
+//           fields {
+//             slug
+//           }
+//         }
+//       }
+//     }
+//   }
+// `
