@@ -55,6 +55,28 @@ module.exports = {
       },
     },
     `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-source-wordpress`,
+      options: {
+        url: `https://www.claytonlemoors.org.uk/graphql`,
+        schema: {
+          timeout: 600000,
+          requestConcurrency: 10,
+        },
+        type: {
+          MediaItem: {
+            // lazyNodes: true,
+            localFile: {
+              excludeByMimeTypes: [
+                `application/pdf`,
+                `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`,
+                `application/vnd.ms-excel`,
+              ],
+            },
+          },
+        },
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
