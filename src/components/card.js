@@ -70,14 +70,14 @@ const Card = ({
   excerpt,
   useDefaultImage,
 }) => {
-  const useBannerImage = !featuredImage && useDefaultImage
+  const useBannerImage = !featuredImage?.src && useDefaultImage
 
   const cardContent = (
     <Article>
       <CardImage
         useBannerImage={useBannerImage}
-        src={useBannerImage ? cardBannerSVG : featuredImage}
-        alt=""
+        src={useBannerImage ? cardBannerSVG : featuredImage?.src}
+        alt={featuredImage?.altText}
       />
       <CardBox>
         <h4>{title}</h4>

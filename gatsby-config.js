@@ -65,7 +65,6 @@ module.exports = {
         },
         type: {
           MediaItem: {
-            // lazyNodes: true,
             localFile: {
               excludeByMimeTypes: [
                 `application/pdf`,
