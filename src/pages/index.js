@@ -2,9 +2,10 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
-import { graphql, Link } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
 import HoriztonalCardScroll from "../components/horizontalCardScroll"
+import { graphql, Link } from "gatsby"
+import { mapCardFields } from "../utils/wpPostMapper"
 
 const H1 = styled.h1`
   font-size: 2.6rem;
@@ -58,18 +59,7 @@ const IndexPage = ({ data }) => {
   //   return post
   // })
 
-  // const latestPosts = data.latestPostsData.edges.map(e => {
-  //   let post = {}
-
-  //   for (let key in e.node.frontmatter) {
-  //     post[key] = e.node.frontmatter[key]
-  //   }
-
-  //   post["slug"] = e.node.fields.slug
-  //   post["excerpt"] = e.node.excerpt
-
-  //   return post
-  // })
+  const latestPosts = data.latestPostsData.nodes.map(e => mapCardFields(e))
 
   const backgroundImage = (
     <StyledBackgroundImage
@@ -95,12 +85,12 @@ const IndexPage = ({ data }) => {
         title="Highlights"
         posts={highlightedPosts}
         useDefaultCardImage
-      />
+      /> */}
       <HoriztonalCardScroll
         title="Latest Updates"
         posts={latestPosts}
         useDefaultCardImage
-      /> */}
+      />
     </Layout>
   )
 }
@@ -109,6 +99,41 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query HomePageQuery {
+    latestPostsData: allWpPost(
+      limit: 8
+      sort: { fields: modified, order: DESC }
+      filter: { status: { eq: "publish" } }
+    ) {
+      nodes {
+        title
+        uri
+        modified
+        author {
+          node {
+            name
+          }
+        }
+        featuredImage {
+          node {
+            localFile {
+              publicURL
+            }
+            altText
+          }
+        }
+        lastEditedBy {
+          node {
+            name
+          }
+        }
+        content
+        tags {
+          nodes {
+            name
+          }
+        }
+      }
+    }
     mobileImage: file(relativePath: { eq: "clayton-runner-landscape.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1000, quality: 100) {
