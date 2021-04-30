@@ -1,3 +1,5 @@
+import { typeOf } from "react-is"
+
 export const mapCardFields = wpPost => {
   const post = {}
 
@@ -15,7 +17,9 @@ export const mapCardFields = wpPost => {
 }
 
 const stripHtml = html => {
-  let tmp = document.createElement("DIV")
-  tmp.innerHTML = html
-  return tmp.textContent || tmp.innerText || ""
+  if (typeof document !== "undefined") {
+    let tmp = document.createElement("DIV")
+    tmp.innerHTML = html
+    return tmp.textContent || tmp.innerText || ""
+  }
 }

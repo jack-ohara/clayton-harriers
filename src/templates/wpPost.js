@@ -1,9 +1,9 @@
 import React from "react"
 import styled from "styled-components"
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 import HorizontalRule from "../utils/styles/HorizontalRule.js"
 import { graphql } from "gatsby"
-import { Helmet } from "react-helmet"
 
 const TemplateWrapper = styled.section`
   table {
@@ -24,9 +24,7 @@ const WpPost = ({
   return (
     <Layout>
       <TemplateWrapper>
-        <Helmet titleTemplate="%s">
-          <title>{`${title}`}</title>
-        </Helmet>
+        <SEO title={title} />
 
         <h1>{title}</h1>
 
