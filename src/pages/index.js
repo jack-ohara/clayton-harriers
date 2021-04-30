@@ -127,6 +127,7 @@ export const pageQuery = graphql`
           }
         }
         content
+        excerpt
         tags {
           nodes {
             name
