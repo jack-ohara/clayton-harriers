@@ -45,20 +45,11 @@ const StyledHR = styled.hr`
   margin: 1.45rem 2rem;
 `
 
+const ContentWrapper = styled.div`
+  margin-bottom: 1.45em;
+`
+
 const IndexPage = ({ data }) => {
-  // const highlightedPosts = data.highlightedPostsData.edges.map(e => {
-  //   let post = {}
-
-  //   for (let key in e.node.frontmatter) {
-  //     post[key] = e.node.frontmatter[key]
-  //   }
-
-  //   post["slug"] = e.node.fields.slug
-  //   post["excerpt"] = e.node.excerpt
-
-  //   return post
-  // })
-
   const latestPosts = data.latestPostsData.nodes.map(e => mapCardFields(e))
 
   const backgroundImage = (
@@ -81,11 +72,10 @@ const IndexPage = ({ data }) => {
 
       <StyledHR />
 
-      {/* <HoriztonalCardScroll
-        title="Highlights"
-        posts={highlightedPosts}
-        useDefaultCardImage
-      /> */}
+      <ContentWrapper
+        dangerouslySetInnerHTML={{ __html: data.homePageContent.content }}
+      />
+
       <HoriztonalCardScroll
         title="Latest Updates"
         posts={latestPosts}
@@ -101,13 +91,13 @@ export const pageQuery = graphql`
   query HomePageQuery {
     latestPostsData: allWpPost(
       limit: 8
-      sort: { fields: modified, order: DESC }
+      sort: { fields: date, order: DESC }
       filter: { status: { eq: "publish" } }
     ) {
       nodes {
         title
         uri
-        modified
+        date
         author {
           node {
             name
@@ -134,6 +124,9 @@ export const pageQuery = graphql`
           }
         }
       }
+    }
+    homePageContent: wpPage(slug: { eq: "new-site-home-page" }) {
+      content
     }
     mobileImage: file(relativePath: { eq: "clayton-runner-landscape.jpg" }) {
       childImageSharp {

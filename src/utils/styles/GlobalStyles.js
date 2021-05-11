@@ -596,6 +596,24 @@ html {
   td:last-child {
     padding-right: 0;
   }
+
+  /* Wordpress */
+  .has-text-align-center {
+    text-align: center;
+  }
+
+  .wp-block-button__link,
+  .btn {
+    padding: 0.5rem 1.1rem;
+    margin: 0.5rem auto 0.5rem auto;
+    text-decoration: none;
+  }
+
+  .is-content-justification-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
 `
 
 export default GlobalStyles

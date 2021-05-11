@@ -1,5 +1,3 @@
-import { typeOf } from "react-is"
-
 export const mapCardFields = wpPost => {
   const post = {}
 
@@ -10,7 +8,7 @@ export const mapCardFields = wpPost => {
   }
   post.title = wpPost.title
   post.author = wpPost.lastEditedBy?.node.name ?? wpPost.author.node.name
-  post.date = wpPost.modified
+  post.date = wpPost.date
   post.excerpt = stripHtml(wpPost.excerpt)
 
   return post
