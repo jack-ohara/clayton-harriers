@@ -1,24 +1,18 @@
 import React from "react"
-import { graphql } from "gatsby"
 import CardPreviews from "../../components/cardPreviews"
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
+import styled from "styled-components"
+import { graphql } from "gatsby"
+import { mapCardFields } from "../../utils/wpPostMapper"
+
+const StyledHR = styled.hr`
+  margin: 1.45rem 2rem;
+`
 
 const NewsPage = ({ data }) => {
-  // const { allMarkdownRemark: postsData } = data
-
-  // const posts = postsData.edges.map(e => {
-  //   let post = {}
-
-  //   for (let key in e.node.frontmatter) {
-  //     post[key] = e.node.frontmatter[key]
-  //   }
-
-  //   post["slug"] = e.node.fields.slug
-  //   post["excerpt"] = e.node.excerpt
-
-  //   return post
-  // })
+  console.log(data)
+  const posts = data.allWpPost.nodes.map(e => mapCardFields(e))
 
   return (
     <Layout>
@@ -26,35 +20,48 @@ const NewsPage = ({ data }) => {
 
       <h1>News &amp; Info</h1>
 
-      {/* <CardPreviews posts={posts} /> */}
+      <StyledHR />
+
+      <CardPreviews posts={posts} />
     </Layout>
   )
 }
 
 export default NewsPage
 
-// export const pageQuery = graphql`
-//   query LastestNewsPostsQuery {
-//     allMarkdownRemark(
-//       sort: { fields: frontmatter___date, order: DESC }
-//       limit: 10
-//       filter: { frontmatter: { templateKey: { eq: "news-post" } } }
-//     ) {
-//       edges {
-//         node {
-//           excerpt(pruneLength: 300)
-//           frontmatter {
-//             author
-//             title
-//             date
-//             tags
-//             featuredImage
-//           }
-//           fields {
-//             slug
-//           }
-//         }
-//       }
-//     }
-//   }
-// `
+export const pageQuery = graphql`
+  query LastestNewsPostsQuery {
+    allWpPost(sort: { fields: date, order: DESC }, limit: 10) {
+      nodes {
+        title
+        uri
+        date
+        author {
+          node {
+            name
+          }
+        }
+        featuredImage {
+          node {
+            localFile {
+              publicURL
+            }
+            altText
+          }
+        }
+        lastEditedBy {
+          node {
+            name
+          }
+        }
+        content
+        excerpt
+        tags {
+          nodes {
+            name
+          }
+        }
+      }
+    }
+  }
+`
