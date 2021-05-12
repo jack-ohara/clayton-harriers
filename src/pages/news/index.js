@@ -1,18 +1,37 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import CardPreviews from "../../components/cardPreviews"
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
 import styled from "styled-components"
 import { graphql } from "gatsby"
 import { mapCardFields } from "../../utils/wpPostMapper"
+import { useInView } from "react-intersection-observer"
 
 const StyledHR = styled.hr`
   margin: 1.45rem 2rem;
 `
 
+const postsBlockSize = 10
+
 const NewsPage = ({ data }) => {
-  console.log(data)
-  const posts = data.allWpPost.nodes.map(e => mapCardFields(e))
+  const [posts, setPosts] = useState(
+    data.allWpPost.nodes.slice(0, postsBlockSize).map(e => mapCardFields(e))
+  )
+  const [postsRevealed, setPostsRevealed] = useState(postsBlockSize)
+  const [ref, inView] = useInView({})
+
+  useEffect(() => {
+    loadMorePosts()
+  }, [inView])
+
+  const loadMorePosts = () => {
+    const nextPosts = data.allWpPost.nodes
+      .slice(postsRevealed, postsRevealed + postsBlockSize)
+      .map(e => mapCardFields(e))
+
+    setPosts(prevPosts => [...prevPosts, ...nextPosts])
+    setPostsRevealed(prev => prev + postsBlockSize)
+  }
 
   return (
     <Layout>
@@ -23,6 +42,8 @@ const NewsPage = ({ data }) => {
       <StyledHR />
 
       <CardPreviews posts={posts} />
+
+      <div ref={ref} />
     </Layout>
   )
 }
@@ -31,7 +52,7 @@ export default NewsPage
 
 export const pageQuery = graphql`
   query LastestNewsPostsQuery {
-    allWpPost(sort: { fields: date, order: DESC }, limit: 10) {
+    allWpPost(sort: { fields: date, order: DESC }) {
       nodes {
         title
         uri
