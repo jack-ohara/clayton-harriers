@@ -1,9 +1,10 @@
-import { Link } from "gatsby"
 import React from "react"
-import styled, { css } from "styled-components"
-import { getLocalFormatFromString } from "../utils/dateFormatter"
 import HorizontalRule from "../utils/styles/HorizontalRule.js"
 import cardBannerSVG from "../images/card-banner.svg"
+import styled, { css } from "styled-components"
+import { GatsbyImage } from "gatsby-plugin-image"
+import { Link } from "gatsby"
+import { getLocalFormatFromString } from "../utils/dateFormatter"
 
 const cardStyles = css`
   border-radius: 3px;
@@ -34,10 +35,10 @@ const NonLinkCardContainer = styled.div`
   ${cardStyles}
 `
 
-const CardImage = styled.img`
+const BannerImage = styled.img`
   max-height: 160px;
   margin: 0 auto 0.5rem auto;
-  max-width: ${props => (props.useBannerImage ? "120%" : "100%")};
+  max-width: 120%;
   flex-grow: 1;
 `
 
@@ -70,15 +71,20 @@ const Card = ({
   excerpt,
   useDefaultImage,
 }) => {
-  const useBannerImage = !featuredImage?.src && useDefaultImage
+  const useBannerImage = !featuredImage?.image && useDefaultImage
+
+  const cardImage = useBannerImage ? (
+    <BannerImage
+      src={cardBannerSVG}
+      alt="Clayton-le-moors Harriers banner logo"
+    />
+  ) : (
+    <GatsbyImage image={featuredImage?.image} alt={featuredImage?.altText} />
+  )
 
   const cardContent = (
     <Article>
-      <CardImage
-        useBannerImage={useBannerImage}
-        src={useBannerImage ? cardBannerSVG : featuredImage?.src}
-        alt={featuredImage?.altText}
-      />
+      {cardImage}
       <CardBox>
         <h4>{title}</h4>
         <h5>{author}</h5>

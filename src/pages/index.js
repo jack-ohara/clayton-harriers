@@ -106,7 +106,13 @@ export const pageQuery = graphql`
         featuredImage {
           node {
             localFile {
-              publicURL
+              childImageSharp {
+                gatsbyImageData(
+                  formats: [AUTO, WEBP]
+                  placeholder: BLURRED
+                  layout: FULL_WIDTH
+                )
+              }
             }
             altText
           }
