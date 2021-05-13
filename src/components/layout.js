@@ -10,6 +10,7 @@ import "typeface-raleway"
 const Container = styled.div`
   min-height: 100vh;
   max-width: 100vw;
+  overflow: hidden;
   display: flex;
   justify-content: space-between;
   flex-direction: column;

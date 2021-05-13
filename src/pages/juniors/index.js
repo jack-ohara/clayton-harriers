@@ -1,17 +1,26 @@
 import React from "react"
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
+import { graphql } from "gatsby"
 
-const JuniorsHomePage = () => {
+const JuniorsHomePage = ({ data }) => {
   return (
     <Layout>
-      <SEO title="Join Us" />
+      <SEO title="Juniors" />
 
-      <h1>Welcome to our Junior Section</h1>
+      <h1>Clayton-le-moors Harriers Juniors</h1>
 
-      <p>Here will be the writing for the junior section...</p>
+      <div dangerouslySetInnerHTML={{ __html: data.wpPage.content }} />
     </Layout>
   )
 }
 
 export default JuniorsHomePage
+
+export const pageQuery = graphql`
+  query JuniorsHomePageQuery {
+    wpPage(slug: { eq: "junior" }) {
+      content
+    }
+  }
+`
