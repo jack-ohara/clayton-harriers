@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import HorizontalRule from "../utils/styles/HorizontalRule"
-import Card from "./card"
+import Card from "./card/card"
 
 const Container = styled.div``
 

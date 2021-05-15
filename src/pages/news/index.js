@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import CardPreviews from "../../components/cardPreviews"
+import CardPreviews from "../../components/card/cardPreviews"
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
 import styled from "styled-components"
