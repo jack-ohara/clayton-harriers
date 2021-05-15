@@ -7,6 +7,16 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           uri
         }
       }
+      rollOfHonourPages: allWpPage(
+        filter: { uri: { regex: "/^/roll-of-honour/.+$/" } }
+      ) {
+        nodes {
+          slug
+          title
+          content
+          id
+        }
+      }
     }
   `)
 
@@ -17,7 +27,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const { allWpPost } = result.data
 
   // Define the template to use
-  const template = require.resolve(`./src/templates/wpPost.js`)
+  const postTemplate = require.resolve(`./src/templates/wpPost.js`)
 
   if (allWpPost.nodes.length) {
     allWpPost.nodes.map(post => {
@@ -25,8 +35,22 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         // It's best practice to use the uri field from WPGraphQL nodes when
         // building
         path: post.uri,
-        component: template,
+        component: postTemplate,
         context: post,
+      })
+    })
+  }
+
+  const { rollOfHonourPages } = result.data
+
+  const pageTemplate = require.resolve(`./src/templates/wpPage.js`)
+
+  if (rollOfHonourPages.nodes.length) {
+    rollOfHonourPages.nodes.map(page => {
+      actions.createPage({
+        path: `/roll-of-honour/${page.slug}`,
+        component: pageTemplate,
+        context: page,
       })
     })
   }

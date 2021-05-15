@@ -63,6 +63,10 @@ module.exports = {
           timeout: 600000,
           requestConcurrency: 10,
         },
+        develop: {
+          hardCacheMediaFiles: true,
+          hardCacheData: true,
+        },
         type: {
           MediaItem: {
             localFile: {
