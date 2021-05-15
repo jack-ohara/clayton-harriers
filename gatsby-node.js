@@ -11,7 +11,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         filter: { uri: { regex: "/^/roll-of-honour/.+$/" } }
       ) {
         nodes {
-          slug
+          uri
           title
           content
           id
@@ -48,7 +48,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   if (rollOfHonourPages.nodes.length) {
     rollOfHonourPages.nodes.map(page => {
       actions.createPage({
-        path: `/roll-of-honour/${page.slug}`,
+        path: page.uri,
         component: pageTemplate,
         context: page,
       })
