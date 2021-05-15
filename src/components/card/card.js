@@ -1,10 +1,10 @@
 import React from "react"
-import HorizontalRule from "../utils/styles/HorizontalRule.js"
-import cardBannerSVG from "../images/card-banner.svg"
+import HorizontalRule from "../../utils/styles/HorizontalRule.js"
+import cardBannerSVG from "../../images/card-banner.svg"
 import styled, { css } from "styled-components"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
-import { getLocalFormatFromString } from "../utils/dateFormatter"
+import { getLocalFormatFromString } from "../../utils/dateFormatter"
 
 const cardStyles = css`
   border-radius: 3px;

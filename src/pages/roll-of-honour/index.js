@@ -1,6 +1,5 @@
 import { graphql } from "gatsby"
 import React from "react"
-import CardPreviews from "../../components/cardPreviews"
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
 import HorizontalRule from "../../utils/styles/HorizontalRule.js"
@@ -45,6 +44,17 @@ const RollOfHonourPage = ({ data }) => {
 }
 
 export default RollOfHonourPage
+
+export const pageQuery = graphql`
+  query RollOfHonourPageQuery {
+    allWpPage(filter: { uri: { regex: "/^/roll-of-honour/.+$/" } }) {
+      nodes {
+        title
+        slug
+      }
+    }
+  }
+`
 
 // export const pageQuery = graphql`
 //   query RollOfHonourPostsQuery {
