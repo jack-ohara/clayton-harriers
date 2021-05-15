@@ -1,24 +1,39 @@
-import { graphql } from "gatsby"
 import React from "react"
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
 import HorizontalRule from "../../utils/styles/HorizontalRule.js"
+import styled from "styled-components"
+import SimpleNavCard from "../../components/card/simpleNavCard"
+import { graphql } from "gatsby"
+import { getImage } from "gatsby-plugin-image"
+
+const CardContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`
 
 const RollOfHonourPage = ({ data }) => {
-  // const { allMarkdownRemark: postsData } = data
+  const getFeaturedImage = featuredImage => {
+    if (featuredImage) {
+      return {
+        image: getImage(featuredImage?.node.localFile),
+        alt: featuredImage?.node.altText,
+      }
+    }
 
-  // const posts = postsData.edges.map(e => {
-  //   let post = {}
+    return {
+      image: data.defaultFeaturedImage.childImageSharp.gatsbyImageData,
+      alt: "Clayton-le-moors Harriers logo",
+    }
+  }
 
-  //   for (let key in e.node.frontmatter) {
-  //     post[key] = e.node.frontmatter[key]
-  //   }
+  const getSlug = pageSlug => {
+    if (typeof window !== "undefined") {
+      return `${window.location.pathname}/${pageSlug}`
+    }
 
-  //   post["slug"] = e.node.fields.slug
-  //   post["excerpt"] = e.node.excerpt
-
-  //   return post
-  // })
+    return ""
+  }
 
   return (
     <Layout>
@@ -38,7 +53,16 @@ const RollOfHonourPage = ({ data }) => {
         If you think you should be on any of the lists, please get in touch!
       </p>
 
-      {/* <CardPreviews posts={posts} /> */}
+      <CardContainer>
+        {data.allWpPage.nodes.map((e, idx) => (
+          <SimpleNavCard
+            title={e.title}
+            featuredImage={getFeaturedImage(e.featuredImage)}
+            slug={getSlug(e.slug)}
+            key={`roll-of-honour_${idx}`}
+          />
+        ))}
+      </CardContainer>
     </Layout>
   )
 }
@@ -51,6 +75,27 @@ export const pageQuery = graphql`
       nodes {
         title
         slug
+        featuredImage {
+          node {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  formats: [AUTO, WEBP]
+                  placeholder: TRACED_SVG
+                  layout: FULL_WIDTH
+                )
+              }
+            }
+            altText
+          }
+        }
+      }
+    }
+    defaultFeaturedImage: file(
+      relativePath: { eq: "harriers-logo-transparent.png" }
+    ) {
+      childImageSharp {
+        gatsbyImageData(formats: [AUTO, WEBP], placeholder: BLURRED)
       }
     }
   }
