@@ -188,12 +188,6 @@ const Menu = ({ open, setOpen }) => {
           closeFunction={closeMenuFunction}
         />
         <MenuItem
-          title="Fixtures"
-          to="/fixtures"
-          small
-          closeFunction={closeMenuFunction}
-        />
-        <MenuItem
           title="Roll Of Honour"
           to="/roll-of-honour"
           small
@@ -209,6 +203,12 @@ const Menu = ({ open, setOpen }) => {
           closeFunction={closeMenuFunction}
         />
       </CollapsableMenuItem>
+      <ItemDivider />
+      <MenuItem
+        title="Fixtures &amp; Results"
+        to="/fixtures"
+        closeFunction={closeMenuFunction}
+      />
       <ItemDivider />
       <MenuItem title="About" to="/about" closeFunction={closeMenuFunction} />
       <ItemDivider />

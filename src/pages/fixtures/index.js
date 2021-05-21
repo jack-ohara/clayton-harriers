@@ -5,9 +5,9 @@ import SEO from "../../components/seo"
 const FixturesPage = () => {
   return (
     <Layout>
-      <SEO title="Fixtures" />
+      <SEO title="Fixtures &amp; Results" />
 
-      <h1>Fixtures</h1>
+      <h1>Fixtures &amp; Results</h1>
     </Layout>
   )
 }
