@@ -48,6 +48,7 @@ const StyledBurger = styled.button`
 const Burger = ({ open, setOpen }) => {
   return (
     <StyledBurger
+      aria-label="menu button"
       open={open}
       onClick={() => (open ? setOpen(false) : setOpen(true))}
     >
