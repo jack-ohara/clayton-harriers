@@ -14,7 +14,7 @@ const LogoLink = styled(Link)`
   background-image: none;
 `
 
-const Header = () => {
+export default function Header() {
   const images = useStaticQuery(graphql`
     query {
       harriersLogo: file(
@@ -38,6 +38,7 @@ const Header = () => {
           loading="eager"
         />
       </LogoLink>
+
       <OutsideAlerter
         events={["mousedown", "scroll"]}
         handleEvent={() => setOpen(false)}
@@ -49,5 +50,3 @@ const Header = () => {
     </StyledHeader>
   )
 }
-
-export default Header

@@ -7,13 +7,12 @@ import { Link } from "gatsby"
 import { getLocalFormatFromString } from "../../utils/dateFormatter"
 
 const cardStyles = css`
-  border-radius: 3px;
-  box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 15px;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 500px;
-  padding: 0.5rem 1rem;
   margin: 0.5rem 0;
   color: inherit;
   text-decoration: none;
@@ -36,14 +35,19 @@ const NonLinkCardContainer = styled.div`
 `
 
 const BannerImage = styled.img`
-  max-height: 160px;
   margin: 0 auto 0.5rem auto;
+  max-height: 160px;
   max-width: 120%;
   flex-grow: 1;
 `
 
+const FeaturedImage = styled(GatsbyImage)`
+  margin-bottom: 0.5rem;
+`
+
 const CardBox = styled.div`
   flex-grow: 1;
+  padding: 0.5rem 1rem;
 
   h4 {
     margin: 0 0 0.5rem 0;
@@ -79,7 +83,7 @@ const Card = ({
       alt="Clayton-le-moors Harriers banner logo"
     />
   ) : (
-    <GatsbyImage image={featuredImage?.image} alt={featuredImage?.altText} />
+    <FeaturedImage image={featuredImage?.image} alt={featuredImage?.altText} />
   )
 
   const cardContent = (
