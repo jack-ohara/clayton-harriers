@@ -70,11 +70,7 @@ const IndexPage = ({ data }) => {
         dangerouslySetInnerHTML={{ __html: data.homePageContent.content }}
       />
 
-      <HoriztonalCardScroll
-        title="Latest Updates"
-        posts={latestPosts}
-        useDefaultCardImage
-      />
+      <HoriztonalCardScroll title="Latest Updates" posts={latestPosts} />
     </Layout>
   )
 }

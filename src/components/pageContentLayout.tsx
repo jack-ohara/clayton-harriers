@@ -1,4 +1,4 @@
-import React from "react"
+import React, { ReactNode } from "react"
 import styled from "styled-components"
 
 const ContentWrapper = styled.div`
@@ -24,7 +24,7 @@ const Footer = styled.footer`
 `
 
 interface PageContentLayoutProps {
-  children: JSX.Element
+  children: ReactNode
 }
 
 export default function PageContentLayout({

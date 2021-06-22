@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import Layout from "../components/layout"
+import Layout, { PageHeader } from "../components/layout"
 import SEO from "../components/seo"
 import HorizontalRule from "../utils/styles/HorizontalRule.js"
 import { graphql } from "gatsby"
@@ -26,7 +26,7 @@ const WpPost = ({
       <TemplateWrapper>
         <SEO title={title} />
 
-        <h1>{title}</h1>
+        <PageHeader>{title}</PageHeader>
 
         <HorizontalRule />
 
@@ -37,7 +37,7 @@ const WpPost = ({
 }
 
 export const query = graphql`
-  query($id: String) {
+  query ($id: String) {
     wpPost(id: { eq: $id }) {
       id
       title

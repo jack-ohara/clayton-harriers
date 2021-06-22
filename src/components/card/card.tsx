@@ -2,9 +2,8 @@ import React from "react"
 import HorizontalRule from "../../utils/styles/HorizontalRule.js"
 import cardBannerSVG from "../../images/card-banner.svg"
 import styled, { css } from "styled-components"
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
 import { Link } from "gatsby"
-import { getLocalFormatFromString } from "../../utils/dateFormatter"
 
 const cardStyles = css`
   border-radius: 5px;
@@ -58,41 +57,56 @@ const CardBox = styled.div`
   }
 `
 
-const Article = styled.article`
+const Article = styled.article<CardStyleProps>`
   flex-grow: 1;
   display: flex;
-  flex-direction: column;
+  flex-direction: ${props => (props.horizontalLayout ? "row" : "column")};
   align-content: center;
   justify-content: space-between;
 `
 
-const Card = ({
+interface CardStyleProps {
+  horizontalLayout: boolean
+}
+
+export interface CardProps {
+  slug: string
+  featuredImage?: {
+    image: IGatsbyImageData | undefined
+    altText: string
+  }
+  title: string
+  author: string
+  date: string
+  excerpt: string
+  horizontalLayout?: boolean
+}
+
+export default function Card({
   slug,
   featuredImage,
   title,
   author,
   date,
   excerpt,
-  useDefaultImage,
-}) => {
-  const useBannerImage = !featuredImage?.image && useDefaultImage
-
-  const cardImage = useBannerImage ? (
+  horizontalLayout = false,
+}: CardProps) {
+  const cardImage = !featuredImage?.image ? (
     <BannerImage
       src={cardBannerSVG}
       alt="Clayton-le-moors Harriers banner logo"
     />
   ) : (
-    <FeaturedImage image={featuredImage?.image} alt={featuredImage?.altText} />
+    <FeaturedImage image={featuredImage.image} alt={featuredImage.altText} />
   )
 
   const cardContent = (
-    <Article>
+    <Article horizontalLayout={horizontalLayout}>
       {cardImage}
       <CardBox>
         <h4>{title}</h4>
         <h5>{author}</h5>
-        <h5>{getLocalFormatFromString(date)}</h5>
+        <h5>{date}</h5>
         <HorizontalRule />
         {excerpt}
       </CardBox>
@@ -105,5 +119,3 @@ const Card = ({
     <NonLinkCardContainer>{cardContent}</NonLinkCardContainer>
   )
 }
-
-export default Card

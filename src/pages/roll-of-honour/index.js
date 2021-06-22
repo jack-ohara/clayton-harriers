@@ -1,5 +1,5 @@
 import React from "react"
-import Layout from "../../components/layout"
+import Layout, { PageHeader } from "../../components/layout"
 import SEO from "../../components/seo"
 import HorizontalRule from "../../utils/styles/HorizontalRule.js"
 import styled from "styled-components"
@@ -39,7 +39,7 @@ const RollOfHonourPage = ({ data }) => {
     <Layout>
       <SEO title="Roll Of Honour" />
 
-      <h1>Roll Of Honour</h1>
+      <PageHeader>Roll Of Honour</PageHeader>
       <HorizontalRule />
 
       <p>
