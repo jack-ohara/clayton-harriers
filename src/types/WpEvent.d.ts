@@ -9,6 +9,7 @@ export interface WpEventResult {
   title: string
   startDate: string
   endDate: string
+  allDay: boolean
   excerpt: string
   linkedData: { organizer: { name: string } }
   author: { node: { name: string } }

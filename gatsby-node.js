@@ -11,10 +11,14 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         filter: { uri: { regex: "/^/roll-of-honour/.+$/" } }
       ) {
         nodes {
-          uri
-          title
-          content
           id
+          uri
+        }
+      }
+      allWpEvent {
+        nodes {
+          id
+          uri
         }
       }
     }
@@ -51,6 +55,20 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         path: page.uri,
         component: pageTemplate,
         context: page,
+      })
+    })
+  }
+
+  const { allWpEvent } = result.data
+
+  const eventTemplate = require.resolve(`./src/templates/wpEvent.tsx`)
+
+  if (allWpEvent.nodes.length) {
+    allWpEvent.nodes.map(event => {
+      actions.createPage({
+        path: event.uri,
+        component: eventTemplate,
+        context: event,
       })
     })
   }

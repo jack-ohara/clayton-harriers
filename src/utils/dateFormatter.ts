@@ -25,12 +25,3 @@ export function getFormattedTime(date: Date) {
     .toString()
     .padStart(2, "0")}`
 }
-
-export function datesCoverFullDays(startDate: Date, endDate: Date): boolean {
-  return (
-    startDate.getHours() === 0 &&
-    startDate.getMinutes() === 0 &&
-    endDate.getHours() === 23 &&
-    endDate.getMinutes() === 59
-  )
-}

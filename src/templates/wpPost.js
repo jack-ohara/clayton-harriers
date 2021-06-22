@@ -20,7 +20,6 @@ const WpPost = ({
     wpPost: { title, content, id },
   },
 }) => {
-  console.log()
   return (
     <Layout>
       <TemplateWrapper>

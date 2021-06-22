@@ -15,11 +15,20 @@ const TemplateWrapper = styled.section`
   }
 `
 
-const WpPage = ({
+interface QueryResult {
   data: {
-    wpPage: { title, content, id },
+    wpEvent: {
+      title: string
+      content: string
+    }
+  }
+}
+
+export default function WpEvent({
+  data: {
+    wpEvent: { title, content },
   },
-}) => {
+}: QueryResult) {
   return (
     <Layout>
       <TemplateWrapper>
@@ -37,12 +46,9 @@ const WpPage = ({
 
 export const query = graphql`
   query ($id: String) {
-    wpPage(id: { eq: $id }) {
-      id
+    wpEvent(id: { eq: $id }) {
       title
       content
     }
   }
 `
-
-export default WpPage

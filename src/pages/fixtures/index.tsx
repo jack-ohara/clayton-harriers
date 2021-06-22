@@ -10,7 +10,6 @@ import {
   dateAreOnSameDay,
   getFormattedTime,
   getLocalDateFormat,
-  datesCoverFullDays,
 } from "../../utils/dateFormatter"
 import { stripHtml } from "../../utils/wpPostMapper"
 
@@ -23,14 +22,14 @@ const getEventDate = (event: WpEventResult): string => {
   const endDate = new Date(event.endDate)
 
   if (dateAreOnSameDay(startDate, endDate)) {
-    return datesCoverFullDays(startDate, endDate)
+    return event.allDay
       ? getLocalDateFormat(startDate)
       : `${getLocalDateFormat(startDate)} ${getFormattedTime(
           startDate
         )} - ${getFormattedTime(endDate)}`
   }
 
-  return datesCoverFullDays(startDate, endDate)
+  return event.allDay
     ? `${getLocalDateFormat(startDate)} - ${getLocalDateFormat(endDate)}`
     : `${getLocalDateFormat(startDate)} ${getFormattedTime(
         startDate
@@ -82,6 +81,7 @@ export const pageQuery = graphql`
         title
         startDate
         endDate
+        allDay
         excerpt
         linkedData {
           organizer {
