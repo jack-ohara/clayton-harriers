@@ -24,6 +24,7 @@ interface LayoutProps {
 
 export const PageHeader = styled.h2`
   font-size: 2rem;
+  text-align: center;
 `
 
 export default function Layout({ bannerImage, children }: LayoutProps) {

@@ -78,7 +78,7 @@ export interface CardProps {
   title: string
   author: string
   date: string
-  excerpt: string
+  excerpt: string | undefined
   horizontalLayout?: boolean
 }
 

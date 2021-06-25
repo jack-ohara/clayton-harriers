@@ -7,6 +7,7 @@ export interface AllWpEventsResult {
 export interface WpEventResult {
   uri: string
   title: string
+  content: string
   startDate: string
   endDate: string
   allDay: boolean

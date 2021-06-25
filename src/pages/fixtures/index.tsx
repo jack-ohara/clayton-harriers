@@ -6,34 +6,18 @@ import { graphql } from "gatsby"
 import { AllWpEventsResult, WpEventResult } from "../../types/WpEvent"
 import { CardProps } from "../../components/card/card"
 import { getImage } from "gatsby-plugin-image"
-import {
-  dateAreOnSameDay,
-  getFormattedTime,
-  getLocalDateFormat,
-} from "../../utils/dateFormatter"
+import { getEventDate } from "../../utils/dateFormatter"
 import { stripHtml } from "../../utils/wpPostMapper"
 
 interface Props {
   data: { allWpEvent: AllWpEventsResult }
 }
 
-const getEventDate = (event: WpEventResult): string => {
+const getDate = (event: WpEventResult): string => {
   const startDate = new Date(event.startDate)
   const endDate = new Date(event.endDate)
 
-  if (dateAreOnSameDay(startDate, endDate)) {
-    return event.allDay
-      ? getLocalDateFormat(startDate)
-      : `${getLocalDateFormat(startDate)} ${getFormattedTime(
-          startDate
-        )} - ${getFormattedTime(endDate)}`
-  }
-
-  return event.allDay
-    ? `${getLocalDateFormat(startDate)} - ${getLocalDateFormat(endDate)}`
-    : `${getLocalDateFormat(startDate)} ${getFormattedTime(
-        startDate
-      )} - ${getLocalDateFormat(endDate)} ${getFormattedTime(endDate)}`
+  return getEventDate(startDate, endDate, event.allDay)
 }
 
 const getEventOrganiser = (event: WpEventResult): string => {
@@ -46,7 +30,7 @@ const getCards = (events: WpEventResult[]): CardProps[] => {
       slug: event.uri,
       title: event.title,
       author: getEventOrganiser(event),
-      date: getEventDate(event),
+      date: getDate(event),
       excerpt: stripHtml(event.excerpt),
       featuredImage: {
         image: getImage(event.featuredImage?.node?.localFile),
