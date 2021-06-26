@@ -33,7 +33,12 @@ const NonLinkCardContainer = styled.div`
   ${cardStyles}
 `
 
+const sharedImageStyles = css`
+  border-radius: 5px 5px;
+`
+
 const BannerImage = styled.img`
+  ${sharedImageStyles}
   margin: 0 auto 0.5rem auto;
   max-height: 160px;
   max-width: 120%;
@@ -41,6 +46,7 @@ const BannerImage = styled.img`
 `
 
 const FeaturedImage = styled(GatsbyImage)`
+  ${sharedImageStyles}
   margin-bottom: 0.5rem;
 `
 
