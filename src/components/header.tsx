@@ -8,6 +8,9 @@ import OutsideAlerter from "./eventOutsideWrapper"
 
 const StyledHeader = styled.header`
   padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `
 
 const LogoLink = styled(Link)`

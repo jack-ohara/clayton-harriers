@@ -2,9 +2,7 @@ import React from "react"
 import styled from "styled-components"
 
 const StyledBurger = styled.button`
-  position: absolute;
-  top: 1.3rem;
-  right: 2rem;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-around;

@@ -14,8 +14,8 @@ interface Props {
 }
 
 const getDate = (event: WpEventResult): string => {
-  const startDate = new Date(event.startDate)
-  const endDate = new Date(event.endDate)
+  const startDate = new Date(event.startDate.replace(/-/g, "/"))
+  const endDate = new Date(event.endDate.replace(/-/g, "/"))
 
   return getEventDate(startDate, endDate, event.allDay)
 }
