@@ -1,27 +1,29 @@
-import React from "react"
+import React, { ReactNode } from "react"
 import styled from "styled-components"
 
 const ContentWrapper = styled.div`
-  max-width: 100%;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.0875rem 1.45rem;
+  padding: 1.45rem;
   flex-grow: 1;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-
-  h1,
-  h2,
-  h3 {
-    text-align: center;
-  }
 `
 
 const Footer = styled.footer`
   margin-top: 2rem;
   text-align: center;
 `
-const PageContentLayout = ({ children }) => {
+
+interface PageContentLayoutProps {
+  children: ReactNode
+}
+
+export default function PageContentLayout({
+  children,
+}: PageContentLayoutProps) {
   return (
     <ContentWrapper>
       <main>{children}</main>
@@ -29,5 +31,3 @@ const PageContentLayout = ({ children }) => {
     </ContentWrapper>
   )
 }
-
-export default PageContentLayout

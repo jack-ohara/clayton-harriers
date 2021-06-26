@@ -41,10 +41,6 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `
 
-const StyledHR = styled.hr`
-  margin: 1.45rem 2rem;
-`
-
 const ContentWrapper = styled.div`
   margin-bottom: 1.45em;
 `
@@ -70,17 +66,11 @@ const IndexPage = ({ data }) => {
     <Layout bannerImage={backgroundImage}>
       <SEO title="Home" />
 
-      <StyledHR />
-
       <ContentWrapper
         dangerouslySetInnerHTML={{ __html: data.homePageContent.content }}
       />
 
-      <HoriztonalCardScroll
-        title="Latest Updates"
-        posts={latestPosts}
-        useDefaultCardImage
-      />
+      <HoriztonalCardScroll title="Latest Updates" posts={latestPosts} />
     </Layout>
   )
 }

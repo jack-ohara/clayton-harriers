@@ -1,5 +1,5 @@
 import React from "react"
-import Layout from "../../components/layout"
+import Layout, { PageHeader } from "../../components/layout"
 import SEO from "../../components/seo"
 import styled from "styled-components"
 import SimpleNavCard from "../../components/card/simpleNavCard"
@@ -30,7 +30,7 @@ const TrainingPage = ({ data }) => {
     <Layout>
       <SEO title="Training" />
 
-      <h1>Training</h1>
+      <PageHeader>Training</PageHeader>
 
       <CardContainer>
         <SimpleNavCard

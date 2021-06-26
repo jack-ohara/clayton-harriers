@@ -1,5 +1,5 @@
 import React from "react"
-import Layout from "../../components/layout"
+import Layout, { PageHeader } from "../../components/layout"
 import SEO from "../../components/seo"
 import { graphql } from "gatsby"
 
@@ -8,7 +8,7 @@ const JuniorTrainingPage = ({ data: { wpPage } }) => {
     <Layout>
       <SEO title="Junior Training" />
 
-      <h1>Junior Training</h1>
+      <PageHeader>Junior Training</PageHeader>
 
       <div dangerouslySetInnerHTML={{ __html: wpPage.content }} />
     </Layout>

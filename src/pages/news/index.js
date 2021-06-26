@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import CardPreviews from "../../components/card/cardPreviews"
-import Layout from "../../components/layout"
+import Layout, { PageHeader } from "../../components/layout"
 import SEO from "../../components/seo"
 import styled from "styled-components"
 import { graphql } from "gatsby"
@@ -37,7 +37,7 @@ const NewsPage = ({ data }) => {
     <Layout>
       <SEO title="News &amp; Info" />
 
-      <h1>News &amp; Info</h1>
+      <PageHeader>News &amp; Info</PageHeader>
 
       <StyledHR />
 

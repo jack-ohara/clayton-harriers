@@ -1,4 +1,4 @@
-import React from "react"
+import React, { ReactNode } from "react"
 import Header from "./header"
 import styled, { ThemeProvider } from "styled-components"
 import { siteTheme } from "../utils/theme"
@@ -17,15 +17,25 @@ const Container = styled.div`
   background: ${props => props.theme.colours.lightGrey};
 `
 
-const Layout = ({ bannerImage, children }) => (
-  <ThemeProvider theme={siteTheme}>
-    <GlobalStyles />
-    <Container>
-      <Header />
-      {bannerImage}
-      <PageContentLayout>{children}</PageContentLayout>
-    </Container>
-  </ThemeProvider>
-)
+interface LayoutProps {
+  bannerImage?: JSX.Element
+  children: ReactNode
+}
 
-export default Layout
+export const PageHeader = styled.h2`
+  font-size: 2rem;
+  text-align: center;
+`
+
+export default function Layout({ bannerImage, children }: LayoutProps) {
+  return (
+    <ThemeProvider theme={siteTheme}>
+      <GlobalStyles />
+      <Container>
+        <Header />
+        {bannerImage}
+        <PageContentLayout>{children}</PageContentLayout>
+      </Container>
+    </ThemeProvider>
+  )
+}
