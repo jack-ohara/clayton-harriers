@@ -1,6 +1,6 @@
 import React from "react"
 import HorizontalRule from "../../utils/styles/HorizontalRule.js"
-import cardBannerSVG from "../../images/card-banner.svg"
+import CardBannerSVG from "../../images/card-banner.svg"
 import styled, { css } from "styled-components"
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
 import { Link } from "gatsby"
@@ -34,10 +34,14 @@ const NonLinkCardContainer = styled.div`
 `
 
 const sharedImageStyles = css`
-  border-radius: 5px 5px;
+  border-radius: 5px 5px 0 0;
+
+  img {
+    border-radius: 5px 5px 0 0;
+  }
 `
 
-const BannerImage = styled.img`
+const BannerImage = styled(CardBannerSVG)`
   ${sharedImageStyles}
   margin: 0 auto 0.5rem auto;
   max-height: 160px;
@@ -98,10 +102,7 @@ export default function Card({
   horizontalLayout = false,
 }: CardProps) {
   const cardImage = !featuredImage?.image ? (
-    <BannerImage
-      src={cardBannerSVG}
-      alt="Clayton-le-moors Harriers banner logo"
-    />
+    <BannerImage alt="Clayton-le-moors Harriers banner logo" />
   ) : (
     <FeaturedImage image={featuredImage.image} alt={featuredImage.altText} />
   )

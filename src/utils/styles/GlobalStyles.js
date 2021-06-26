@@ -45,6 +45,8 @@ html {
   a {
     background-color: transparent;
     -webkit-text-decoration-skip: objects;
+    color: ${props => props.theme.colours.orange}
+
   }
   a:active,
   a:hover {

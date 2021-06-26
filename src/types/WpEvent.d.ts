@@ -12,7 +12,18 @@ export interface WpEventResult {
   endDate: string
   allDay: boolean
   excerpt: string
-  linkedData: { organizer: { name: string } }
+  linkedData: { organizer: { name: string }; location: EventLocation | null }
   author: { node: { name: string } }
   featuredImage: FeaturedImage
+}
+
+interface EventLocation {
+  name: string | undefined
+  address: {
+    streetAddress: string | undefined
+    addressLocality: string | undefined
+    addressRegion: string | undefined
+    postalCode: string | undefined
+    addressCountry: string | undefined
+  }
 }

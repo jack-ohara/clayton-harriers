@@ -2,6 +2,7 @@ import React from "react"
 import SEO from "../components/seo"
 import HorizontalRule from "../utils/styles/HorizontalRule.js"
 import styled from "styled-components"
+import LocationPinIcon from "../images/location-pin.svg"
 import Layout, { PageHeader } from "../components/layout"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { graphql } from "gatsby"
@@ -42,6 +43,39 @@ const FeaturedImage = styled(GatsbyImage)`
   margin-bottom: 1.45rem;
 `
 
+const StyledLocationPin = styled(LocationPinIcon)`
+  height: 2rem;
+`
+
+const LocationInfo = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  div {
+    margin-left: 1rem;
+
+    p {
+      margin: 0;
+    }
+  }
+`
+
+const Dot = styled.span`
+  border-radius: 50%;
+  height: 0.5em;
+  width: 0.5rem;
+  background: black;
+  display: inline-block;
+`
+
+const BottomInfoLine = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1.45rem;
+`
+
 function getContact(organizerName: string, authorName: string) {
   return (
     <div>
@@ -53,6 +87,33 @@ function getContact(organizerName: string, authorName: string) {
       </ContactName>
     </div>
   )
+}
+
+function getLocation(event: WpEventResult) {
+  if (event.linkedData.location) {
+    return (
+      <LocationInfo>
+        <StyledLocationPin />
+
+        <div>
+          <a
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+              `${event.linkedData.location.name}, ${event.linkedData.location.address.streetAddress}, ${event.linkedData.location.address.addressLocality}`
+            )}`}
+            target="_blank"
+          >
+            {event.linkedData.location.name}
+          </a>
+          <p>
+            {event.linkedData.location.address.streetAddress} <Dot />{" "}
+            {event.linkedData.location.address.addressLocality}
+          </p>
+        </div>
+      </LocationInfo>
+    )
+  }
+
+  return null
 }
 
 export default function WpEvent({ data: { wpEvent: event } }: QueryResult) {
@@ -75,7 +136,10 @@ export default function WpEvent({ data: { wpEvent: event } }: QueryResult) {
 
         <EventPageHeader>{event.title}</EventPageHeader>
 
-        {getContact(event.linkedData.organizer?.name, event.author.node.name)}
+        <BottomInfoLine>
+          {getContact(event.linkedData.organizer?.name, event.author.node.name)}
+          {getLocation(event)}
+        </BottomInfoLine>
 
         <HorizontalRule />
       </PageHead>
@@ -105,6 +169,17 @@ export const query = graphql`
       linkedData {
         organizer {
           name
+        }
+        location {
+          name
+          description
+          address {
+            addressCountry
+            addressLocality
+            addressRegion
+            postalCode
+            streetAddress
+          }
         }
       }
       author {
