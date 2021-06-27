@@ -128,8 +128,8 @@ export default function WpEvent({ data: { wpEvent: event } }: QueryResult) {
       <PageHead>
         <EventDate>
           {getEventDate(
-            new Date(event.startDate),
-            new Date(event.endDate),
+            new Date(event.startDate.replace(/-/g, "/")),
+            new Date(event.endDate.replace(/-/g, "/")),
             event.allDay
           )}
         </EventDate>
