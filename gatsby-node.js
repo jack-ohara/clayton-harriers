@@ -7,9 +7,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           uri
         }
       }
-      rollOfHonourPages: allWpPage(
-        filter: { uri: { regex: "/^/roll-of-honour/.+$/" } }
-      ) {
+      allWpPage {
         nodes {
           id
           uri
@@ -45,12 +43,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     })
   }
 
-  const { rollOfHonourPages } = result.data
+  const { allWpPage } = result.data
 
   const pageTemplate = require.resolve(`./src/templates/wpPage.js`)
 
-  if (rollOfHonourPages.nodes.length) {
-    rollOfHonourPages.nodes.map(page => {
+  if (allWpPage.nodes.length) {
+    allWpPage.nodes.map(page => {
       actions.createPage({
         path: page.uri,
         component: pageTemplate,

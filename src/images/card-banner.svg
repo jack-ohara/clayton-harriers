@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="202.09mm" height="76.229mm" version="1.1" viewBox="0 0 202.09 76.229" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<svg width="202.09mm" height="76.229mm" version="1.1" viewBox="0 0 202.09 76.229" xmlns="http://www.w3.org/2000/svg">
  <defs>
   <linearGradient id="linearGradient867" x1="136.75" x2="188.83" y1="93.683" y2="93.683" gradientTransform="translate(-35.773,-61.472)" gradientUnits="userSpaceOnUse">
    <stop stop-color="#fff" offset="0"/>
@@ -14,15 +14,6 @@
    <stop stop-color="#616161" offset="1"/>
   </linearGradient>
  </defs>
- <metadata>
-  <rdf:RDF>
-   <cc:Work rdf:about="">
-    <dc:format>image/svg+xml</dc:format>
-    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:title/>
-   </cc:Work>
-  </rdf:RDF>
- </metadata>
  <g transform="translate(7.4978 -131.23)">
   <g transform="matrix(1.5545 0 0 1.7754 -7.4978 131.23)" opacity=".65">
    <g fill-rule="evenodd">

@@ -17,7 +17,7 @@ const TemplateWrapper = styled.section`
 
 const WpPage = ({
   data: {
-    wpPage: { title, content, id },
+    wpPage: { title, content },
   },
 }) => {
   return (
@@ -38,7 +38,6 @@ const WpPage = ({
 export const query = graphql`
   query ($id: String) {
     wpPage(id: { eq: $id }) {
-      id
       title
       content
     }
