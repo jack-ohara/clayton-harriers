@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
-import { Link } from "gatsby"
+import { StaticQuery, Link, graphql } from "gatsby"
 
 const StyledMenu = styled.nav`
   display: flex;
@@ -165,65 +165,124 @@ const isActiveRoute = targetRoute => {
   return currentRoute === targetRoute
 }
 
+const getMenuItems = (menuItems, closeMenuFunction) => {
+  return menuItems.map(item => {
+    return (
+      <React.Fragment key={`menu-item-${item.label}`}>
+        {item.childItems.nodes.length ? (
+          <CollapsableMenuItem
+            title={item.label}
+            resetOpen={!open}
+            key={`collapsable-item-${item.label}`}
+          >
+            {item.childItems.nodes.map(child => (
+              <MenuItem
+                key={`child-item-${item.label}-${child.label}`}
+                title={child.label}
+                to={child.url}
+                closeFunction={closeMenuFunction}
+                small
+              />
+            ))}
+          </CollapsableMenuItem>
+        ) : (
+          <MenuItem
+            key={`collapsable-item-${item.label}`}
+            title={item.label}
+            to={item.url}
+            closeFunction={closeMenuFunction}
+          />
+        )}
+
+        <ItemDivider />
+      </React.Fragment>
+    )
+  })
+}
+
 const Menu = ({ open, setOpen }) => {
   const closeMenuFunction = () => {
     setOpen(false)
   }
 
   return (
-    <StyledMenu open={open}>
-      <MenuItem title="Home" to="/" closeFunction={closeMenuFunction} />
-      <ItemDivider />
-      <CollapsableMenuItem title="News &amp; Info" resetOpen={!open}>
-        <MenuItem
-          title="News"
-          to="/news"
-          small
-          closeFunction={closeMenuFunction}
-        />
-        <MenuItem
-          title="Training"
-          to="/training"
-          small
-          closeFunction={closeMenuFunction}
-        />
-        <MenuItem
-          title="Roll Of Honour"
-          to="/roll-of-honour"
-          small
-          closeFunction={closeMenuFunction}
-        />
-      </CollapsableMenuItem>
-      <ItemDivider />
-      <CollapsableMenuItem title="Juniors" resetOpen={!open}>
-        <MenuItem
-          title="Welcome"
-          to="/juniors"
-          small
-          closeFunction={closeMenuFunction}
-        />
-      </CollapsableMenuItem>
-      <ItemDivider />
-      <MenuItem
-        title="Fixtures &amp; Results"
-        to="/fixtures"
-        closeFunction={closeMenuFunction}
-      />
-      <ItemDivider />
-      <MenuItem title="About" to="/about" closeFunction={closeMenuFunction} />
-      <ItemDivider />
-      <MenuItem
-        title="Join Us"
-        to="/join-us"
-        closeFunction={closeMenuFunction}
-      />
-      <ItemDivider />
-      <MenuItem
-        title="Contact"
-        to="/contact"
-        closeFunction={closeMenuFunction}
-      />
-    </StyledMenu>
+    <StaticQuery
+      query={graphql`
+        {
+          wpMenu(slug: { eq: "new-site-menu" }) {
+            menuItems {
+              nodes {
+                label
+                parentId
+                childItems {
+                  nodes {
+                    label
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
+      `}
+      render={data => (
+        <StyledMenu open={open}>
+          <MenuItem title="Home" to="/" closeFunction={closeMenuFunction} />
+          <ItemDivider />
+          <CollapsableMenuItem title="News &amp; Info" resetOpen={!open}>
+            <MenuItem
+              title="News"
+              to="/news"
+              small
+              closeFunction={closeMenuFunction}
+            />
+            <MenuItem
+              title="Training"
+              to="/training"
+              small
+              closeFunction={closeMenuFunction}
+            />
+            <MenuItem
+              title="Roll Of Honour"
+              to="/roll-of-honour"
+              small
+              closeFunction={closeMenuFunction}
+            />
+          </CollapsableMenuItem>
+          <ItemDivider />
+          <CollapsableMenuItem title="Juniors" resetOpen={!open}>
+            <MenuItem
+              title="Welcome"
+              to="/juniors"
+              small
+              closeFunction={closeMenuFunction}
+            />
+          </CollapsableMenuItem>
+          <ItemDivider />
+          <MenuItem
+            title="Fixtures &amp; Results"
+            to="/fixtures"
+            closeFunction={closeMenuFunction}
+          />
+          <ItemDivider />
+          {getMenuItems(
+            data.wpMenu.menuItems.nodes.filter(item => !item.parentId),
+            closeMenuFunction
+          )}
+          <MenuItem
+            title="Join Us"
+            to="/join-us"
+            closeFunction={closeMenuFunction}
+          />
+          <ItemDivider />
+          <MenuItem
+            title="Contact"
+            to="/contact"
+            closeFunction={closeMenuFunction}
+          />
+        </StyledMenu>
+      )}
+    />
   )
 }
 

@@ -42,6 +42,7 @@ const StyledLink = styled(Link)`
 `
 
 const ContentWrapper = styled.div`
+  margin-top: 1.45em;
   margin-bottom: 1.45em;
 `
 
