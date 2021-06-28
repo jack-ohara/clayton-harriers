@@ -165,14 +165,14 @@ const isActiveRoute = targetRoute => {
   return currentRoute === targetRoute
 }
 
-const getMenuItems = (menuItems, closeMenuFunction) => {
+const getMenuItems = (menuItems, closeMenuFunction, isOpen) => {
   return menuItems.map(item => {
     return (
       <React.Fragment key={`menu-item-${item.label}`}>
         {item.childItems.nodes.length ? (
           <CollapsableMenuItem
             title={item.label}
-            resetOpen={!open}
+            resetOpen={!isOpen}
             key={`collapsable-item-${item.label}`}
           >
             {item.childItems.nodes.map(child => (
@@ -267,7 +267,8 @@ const Menu = ({ open, setOpen }) => {
           <ItemDivider />
           {getMenuItems(
             data.wpMenu.menuItems.nodes.filter(item => !item.parentId),
-            closeMenuFunction
+            closeMenuFunction,
+            open
           )}
           <MenuItem
             title="Join Us"
