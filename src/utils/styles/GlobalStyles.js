@@ -616,6 +616,10 @@ html {
     flex-direction: row;
     justify-content: center;
   }
+
+  .wpcf7 textarea {
+    min-width: 100%;
+  }
 `
 
 export default GlobalStyles

@@ -275,12 +275,6 @@ const Menu = ({ open, setOpen }) => {
             to="/join-us"
             closeFunction={closeMenuFunction}
           />
-          <ItemDivider />
-          <MenuItem
-            title="Contact"
-            to="/contact"
-            closeFunction={closeMenuFunction}
-          />
         </StyledMenu>
       )}
     />
