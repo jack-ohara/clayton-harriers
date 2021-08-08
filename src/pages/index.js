@@ -2,7 +2,7 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
-import BackgroundImage from "gatsby-background-image"
+import BackgroundBanner from "../components/background-banner"
 import HoriztonalCardScroll from "../components/horizontalCardScroll"
 import { graphql, Link } from "gatsby"
 import { mapCardFields } from "../utils/wpPostMapper"
@@ -17,22 +17,23 @@ const H1 = styled.h1`
   padding: 0 1.0875rem;
 `
 
-const StyledBackgroundImage = styled(BackgroundImage)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 50vw;
-  max-height: 80vh;
+// const StyledBackgroundImage = styled(BackgroundImage)`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   min-height: 50vw;
+//   max-height: 80vh;
 
-  * {
-    text-align: center;
-  }
-`
+//   * {
+//     text-align: center;
+//   }
+// `
 
 const BannerTextContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
 `
 
 const StyledLink = styled(Link)`
@@ -53,17 +54,13 @@ const IndexPage = ({ data }) => {
   const latestPosts = data.latestPostsData.nodes.map(e => mapCardFields(e))
 
   const backgroundImage = (
-    <StyledBackgroundImage
-      Tag="section"
-      fluid={data.mobileImage.childImageSharp.fluid}
-      backgroundColor={`#F8F8F8`}
-    >
+    <BackgroundBanner>
       <BannerTextContainer>
         <H1>Clayton-Le-Moors Harriers</H1>
 
         <StyledLink to="/join-us">Join Us</StyledLink>
       </BannerTextContainer>
-    </StyledBackgroundImage>
+    </BackgroundBanner>
   )
 
   return (

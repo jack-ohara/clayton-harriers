@@ -11,14 +11,12 @@ const StyledLink = styled(Link)<StyledLinkProps>`
   padding: ${props => (props.$small ? "1rem 0" : "1.5rem 0")};
   font-weight: bold;
   letter-spacing: 0.5rem;
-  text-decoration: none;
   transition: color 0.3s linear;
   background-image: none;
   color: ${props =>
     props.$isActiveRoute ? props.theme.colours.orange : "inherit"};
 
   @media (max-width: 576px) {
-    font-size: 1.5rem;
     font-size: ${props => (props.$small ? "1.2rem" : "1.5rem")};
   }
 
