@@ -2,9 +2,19 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import React, { useState } from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import styled from "styled-components"
-import BurgerButton from "./menu/burgerButton"
-import Menu from "./menu"
+import BurgerButton from "./menu/mobile/burgerButton"
+import MobileMenu from "./menu/mobile"
+import DesktopMenu from "./menu/desktop"
 import OutsideAlerter from "./eventOutsideWrapper"
+import { useMediaQuery } from "react-responsive"
+
+interface NavWrapperProps {
+  $center: boolean
+}
+
+const NavWrapper = styled.div<NavWrapperProps>`
+  flex-grow: ${props => (props.$center ? 1 : "initial")};
+`
 
 const StyledHeader = styled.header`
   padding: 0.5rem;
@@ -31,6 +41,7 @@ export default function Header() {
   `)
 
   const [open, setOpen] = useState(false)
+  const isDesktop = useMediaQuery({ query: "(min-width: 800px)" })
 
   return (
     <StyledHeader>
@@ -42,14 +53,21 @@ export default function Header() {
         />
       </LogoLink>
 
-      <OutsideAlerter
-        events={["mousedown", "scroll"]}
-        handleEvent={() => setOpen(false)}
-      >
-        <BurgerButton open={open} setOpen={setOpen} />
-
-        <Menu open={open} setOpen={setOpen} />
-      </OutsideAlerter>
+      <NavWrapper $center={isDesktop}>
+        <OutsideAlerter
+          events={["mousedown", "scroll"]}
+          handleEvent={() => setOpen(false)}
+        >
+          {isDesktop ? (
+            <DesktopMenu />
+          ) : (
+            <>
+              <BurgerButton open={open} setOpen={setOpen} />
+              <MobileMenu open={open} setOpen={setOpen} />{" "}
+            </>
+          )}
+        </OutsideAlerter>
+      </NavWrapper>
     </StyledHeader>
   )
 }

@@ -18,8 +18,11 @@ const H1 = styled.h1`
 `
 
 const StyledBackgroundImage = styled(BackgroundImage)`
-  padding-top: 4.8rem;
-  min-height: 235px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vw;
+  max-height: 80vh;
 
   * {
     text-align: center;
