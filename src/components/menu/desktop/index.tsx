@@ -46,12 +46,12 @@ interface DesktopMenuLinkStyleProps {
 }
 
 const DesktopMenuLink = styled(StyledLink)<DesktopMenuLinkStyleProps>`
-  font-size: 1.2rem;
+  font-size: ${props => (props.$small ? "1rem" : "1.2rem")};
   letter-spacing: normal;
   padding: 0.8rem 0;
   transition: text-decoration-color ease-in-out 120ms;
   text-decoration: underline;
-  text-decoration-thickness: 3px;
+  text-decoration-thickness: ${props => (props.$small ? "2px" : "3px")};
   text-decoration-color: transparent;
 
   &:hover,
@@ -64,12 +64,14 @@ const DesktopMenuLink = styled(StyledLink)<DesktopMenuLinkStyleProps>`
 interface MenuItemProps {
   to: string
   showBackgroundOnHover?: boolean
+  small?: boolean
   children: ReactNode
 }
 
 function MenuItem({
   to,
   showBackgroundOnHover = false,
+  small = false,
   children,
 }: MenuItemProps) {
   const isActive = isActiveRoute(to)
@@ -80,6 +82,7 @@ function MenuItem({
         to={to}
         $isActiveRoute={isActive}
         $showBackground={showBackgroundOnHover}
+        $small={small}
       >
         {children}
       </DesktopMenuLink>
@@ -163,6 +166,7 @@ const getMenuItems = menuItems => {
                 key={`child-item-${item.label}-${child.label}`}
                 to={child.url}
                 showBackgroundOnHover
+                small
               >
                 {child.label}
               </MenuItem>
@@ -236,18 +240,18 @@ export default function Menu() {
           <ul>
             <MenuItem to="/">Home</MenuItem>
             <DropdownMenuItem title="News &amp; Info">
-              <MenuItem to="/news" showBackgroundOnHover>
+              <MenuItem to="/news" showBackgroundOnHover small>
                 News
               </MenuItem>
-              <MenuItem to="/training" showBackgroundOnHover>
+              <MenuItem to="/training" showBackgroundOnHover small>
                 Training
               </MenuItem>
-              <MenuItem to="/roll-of-honour" showBackgroundOnHover>
+              <MenuItem to="/roll-of-honour" showBackgroundOnHover small>
                 Roll Of Honour
               </MenuItem>
             </DropdownMenuItem>
             <DropdownMenuItem title="Juniors">
-              <MenuItem to="/juniors" showBackgroundOnHover>
+              <MenuItem to="/juniors" showBackgroundOnHover small>
                 Welcome
               </MenuItem>
             </DropdownMenuItem>
