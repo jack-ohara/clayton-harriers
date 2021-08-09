@@ -25,10 +25,11 @@ const DesktopMenuLink = styled(StyledLink)`
   text-decoration: underline;
   text-decoration-thickness: 3px;
   text-decoration-color: transparent;
-  transition: text-decoration-color ease-in-out 100ms;
+  transition: text-decoration-color ease-in-out 120ms;
   letter-spacing: normal;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background: none;
     text-decoration-color: ${props => props.theme.colours.orange};
   }

@@ -125,12 +125,5 @@ export const pageQuery = graphql`
     homePageContent: wpPage(slug: { eq: "new-site-home-page" }) {
       content
     }
-    mobileImage: file(relativePath: { eq: "clayton-runner-landscape.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1000, quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
   }
 `

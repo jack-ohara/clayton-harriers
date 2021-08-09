@@ -6,7 +6,7 @@ import BurgerButton from "./menu/mobile/burgerButton"
 import MobileMenu from "./menu/mobile"
 import DesktopMenu from "./menu/desktop"
 import OutsideAlerter from "./eventOutsideWrapper"
-import { useMediaQuery } from "react-responsive"
+import { useAppContext } from "../state"
 
 const StyledHeader = styled.header`
   padding: 0.5rem;
@@ -23,7 +23,7 @@ const LogoLink = styled(Link)`
 
 export default function Header() {
   const [open, setOpen] = useState(false)
-  const isDesktop = useMediaQuery({ query: "(min-width: 800px)" })
+  const { isDesktopMedia } = useAppContext()
 
   return (
     <StaticQuery
@@ -53,7 +53,7 @@ export default function Header() {
               events={["mousedown", "scroll"]}
               handleEvent={() => setOpen(false)}
             >
-              {isDesktop ? (
+              {isDesktopMedia ? (
                 <DesktopMenu />
               ) : (
                 <>

@@ -15,6 +15,11 @@ const BgImage = styled(GatsbyImage)`
   width: 100%;
   max-height: inherit;
   min-height: inherit;
+
+  img {
+    object-fit: none !important;
+    object-position: 0 -70px !important;
+  }
 `
 
 const ChildrenWrapper = styled.div`
