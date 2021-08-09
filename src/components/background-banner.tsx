@@ -2,6 +2,7 @@ import React, { ReactNode } from "react"
 import styled from "styled-components"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { graphql, StaticQuery } from "gatsby"
+import { useAppContext } from "../state"
 
 const Wrapper = styled.section`
   position: relative;
@@ -9,7 +10,11 @@ const Wrapper = styled.section`
   max-height: 70vh;
 `
 
-const BgImage = styled(GatsbyImage)`
+interface BgImageStyleProps {
+  $isDesktopMedia: boolean
+}
+
+const BgImage = styled(GatsbyImage)<BgImageStyleProps>`
   left: 0;
   top: 0;
   width: 100%;
@@ -17,8 +22,8 @@ const BgImage = styled(GatsbyImage)`
   min-height: inherit;
 
   img {
-    object-fit: none !important;
-    object-position: 0 -70px !important;
+    object-fit: ${props => props.$isDesktopMedia && "none !important"};
+    object-position: ${props => props.$isDesktopMedia && "0 -70px !important"};
   }
 `
 
@@ -34,6 +39,8 @@ interface Props {
 }
 
 export default function BackgroundBanner({ children }: Props) {
+  const { isDesktopMedia } = useAppContext()
+
   return (
     <StaticQuery
       query={graphql`
@@ -53,6 +60,7 @@ export default function BackgroundBanner({ children }: Props) {
             image={imageData.bannerImage.childImageSharp.gatsbyImageData}
             alt="clayton runner landscape"
             loading="eager"
+            $isDesktopMedia={isDesktopMedia}
           />
           <ChildrenWrapper>{children}</ChildrenWrapper>
         </Wrapper>

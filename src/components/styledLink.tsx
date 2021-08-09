@@ -1,25 +1,29 @@
 import { Link } from "gatsby"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
-interface StyledLinkProps {
+interface MenuItemProps {
   $small?: boolean
   $isActiveRoute: boolean
 }
 
-const StyledLink = styled(Link)<StyledLinkProps>`
+export const MenuItemStyles = css<MenuItemProps>`
   font-size: ${props => (props.$small ? "1.5rem" : "2rem")};
   padding: ${props => (props.$small ? "1rem 0" : "1.5rem 0")};
   font-weight: bold;
+  line-height: 1rem;
   letter-spacing: 0.5rem;
-  text-decoration: none;
-  transition: color 0.3s linear;
-  background-image: none;
   color: ${props =>
     props.$isActiveRoute ? props.theme.colours.orange : "inherit"};
 
   @media (max-width: 576px) {
     font-size: ${props => (props.$small ? "1.2rem" : "1.5rem")};
   }
+`
+
+const StyledLink = styled(Link)`
+  ${MenuItemStyles}
+  text-decoration: none;
+  background-image: none;
 
   &:hover,
   &:focus {

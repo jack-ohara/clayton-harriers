@@ -8,7 +8,7 @@ import { graphql, Link } from "gatsby"
 import { mapCardFields } from "../utils/wpPostMapper"
 
 const H1 = styled.h1`
-  font-size: 2.6rem;
+  font-size: calc(2.4rem + 2vw);
   z-index: 1;
   color: ${props => props.theme.colours.lightGrey};
   text-shadow: 2px 2px ${props => props.theme.colours.orange};
@@ -16,18 +16,6 @@ const H1 = styled.h1`
   margin: 0;
   padding: 0 1.0875rem;
 `
-
-// const StyledBackgroundImage = styled(BackgroundImage)`
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   min-height: 50vw;
-//   max-height: 80vh;
-
-//   * {
-//     text-align: center;
-//   }
-// `
 
 const BannerTextContainer = styled.div`
   display: flex;

@@ -599,6 +599,12 @@ html {
     padding-right: 0;
   }
 
+  /* Custom Properties */
+  :root {
+    --clayton-orange: #FF6935;
+    --light-grey: #F8F8F8;
+  }
+
   /* Wordpress */
   .has-text-align-center {
     text-align: center;
