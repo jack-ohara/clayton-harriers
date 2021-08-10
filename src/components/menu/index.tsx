@@ -13,6 +13,8 @@ interface Props {
 export default function NavMenu({ mobileMenuOpen, setMobileMenuOpen }: Props) {
   const context = useAppContext()
 
+  console.log(context)
+
   return (
     context && (
       <StaticQuery
