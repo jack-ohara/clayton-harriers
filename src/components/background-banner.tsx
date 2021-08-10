@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { graphql, StaticQuery } from "gatsby"
 import { useAppContext } from "../state"
+import { useIsDesktopMedia } from "../utils/useMediaQuery"
 
 const Wrapper = styled.section`
   position: relative;
@@ -39,9 +40,9 @@ interface Props {
 }
 
 export default function BackgroundBanner({ children }: Props) {
-  const { isDesktopMedia } = useAppContext()
+  const [isDesktopMedia, hasRun] = useIsDesktopMedia()
 
-  return (
+  return hasRun ? (
     <StaticQuery
       query={graphql`
         query {
@@ -66,5 +67,7 @@ export default function BackgroundBanner({ children }: Props) {
         </Wrapper>
       )}
     />
+  ) : (
+    <></>
   )
 }

@@ -11,9 +11,10 @@ interface Props {
 }
 
 export default function NavMenu({ mobileMenuOpen, setMobileMenuOpen }: Props) {
-  const isDesktopMedia = useIsDesktopMedia()
+  const [isDesktopMedia, hasRun] = useIsDesktopMedia()
+  console.log(isDesktopMedia)
 
-  return (
+  return hasRun ? (
     <StaticQuery
       query={graphql`
         {
@@ -48,5 +49,7 @@ export default function NavMenu({ mobileMenuOpen, setMobileMenuOpen }: Props) {
         )
       }
     />
+  ) : (
+    <></>
   )
 }
