@@ -2,11 +2,8 @@ import { Link, graphql, StaticQuery } from "gatsby"
 import React, { useState } from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import styled from "styled-components"
-import BurgerButton from "./menu/mobile/burgerButton"
-import MobileMenu from "./menu/mobile"
-import DesktopMenu from "./menu/desktop"
 import OutsideAlerter from "./eventOutsideWrapper"
-import { useAppContext } from "../state"
+import NavMenu from "./menu"
 
 const StyledHeader = styled.header`
   padding: 0.5rem;
@@ -23,7 +20,6 @@ const LogoLink = styled(Link)`
 
 export default function Header() {
   const [open, setOpen] = useState(false)
-  const { isDesktopMedia } = useAppContext()
 
   return (
     <StaticQuery
@@ -53,14 +49,7 @@ export default function Header() {
               events={["mousedown", "scroll"]}
               handleEvent={() => setOpen(false)}
             >
-              {isDesktopMedia ? (
-                <DesktopMenu />
-              ) : (
-                <>
-                  <BurgerButton open={open} setOpen={setOpen} />
-                  <MobileMenu open={open} setOpen={setOpen} />{" "}
-                </>
-              )}
+              <NavMenu mobileMenuOpen={open} setMobileMenuOpen={setOpen} />
             </OutsideAlerter>
           </StyledHeader>
         </div>

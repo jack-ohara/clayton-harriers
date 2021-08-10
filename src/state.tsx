@@ -16,7 +16,7 @@ interface Props {
 }
 
 export function AppWrapper({ children }: Props) {
-  const isDesktopMedia = useMediaQuery({ query: "(min-width: 800px)" })
+  const isDesktopMedia = useMediaQuery({ query: "(min-width: 815px)" })
 
   const initialState = {
     isDesktopMedia,

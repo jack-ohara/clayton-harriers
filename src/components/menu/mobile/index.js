@@ -165,84 +165,62 @@ const getMenuItems = (menuItems, closeMenuFunction, isOpen) => {
   })
 }
 
-const Menu = ({ open, setOpen }) => {
+const Menu = ({ menuData, open, setOpen }) => {
   const closeMenuFunction = () => {
     setOpen(false)
   }
 
   return (
-    <StaticQuery
-      query={graphql`
-        {
-          wpMenu(slug: { eq: "new-site-menu" }) {
-            menuItems {
-              nodes {
-                label
-                parentId
-                childItems {
-                  nodes {
-                    label
-                    url
-                  }
-                }
-              }
-            }
-          }
-        }
-      `}
-      render={data => (
-        <StyledMenu open={open}>
-          <MenuItem title="Home" to="/" closeFunction={closeMenuFunction} />
-          <ItemDivider />
-          <CollapsableMenuItem title="News &amp; Info" resetOpen={!open}>
-            <MenuItem
-              title="News"
-              to="/news"
-              small
-              closeFunction={closeMenuFunction}
-            />
-            <MenuItem
-              title="Training"
-              to="/training"
-              small
-              closeFunction={closeMenuFunction}
-            />
-            <MenuItem
-              title="Roll Of Honour"
-              to="/roll-of-honour"
-              small
-              closeFunction={closeMenuFunction}
-            />
-          </CollapsableMenuItem>
-          <ItemDivider />
-          <CollapsableMenuItem title="Juniors" resetOpen={!open}>
-            <MenuItem
-              title="Welcome"
-              to="/juniors"
-              small
-              closeFunction={closeMenuFunction}
-            />
-          </CollapsableMenuItem>
-          <ItemDivider />
-          <MenuItem
-            title="Fixtures &amp; Results"
-            to="/fixtures"
-            closeFunction={closeMenuFunction}
-          />
-          <ItemDivider />
-          {getMenuItems(
-            data.wpMenu.menuItems.nodes.filter(item => !item.parentId),
-            closeMenuFunction,
-            open
-          )}
-          <MenuItem
-            title="Join Us"
-            to="/join-us"
-            closeFunction={closeMenuFunction}
-          />
-        </StyledMenu>
+    <StyledMenu open={open}>
+      <MenuItem title="Home" to="/" closeFunction={closeMenuFunction} />
+      <ItemDivider />
+      <CollapsableMenuItem title="News &amp; Info" resetOpen={!open}>
+        <MenuItem
+          title="News"
+          to="/news"
+          small
+          closeFunction={closeMenuFunction}
+        />
+        <MenuItem
+          title="Training"
+          to="/training"
+          small
+          closeFunction={closeMenuFunction}
+        />
+        <MenuItem
+          title="Roll Of Honour"
+          to="/roll-of-honour"
+          small
+          closeFunction={closeMenuFunction}
+        />
+      </CollapsableMenuItem>
+      <ItemDivider />
+      <CollapsableMenuItem title="Juniors" resetOpen={!open}>
+        <MenuItem
+          title="Welcome"
+          to="/juniors"
+          small
+          closeFunction={closeMenuFunction}
+        />
+      </CollapsableMenuItem>
+      <ItemDivider />
+      <MenuItem
+        title="Fixtures &amp; Results"
+        to="/fixtures"
+        closeFunction={closeMenuFunction}
+      />
+      <ItemDivider />
+      {getMenuItems(
+        menuData.wpMenu.menuItems.nodes.filter(item => !item.parentId),
+        closeMenuFunction,
+        open
       )}
-    />
+      <MenuItem
+        title="Join Us"
+        to="/join-us"
+        closeFunction={closeMenuFunction}
+      />
+    </StyledMenu>
   )
 }
 

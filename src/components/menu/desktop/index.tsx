@@ -214,55 +214,41 @@ function DropdownMenuItem({ title, children }: DropdownMenuItemProps) {
   )
 }
 
-export default function Menu() {
+interface Props {
+  menuData: { wpMenu: { menuItems: { nodes: any[] } } }
+}
+
+export default function Menu({
+  menuData: {
+    wpMenu: {
+      menuItems: { nodes },
+    },
+  },
+}: Props) {
   return (
-    <StaticQuery
-      query={graphql`
-        {
-          wpMenu(slug: { eq: "new-site-menu" }) {
-            menuItems {
-              nodes {
-                label
-                parentId
-                childItems {
-                  nodes {
-                    label
-                    url
-                  }
-                }
-              }
-            }
-          }
-        }
-      `}
-      render={data => (
-        <Nav>
-          <ul>
-            <MenuItem to="/">Home</MenuItem>
-            <DropdownMenuItem title="News &amp; Info">
-              <MenuItem to="/news" showBackgroundOnHover small>
-                News
-              </MenuItem>
-              <MenuItem to="/training" showBackgroundOnHover small>
-                Training
-              </MenuItem>
-              <MenuItem to="/roll-of-honour" showBackgroundOnHover small>
-                Roll Of Honour
-              </MenuItem>
-            </DropdownMenuItem>
-            <DropdownMenuItem title="Juniors">
-              <MenuItem to="/juniors" showBackgroundOnHover small>
-                Welcome
-              </MenuItem>
-            </DropdownMenuItem>
-            <MenuItem to="/fixtures">Fixtures &amp; Results</MenuItem>
-            {getMenuItems(
-              data.wpMenu.menuItems.nodes.filter(item => !item.parentId)
-            )}
-            <MenuItem to="/join-us">Join Us</MenuItem>
-          </ul>
-        </Nav>
-      )}
-    />
+    <Nav>
+      <ul>
+        <MenuItem to="/">Home</MenuItem>
+        <DropdownMenuItem title="News &amp; Info">
+          <MenuItem to="/news" showBackgroundOnHover small>
+            News
+          </MenuItem>
+          <MenuItem to="/training" showBackgroundOnHover small>
+            Training
+          </MenuItem>
+          <MenuItem to="/roll-of-honour" showBackgroundOnHover small>
+            Roll Of Honour
+          </MenuItem>
+        </DropdownMenuItem>
+        <DropdownMenuItem title="Juniors">
+          <MenuItem to="/juniors" showBackgroundOnHover small>
+            Welcome
+          </MenuItem>
+        </DropdownMenuItem>
+        <MenuItem to="/fixtures">Fixtures &amp; Results</MenuItem>
+        {getMenuItems(nodes.filter(item => !item.parentId))}
+        <MenuItem to="/join-us">Join Us</MenuItem>
+      </ul>
+    </Nav>
   )
 }
