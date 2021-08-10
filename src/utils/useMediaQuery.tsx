@@ -7,7 +7,7 @@ export function useMediaQuery(query: string) {
   useEffect(() => {
     setHasRun(true)
     const media = window.matchMedia(query)
-    console.log(media)
+
     if (media.matches !== matches) {
       setMatches(media.matches)
     }
