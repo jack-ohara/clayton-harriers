@@ -143,7 +143,8 @@ const DropdownLi = styled.li`
   }
 
   &:hover svg {
-    transform: rotate(90deg);
+    transform: rotate(0.25turn);
+    fill: var(--clayton-orange);
   }
 
   a {
@@ -192,7 +193,7 @@ const DropdownArrow = styled.svg<DropdownArrowStyles>`
   width: 8px;
   fill: ${props =>
     props.$isActiveRoute ? "var(--clayton-orange)" : "initial"};
-  transition: transform linear 200ms;
+  transition: all linear 200ms;
 `
 
 function DropdownMenuItem({ title, children }: DropdownMenuItemProps) {

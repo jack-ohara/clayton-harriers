@@ -11,42 +11,44 @@ interface Props {
 }
 
 export default function NavMenu({ mobileMenuOpen, setMobileMenuOpen }: Props) {
-  const { isDesktopMedia } = useAppContext()
+  const context = useAppContext()
 
   return (
-    <StaticQuery
-      query={graphql`
-        {
-          wpMenu(slug: { eq: "new-site-menu" }) {
-            menuItems {
-              nodes {
-                label
-                parentId
-                childItems {
-                  nodes {
-                    label
-                    url
+    context && (
+      <StaticQuery
+        query={graphql`
+          {
+            wpMenu(slug: { eq: "new-site-menu" }) {
+              menuItems {
+                nodes {
+                  label
+                  parentId
+                  childItems {
+                    nodes {
+                      label
+                      url
+                    }
                   }
                 }
               }
             }
           }
+        `}
+        render={data =>
+          context.isDesktopMedia ? (
+            <DesktopMenu menuData={data} />
+          ) : (
+            <>
+              <BurgerButton open={mobileMenuOpen} setOpen={setMobileMenuOpen} />
+              <MobileMenu
+                menuData={data}
+                open={mobileMenuOpen}
+                setOpen={setMobileMenuOpen}
+              />
+            </>
+          )
         }
-      `}
-      render={data =>
-        isDesktopMedia ? (
-          <DesktopMenu menuData={data} />
-        ) : (
-          <>
-            <BurgerButton open={mobileMenuOpen} setOpen={setMobileMenuOpen} />
-            <MobileMenu
-              menuData={data}
-              open={mobileMenuOpen}
-              setOpen={setMobileMenuOpen}
-            />
-          </>
-        )
-      }
-    />
+      />
+    )
   )
 }
