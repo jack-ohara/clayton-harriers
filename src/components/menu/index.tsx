@@ -10,47 +10,55 @@ interface Props {
   setMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export default function NavMenu({ mobileMenuOpen, setMobileMenuOpen }: Props) {
+interface MenuProps {
+  data: any
+  mainProps: Props
+}
+
+function Menu({
+  data,
+  mainProps: { mobileMenuOpen, setMobileMenuOpen },
+}: MenuProps) {
   const context = useAppContext()
 
-  console.log(context)
+  return context.isDesktopMedia ? (
+    <DesktopMenu menuData={data} />
+  ) : (
+    <>
+      <BurgerButton open={mobileMenuOpen} setOpen={setMobileMenuOpen} />
+      <MobileMenu
+        menuData={data}
+        open={mobileMenuOpen}
+        setOpen={setMobileMenuOpen}
+      />
+    </>
+  )
+}
 
+export default function NavMenu({ mobileMenuOpen, setMobileMenuOpen }: Props) {
   return (
-    context && (
-      <StaticQuery
-        query={graphql`
-          {
-            wpMenu(slug: { eq: "new-site-menu" }) {
-              menuItems {
-                nodes {
-                  label
-                  parentId
-                  childItems {
-                    nodes {
-                      label
-                      url
-                    }
+    <StaticQuery
+      query={graphql`
+        {
+          wpMenu(slug: { eq: "new-site-menu" }) {
+            menuItems {
+              nodes {
+                label
+                parentId
+                childItems {
+                  nodes {
+                    label
+                    url
                   }
                 }
               }
             }
           }
-        `}
-        render={data =>
-          context.isDesktopMedia ? (
-            <DesktopMenu menuData={data} />
-          ) : (
-            <>
-              <BurgerButton open={mobileMenuOpen} setOpen={setMobileMenuOpen} />
-              <MobileMenu
-                menuData={data}
-                open={mobileMenuOpen}
-                setOpen={setMobileMenuOpen}
-              />
-            </>
-          )
         }
-      />
-    )
+      `}
+      render={data => (
+        <Menu data={data} mainProps={{ mobileMenuOpen, setMobileMenuOpen }} />
+      )}
+    />
   )
 }
