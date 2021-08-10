@@ -6,7 +6,7 @@ type AppContext = {
 }
 
 const defaultContext: AppContext = {
-  isDesktopMedia: false,
+  isDesktopMedia: true,
 }
 
 const AppContext = createContext(defaultContext)
@@ -16,9 +16,7 @@ interface Props {
 }
 
 export function AppWrapper({ children }: Props) {
-  const isDesktopMedia =
-    typeof window === "undefined" ||
-    useMediaQuery({ query: "(min-width: 815px)" })
+  const isDesktopMedia = useMediaQuery({ query: "(min-width: 815px)" })
 
   const initialState = {
     isDesktopMedia,
