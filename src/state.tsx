@@ -1,5 +1,5 @@
 import React, { createContext, ReactNode, useContext } from "react"
-import { useMediaQuery } from "react-responsive"
+import { useMediaQuery } from "./utils/useMediaQuery"
 
 type AppContext = {
   isDesktopMedia: boolean
@@ -16,7 +16,7 @@ interface Props {
 }
 
 export function AppWrapper({ children }: Props) {
-  const isDesktopMedia = useMediaQuery({ query: "(min-width: 815px)" })
+  const [isDesktopMedia] = useMediaQuery("(min-width: 815px)")
 
   const initialState = {
     isDesktopMedia,
