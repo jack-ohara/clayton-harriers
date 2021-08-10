@@ -1,9 +1,9 @@
 import { graphql, StaticQuery } from "gatsby"
 import React from "react"
-import { useAppContext } from "../../state"
 import DesktopMenu from "./desktop"
 import BurgerButton from "./mobile/burgerButton"
 import MobileMenu from "./mobile"
+import { useMediaQuery } from "react-responsive"
 
 interface Props {
   mobileMenuOpen: boolean
@@ -19,9 +19,9 @@ function Menu({
   data,
   mainProps: { mobileMenuOpen, setMobileMenuOpen },
 }: MenuProps) {
-  const context = useAppContext()
+  const isDesktopMedia = useMediaQuery({ query: "(min-width: 815px)" })
 
-  return context.isDesktopMedia ? (
+  return isDesktopMedia ? (
     <DesktopMenu menuData={data} />
   ) : (
     <>
