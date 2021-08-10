@@ -2,8 +2,6 @@ import React, { ReactNode } from "react"
 import styled from "styled-components"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { graphql, StaticQuery } from "gatsby"
-import { useAppContext } from "../state"
-import { useIsDesktopMedia } from "../utils/useMediaQuery"
 
 const Wrapper = styled.section`
   position: relative;
@@ -11,20 +9,18 @@ const Wrapper = styled.section`
   max-height: 70vh;
 `
 
-interface BgImageStyleProps {
-  $isDesktopMedia: boolean
-}
-
-const BgImage = styled(GatsbyImage)<BgImageStyleProps>`
+const BgImage = styled(GatsbyImage)`
   left: 0;
   top: 0;
   width: 100%;
   max-height: inherit;
   min-height: inherit;
 
-  img {
-    object-fit: ${props => props.$isDesktopMedia && "none !important"};
-    object-position: ${props => props.$isDesktopMedia && "0 -70px !important"};
+  @media (min-width: 815px) {
+    img {
+      object-fit: none !important;
+      object-position: 0 -70px !important;
+    }
   }
 `
 
@@ -40,9 +36,7 @@ interface Props {
 }
 
 export default function BackgroundBanner({ children }: Props) {
-  const [isDesktopMedia, hasRun] = useIsDesktopMedia()
-
-  return hasRun ? (
+  return (
     <StaticQuery
       query={graphql`
         query {
@@ -61,13 +55,10 @@ export default function BackgroundBanner({ children }: Props) {
             image={imageData.bannerImage.childImageSharp.gatsbyImageData}
             alt="clayton runner landscape"
             loading="eager"
-            $isDesktopMedia={isDesktopMedia}
           />
           <ChildrenWrapper>{children}</ChildrenWrapper>
         </Wrapper>
       )}
     />
-  ) : (
-    <></>
   )
 }

@@ -4,6 +4,7 @@ import DesktopMenu from "./desktop"
 import BurgerButton from "./mobile/burgerButton"
 import MobileMenu from "./mobile"
 import { useIsDesktopMedia } from "../../utils/useMediaQuery"
+import { Media, MediaContextProvider } from "../../utils/useMediaBreakpoints"
 
 interface Props {
   mobileMenuOpen: boolean
@@ -11,10 +12,7 @@ interface Props {
 }
 
 export default function NavMenu({ mobileMenuOpen, setMobileMenuOpen }: Props) {
-  const [isDesktopMedia, hasRun] = useIsDesktopMedia()
-  console.log(isDesktopMedia)
-
-  return hasRun ? (
+  return (
     <StaticQuery
       query={graphql`
         {
@@ -34,22 +32,21 @@ export default function NavMenu({ mobileMenuOpen, setMobileMenuOpen }: Props) {
           }
         }
       `}
-      render={data =>
-        isDesktopMedia ? (
-          <DesktopMenu menuData={data} />
-        ) : (
-          <>
+      render={data => (
+        <MediaContextProvider>
+          <Media at="sm">
             <BurgerButton open={mobileMenuOpen} setOpen={setMobileMenuOpen} />
             <MobileMenu
               menuData={data}
               open={mobileMenuOpen}
               setOpen={setMobileMenuOpen}
             />
-          </>
-        )
-      }
+          </Media>
+          <Media greaterThanOrEqual="md">
+            <DesktopMenu menuData={data} />
+          </Media>
+        </MediaContextProvider>
+      )}
     />
-  ) : (
-    <></>
   )
 }

@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Jack O'Hara <jack@jackohara.io>",
   "dependencies": {
+    "@artsy/fresnel": "^1.9.0",
     "@types/lodash": "^4.14.171",
     "@types/react-helmet": "^6.1.2",
     "@types/styled-components": "^5.1.11",
@@ -31,7 +32,6 @@
     "react-helmet": "^6.1.0",
     "react-intersection-observer": "^8.31.1",
     "react-is": "^17.0.2",
-    "react-responsive": "^9.0.0-beta.3",
     "styled-components": "^5.2.0",
     "typeface-raleway": "^1.1.13",
     "typeface-source-sans-pro": "^1.1.13",
