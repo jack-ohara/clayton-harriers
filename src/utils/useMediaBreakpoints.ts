@@ -1,6 +1,6 @@
 import { createMedia } from "@artsy/fresnel"
 
-const { MediaContextProvider, Media } = createMedia({
+const AppMedia = createMedia({
   // breakpoints values can be either strings or integers
   breakpoints: {
     sm: 0,
@@ -8,4 +8,6 @@ const { MediaContextProvider, Media } = createMedia({
   },
 })
 
-export { MediaContextProvider, Media }
+export const mediaStyles = AppMedia.createMediaStyle()
+
+export const { MediaContextProvider, Media } = AppMedia

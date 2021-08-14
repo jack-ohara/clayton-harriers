@@ -3,8 +3,7 @@ import React from "react"
 import DesktopMenu from "./desktop"
 import BurgerButton from "./mobile/burgerButton"
 import MobileMenu from "./mobile"
-import { useIsDesktopMedia } from "../../utils/useMediaQuery"
-import { Media, MediaContextProvider } from "../../utils/useMediaBreakpoints"
+import { Media } from "../../utils/useMediaBreakpoints"
 
 interface Props {
   mobileMenuOpen: boolean
@@ -33,7 +32,7 @@ export default function NavMenu({ mobileMenuOpen, setMobileMenuOpen }: Props) {
         }
       `}
       render={data => (
-        <MediaContextProvider>
+        <>
           <Media at="sm">
             <BurgerButton open={mobileMenuOpen} setOpen={setMobileMenuOpen} />
             <MobileMenu
@@ -42,10 +41,10 @@ export default function NavMenu({ mobileMenuOpen, setMobileMenuOpen }: Props) {
               setOpen={setMobileMenuOpen}
             />
           </Media>
-          <Media greaterThanOrEqual="md">
+          <Media greaterThan="sm">
             <DesktopMenu menuData={data} />
           </Media>
-        </MediaContextProvider>
+        </>
       )}
     />
   )
