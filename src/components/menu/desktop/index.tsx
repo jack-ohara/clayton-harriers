@@ -138,11 +138,13 @@ const DropdownLi = styled.li`
     }
   }
 
-  &:hover ul {
+  &:hover ul,
+  &:focus-within ul {
     max-height: 500px;
   }
 
-  &:hover svg {
+  &:hover svg,
+  &:focus-within svg {
     transform: rotate(0.25turn);
     fill: var(--clayton-orange);
   }
