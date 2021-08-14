@@ -4,7 +4,6 @@ import SEO from "../../components/seo"
 import { graphql } from "gatsby"
 
 const JoinUsPage = ({ data }) => {
-  console.log(data)
   return (
     <Layout>
       <SEO title="Join Us" />

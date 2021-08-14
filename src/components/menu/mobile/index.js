@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
-import { StaticQuery, Link, graphql } from "gatsby"
+import { StaticQuery, graphql } from "gatsby"
+import StyledLink from "../../styledLink"
+import isActiveRoute from "../../../utils/isActiveRoute"
 
 const StyledMenu = styled.nav`
   display: flex;
@@ -22,29 +24,6 @@ const StyledMenu = styled.nav`
 
 const ItemDivider = styled.hr`
   margin: 0;
-`
-
-const StyledLink = styled(Link)`
-  font-size: ${props => (props.$small ? "1.5rem" : "2rem")};
-  padding: ${props => (props.$small ? "1rem 0" : "1.5rem 0")};
-  font-weight: bold;
-  letter-spacing: 0.5rem;
-  text-decoration: none;
-  transition: color 0.3s linear;
-  background-image: none;
-  color: ${props =>
-    props.$isActiveRoute ? props.theme.colours.orange : "inherit"};
-
-  @media (max-width: 576px) {
-    font-size: 1.5rem;
-    font-size: ${props => (props.$small ? "1.2rem" : "1.5rem")};
-  }
-
-  &:hover,
-  &:focus {
-    background: lightgrey;
-    outline: none;
-  }
 `
 
 const StyledButton = styled.button`
@@ -151,20 +130,6 @@ const CollapsableMenuItem = ({ title, children, resetOpen }) => {
   )
 }
 
-const isActiveRoute = targetRoute => {
-  if (typeof window === "undefined") {
-    // On build (where window is undefined), they all get set to
-    // inactive, so this sets the home page to active by default
-    // and ensures it's orange on the first load
-
-    return targetRoute === "/"
-  }
-
-  const currentRoute = window.location.pathname
-
-  return currentRoute === targetRoute
-}
-
 const getMenuItems = (menuItems, closeMenuFunction, isOpen) => {
   return menuItems.map(item => {
     return (
@@ -200,84 +165,62 @@ const getMenuItems = (menuItems, closeMenuFunction, isOpen) => {
   })
 }
 
-const Menu = ({ open, setOpen }) => {
+const Menu = ({ menuData, open, setOpen }) => {
   const closeMenuFunction = () => {
     setOpen(false)
   }
 
   return (
-    <StaticQuery
-      query={graphql`
-        {
-          wpMenu(slug: { eq: "new-site-menu" }) {
-            menuItems {
-              nodes {
-                label
-                parentId
-                childItems {
-                  nodes {
-                    label
-                    url
-                  }
-                }
-              }
-            }
-          }
-        }
-      `}
-      render={data => (
-        <StyledMenu open={open}>
-          <MenuItem title="Home" to="/" closeFunction={closeMenuFunction} />
-          <ItemDivider />
-          <CollapsableMenuItem title="News &amp; Info" resetOpen={!open}>
-            <MenuItem
-              title="News"
-              to="/news"
-              small
-              closeFunction={closeMenuFunction}
-            />
-            <MenuItem
-              title="Training"
-              to="/training"
-              small
-              closeFunction={closeMenuFunction}
-            />
-            <MenuItem
-              title="Roll Of Honour"
-              to="/roll-of-honour"
-              small
-              closeFunction={closeMenuFunction}
-            />
-          </CollapsableMenuItem>
-          <ItemDivider />
-          <CollapsableMenuItem title="Juniors" resetOpen={!open}>
-            <MenuItem
-              title="Welcome"
-              to="/juniors"
-              small
-              closeFunction={closeMenuFunction}
-            />
-          </CollapsableMenuItem>
-          <ItemDivider />
-          <MenuItem
-            title="Fixtures &amp; Results"
-            to="/fixtures"
-            closeFunction={closeMenuFunction}
-          />
-          <ItemDivider />
-          {getMenuItems(
-            data.wpMenu.menuItems.nodes.filter(item => !item.parentId),
-            closeMenuFunction,
-            open
-          )}
-          <MenuItem
-            title="Join Us"
-            to="/join-us"
-            closeFunction={closeMenuFunction}
-          />
-        </StyledMenu>
+    <StyledMenu open={open}>
+      <MenuItem title="Home" to="/" closeFunction={closeMenuFunction} />
+      <ItemDivider />
+      <CollapsableMenuItem title="News &amp; Info" resetOpen={!open}>
+        <MenuItem
+          title="News"
+          to="/news"
+          small
+          closeFunction={closeMenuFunction}
+        />
+        <MenuItem
+          title="Training"
+          to="/training"
+          small
+          closeFunction={closeMenuFunction}
+        />
+        <MenuItem
+          title="Roll Of Honour"
+          to="/roll-of-honour"
+          small
+          closeFunction={closeMenuFunction}
+        />
+      </CollapsableMenuItem>
+      <ItemDivider />
+      <CollapsableMenuItem title="Juniors" resetOpen={!open}>
+        <MenuItem
+          title="Welcome"
+          to="/juniors"
+          small
+          closeFunction={closeMenuFunction}
+        />
+      </CollapsableMenuItem>
+      <ItemDivider />
+      <MenuItem
+        title="Fixtures &amp; Results"
+        to="/fixtures"
+        closeFunction={closeMenuFunction}
+      />
+      <ItemDivider />
+      {getMenuItems(
+        menuData.wpMenu.menuItems.nodes.filter(item => !item.parentId),
+        closeMenuFunction,
+        open
       )}
-    />
+      <MenuItem
+        title="Join Us"
+        to="/join-us"
+        closeFunction={closeMenuFunction}
+      />
+    </StyledMenu>
   )
 }
 

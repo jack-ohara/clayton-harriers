@@ -2,13 +2,13 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
-import BackgroundImage from "gatsby-background-image"
+import BackgroundBanner from "../components/background-banner"
 import HoriztonalCardScroll from "../components/horizontalCardScroll"
 import { graphql, Link } from "gatsby"
 import { mapCardFields } from "../utils/wpPostMapper"
 
 const H1 = styled.h1`
-  font-size: 2.6rem;
+  font-size: calc(2.4rem + 2vw);
   z-index: 1;
   color: ${props => props.theme.colours.lightGrey};
   text-shadow: 2px 2px ${props => props.theme.colours.orange};
@@ -17,19 +17,11 @@ const H1 = styled.h1`
   padding: 0 1.0875rem;
 `
 
-const StyledBackgroundImage = styled(BackgroundImage)`
-  padding-top: 4.8rem;
-  min-height: 235px;
-
-  * {
-    text-align: center;
-  }
-`
-
 const BannerTextContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
 `
 
 const StyledLink = styled(Link)`
@@ -50,17 +42,13 @@ const IndexPage = ({ data }) => {
   const latestPosts = data.latestPostsData.nodes.map(e => mapCardFields(e))
 
   const backgroundImage = (
-    <StyledBackgroundImage
-      Tag="section"
-      fluid={data.mobileImage.childImageSharp.fluid}
-      backgroundColor={`#F8F8F8`}
-    >
+    <BackgroundBanner>
       <BannerTextContainer>
         <H1>Clayton-Le-Moors Harriers</H1>
 
         <StyledLink to="/join-us">Join Us</StyledLink>
       </BannerTextContainer>
-    </StyledBackgroundImage>
+    </BackgroundBanner>
   )
 
   return (
@@ -124,13 +112,6 @@ export const pageQuery = graphql`
     }
     homePageContent: wpPage(slug: { eq: "new-site-home-page" }) {
       content
-    }
-    mobileImage: file(relativePath: { eq: "clayton-runner-landscape.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1000, quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
-      }
     }
   }
 `
