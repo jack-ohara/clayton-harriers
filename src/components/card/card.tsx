@@ -2,8 +2,9 @@ import React from "react"
 import HorizontalRule from "../../utils/styles/HorizontalRule.js"
 import CardBannerSVG from "../../images/card-banner.svg"
 import styled, { css } from "styled-components"
-import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
+import { Post } from "../../types/WpSharedTypes.js"
 
 const cardStyles = css`
   border-radius: 5px;
@@ -79,18 +80,7 @@ interface CardStyleProps {
   horizontalLayout: boolean
 }
 
-export interface CardProps {
-  slug: string
-  featuredImage?: {
-    image: IGatsbyImageData | undefined
-    altText: string
-  }
-  title: string
-  author: string
-  date: string
-  excerpt: string | undefined
-  horizontalLayout?: boolean
-}
+type CardProps = Post
 
 export default function Card({
   slug,

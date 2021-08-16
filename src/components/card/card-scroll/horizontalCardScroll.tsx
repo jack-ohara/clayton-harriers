@@ -1,11 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import HorizontalRule from "../utils/styles/HorizontalRule"
-import Card from "./card/card"
-
-const Container = styled.div``
-
-const Title = styled.h3``
+import { Post } from "../../../types/WpSharedTypes"
+import Card from "../card"
 
 const CardContainer = styled.div`
   display: flex;
@@ -23,15 +19,12 @@ const CardWrapper = styled.div`
   padding: 0 10px;
 `
 
-const StyledHR = styled(HorizontalRule)`
-  margin-bottom: 0.2rem;
-`
+interface Props {
+  posts: Post[]
+}
 
-const HoriztonalCardScroll = ({ title, posts }) => (
-  <Container>
-    <Title style={{ textAlign: "left" }}>{title}</Title>
-    <StyledHR />
-
+export default function HoriztonalCardScroll({ posts }: Props) {
+  return (
     <CardContainer>
       {posts.map((post, index) => (
         <CardWrapper key={index}>
@@ -39,7 +32,5 @@ const HoriztonalCardScroll = ({ title, posts }) => (
         </CardWrapper>
       ))}
     </CardContainer>
-  </Container>
-)
-
-export default HoriztonalCardScroll
+  )
+}

@@ -3,7 +3,8 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
 import BackgroundBanner from "../components/background-banner"
-import HoriztonalCardScroll from "../components/horizontalCardScroll"
+import HoriztonalCardScroll from "../components/card/card-scroll/horizontalCardScroll"
+import CardScroller from "../components/card/card-scroll"
 import { graphql, Link } from "gatsby"
 import { mapCardFields } from "../utils/wpPostMapper"
 
@@ -59,7 +60,7 @@ const IndexPage = ({ data }) => {
         dangerouslySetInnerHTML={{ __html: data.homePageContent.content }}
       />
 
-      <HoriztonalCardScroll title="Latest Updates" posts={latestPosts} />
+      <CardScroller title="Latest Updates" posts={latestPosts} />
     </Layout>
   )
 }

@@ -1,9 +1,9 @@
 import { getImage } from "gatsby-plugin-image"
-import { CardProps } from "../components/card/card"
+import { Post } from "../types/WpSharedTypes"
 import { getLocalFormatFromString } from "./dateFormatter"
 
-export const mapCardFields = (wpPost): CardProps => {
-  const post: CardProps = {
+export const mapCardFields = (wpPost): Post => {
+  const post: Post = {
     slug: wpPost.uri,
     featuredImage: {
       image: getImage(wpPost.featuredImage?.node.localFile),
