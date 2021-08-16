@@ -19,7 +19,7 @@ const BgImage = styled(GatsbyImage)`
   @media (min-width: 815px) {
     img {
       object-fit: none !important;
-      object-position: center -70px !important;
+      object-position: center -3.8vw !important;
     }
   }
 `
