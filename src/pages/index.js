@@ -3,7 +3,6 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
 import BackgroundBanner from "../components/background-banner"
-import HoriztonalCardScroll from "../components/card/card-scroll/horizontalCardScroll"
 import CardScroller from "../components/card/card-scroll"
 import { graphql, Link } from "gatsby"
 import { mapCardFields } from "../utils/wpPostMapper"
@@ -37,6 +36,7 @@ const StyledLink = styled(Link)`
 const ContentWrapper = styled.div`
   margin-top: 1.45em;
   margin-bottom: 1.45em;
+  font-size: 1.1rem;
 `
 
 const IndexPage = ({ data }) => {
@@ -70,7 +70,7 @@ export default IndexPage
 export const pageQuery = graphql`
   query HomePageQuery {
     latestPostsData: allWpPost(
-      limit: 8
+      limit: 12
       sort: { fields: date, order: DESC }
       filter: { status: { eq: "publish" } }
     ) {

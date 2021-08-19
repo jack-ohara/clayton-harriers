@@ -23,6 +23,7 @@ const cardStyles = css`
   &:active,
   &:focus {
     transform: scale(1.03);
+    outline: none;
   }
 `
 

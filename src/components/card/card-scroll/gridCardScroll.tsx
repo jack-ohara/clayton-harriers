@@ -1,7 +1,9 @@
 import React, { CSSProperties, MouseEventHandler } from "react"
 import Slider from "react-slick"
 import styled from "styled-components"
+import HorizontalRule from "../../../utils/styles/HorizontalRule"
 import { Post } from "../../../types/WpSharedTypes"
+import { Link } from "gatsby"
 import Card from "../card"
 
 const ArrowDiv = styled.div`
@@ -33,13 +35,13 @@ const ArrowDiv = styled.div`
 const CardContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 1rem;
-  padding: 10px 0 40px 0;
+  grid-auto-rows: auto;
+  padding: 1rem 0;
 
   a {
-    min-width: 65vw;
-    min-height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 95%;
   }
 `
 
@@ -90,10 +92,10 @@ export default function GridCardScroll({ posts }: Props) {
   return (
     <Slider {...settings}>
       {batches.map((b, idx) => (
-        <div>
-          <CardContainer key={`grid-scroll-${idx}`}>
+        <div key={`grid-scroll-${idx}`}>
+          <CardContainer>
             {b.map((post, index) => (
-              <Card {...post} key={`grid-scroll-card-${index}`} />
+              <Card {...post} key={`grid-scroll-card-$${index}`} />
             ))}
           </CardContainer>
         </div>
