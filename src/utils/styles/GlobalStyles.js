@@ -3,6 +3,8 @@ import React from "react"
 import { createGlobalStyle } from "styled-components"
 import { mediaStyles } from "../useMediaBreakpoints"
 
+console.log(mediaStyles)
+
 const GlobalStyles = createGlobalStyle`
 html {
     font-family: sans-serif;

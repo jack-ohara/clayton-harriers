@@ -37,16 +37,20 @@ const NonLinkCardContainer = styled.div`
 
 const sharedImageStyles = css`
   border-radius: 5px 5px 0 0;
+  height: 160px;
 
   img {
     border-radius: 5px 5px 0 0;
+  }
+
+  @media (min-width: 815px) {
+    height: 250px;
   }
 `
 
 const BannerImage = styled(CardBannerSVG)`
   ${sharedImageStyles}
   margin: 0 auto 0.5rem auto;
-  max-height: 160px;
   max-width: 120%;
   flex-grow: 1;
 `

@@ -1,9 +1,7 @@
 import React, { CSSProperties, MouseEventHandler } from "react"
 import Slider from "react-slick"
 import styled from "styled-components"
-import HorizontalRule from "../../../utils/styles/HorizontalRule"
 import { Post } from "../../../types/WpSharedTypes"
-import { Link } from "gatsby"
 import Card from "../card"
 
 const ArrowDiv = styled.div`
@@ -37,11 +35,30 @@ const CardContainer = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-auto-rows: auto;
   padding: 1rem 0;
+  gap: 1.25rem;
 
   a {
     margin-left: auto;
     margin-right: auto;
     min-width: 95%;
+  }
+
+  a:nth-child(odd) {
+    margin-right: 0;
+  }
+
+  a:nth-child(even) {
+    margin-left: 0;
+  }
+
+  a:nth-child(1),
+  a:nth-child(2) {
+    margin-bottom: 0;
+  }
+
+  a:nth-last-child(1),
+  a:nth-last-child(2) {
+    margin-top: 0;
   }
 `
 
