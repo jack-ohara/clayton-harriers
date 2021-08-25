@@ -1,7 +1,6 @@
 // eslint-disable-next-line
 import React from "react"
 import { createGlobalStyle } from "styled-components"
-import { mediaStyles } from "../useMediaBreakpoints"
 
 const GlobalStyles = createGlobalStyle`
 html {
@@ -627,8 +626,6 @@ html {
   .wpcf7 textarea {
     min-width: 100%;
   }
-
-  ${mediaStyles}
 `
 
 export default GlobalStyles

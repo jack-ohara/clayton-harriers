@@ -9,7 +9,6 @@ const StyledLink = styled(Link)`
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-width: 90vw;
   max-width: 500px;
   padding: 0.5rem 1rem;
   margin: 0.5rem 0;

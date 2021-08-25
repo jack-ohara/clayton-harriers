@@ -6,9 +6,6 @@ import HorizontalRule from "../utils/styles/HorizontalRule.js"
 import { graphql } from "gatsby"
 
 const TemplateWrapper = styled.section`
-  table {
-    font-size: 0.85rem;
-  }
   td,
   th {
     padding: 0.5rem 0.2rem;

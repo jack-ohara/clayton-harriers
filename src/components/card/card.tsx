@@ -2,8 +2,9 @@ import React from "react"
 import HorizontalRule from "../../utils/styles/HorizontalRule.js"
 import CardBannerSVG from "../../images/card-banner.svg"
 import styled, { css } from "styled-components"
-import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
+import { Post } from "../../types/WpSharedTypes.js"
 
 const cardStyles = css`
   border-radius: 5px;
@@ -22,6 +23,7 @@ const cardStyles = css`
   &:active,
   &:focus {
     transform: scale(1.03);
+    outline: none;
   }
 `
 
@@ -35,16 +37,20 @@ const NonLinkCardContainer = styled.div`
 
 const sharedImageStyles = css`
   border-radius: 5px 5px 0 0;
+  height: 160px;
 
   img {
     border-radius: 5px 5px 0 0;
+  }
+
+  @media (min-width: 815px) {
+    height: 250px;
   }
 `
 
 const BannerImage = styled(CardBannerSVG)`
   ${sharedImageStyles}
   margin: 0 auto 0.5rem auto;
-  max-height: 160px;
   max-width: 120%;
   flex-grow: 1;
 `
@@ -79,18 +85,7 @@ interface CardStyleProps {
   horizontalLayout: boolean
 }
 
-export interface CardProps {
-  slug: string
-  featuredImage?: {
-    image: IGatsbyImageData | undefined
-    altText: string
-  }
-  title: string
-  author: string
-  date: string
-  excerpt: string | undefined
-  horizontalLayout?: boolean
-}
+type CardProps = Post
 
 export default function Card({
   slug,
