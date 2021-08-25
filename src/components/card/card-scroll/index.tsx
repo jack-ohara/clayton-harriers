@@ -20,6 +20,10 @@ const HiddenBannerSvg = styled(BannerImage)`
   top: -500px;
 `
 
+const Header = styled.h2`
+  text-align: left;
+`
+
 interface Props {
   title: string
   posts: Post[]
@@ -28,7 +32,7 @@ interface Props {
 export default function CardScroll({ title, posts }: Props) {
   return (
     <div>
-      <h3 style={{ textAlign: "left" }}>{title}</h3>
+      <Header>{title}</Header>
       <StyledHR />
 
       <HiddenBannerSvg />
