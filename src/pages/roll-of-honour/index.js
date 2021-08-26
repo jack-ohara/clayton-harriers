@@ -10,6 +10,7 @@ import { getImage } from "gatsby-plugin-image"
 const CardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
 `
 
 const RollOfHonourPage = ({ data }) => {

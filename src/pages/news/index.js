@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import CardPreviews from "../../components/card/cardPreviews"
+import NewsPreviews from "../../components/news/newsPreviews"
 import Layout, { PageHeader } from "../../components/layout"
 import SEO from "../../components/seo"
 import styled from "styled-components"
@@ -41,7 +41,7 @@ const NewsPage = ({ data }) => {
 
       <StyledHR />
 
-      <CardPreviews posts={posts} />
+      <NewsPreviews posts={posts} />
 
       <div ref={ref} />
     </Layout>
@@ -65,7 +65,13 @@ export const pageQuery = graphql`
         featuredImage {
           node {
             localFile {
-              publicURL
+              childImageSharp {
+                gatsbyImageData(
+                  formats: [AUTO, WEBP]
+                  placeholder: BLURRED
+                  layout: FULL_WIDTH
+                )
+              }
             }
             altText
           }
