@@ -9,12 +9,17 @@ import HorizontalRule from "../../utils/styles/HorizontalRule"
 import { GatsbyImage } from "gatsby-plugin-image"
 
 const StyledLink = styled(Link)`
+  grid-column: 1;
   text-decoration: none;
   background-image: none;
 
   &:hover,
   &:focus {
-    background: lightgrey;
+    background: var(--light-grey);
+  }
+
+  &:hover > *,
+  &:focus > * {
     outline: none;
     text-decoration: underline;
   }
@@ -28,20 +33,40 @@ const StyledLink = styled(Link)`
     margin-bottom: 0.4rem;
   }
 
-  h4:last-of-type {
-    margin-bottom: 0.6rem;
+  h4 {
+    color: var(--dark-grey);
   }
 `
 
-const PostPreviewWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
+interface PostPreviewWrapperStyleProps {
+  postHasImage: boolean
+}
+
+const PostPreviewWrapper = styled.div<PostPreviewWrapperStyleProps>`
+  display: grid;
+  grid-template-columns: ${props =>
+    props.postHasImage ? "3fr 40px 1fr" : "1fr"};
+  grid-template-rows: 1fr 1fr;
+  grid-row-gap: 1em;
+
+  p {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+    margin: 0;
+  }
 `
 
 const PostPreviewimage = styled(GatsbyImage)`
+  grid-column: 2 / span 3;
+  grid-row: 1 / span 2;
   max-height: 150px;
-  width: 20%;
   border-radius: 1%;
+  mask-image: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 1) 50%,
+    rgba(0, 0, 0, 0.5) 75%,
+    rgba(0, 0, 0, 0)
+  );
 `
 
 interface Props {
@@ -57,15 +82,13 @@ export default function NewsPreviews({ posts }: Props) {
       <DesktopComponent>
         {posts.map((p, idx) => (
           <article key={`desktop-news-post-preview-${idx}`}>
-            <PostPreviewWrapper>
-              <div>
-                <StyledLink to={p.slug}>
-                  <h3>{p.title}</h3>
-                  <h4>{p.author}</h4>
-                  <h4>{p.date}</h4>
-                </StyledLink>
-                <p>{p.excerpt}</p>
-              </div>
+            <PostPreviewWrapper postHasImage={Boolean(p.featuredImage?.image)}>
+              <StyledLink to={p.slug}>
+                <h3>{p.title}</h3>
+                <h4>{p.author}</h4>
+                <h4>{p.date}</h4>
+              </StyledLink>
+              <p>{p.excerpt}</p>
               {p.featuredImage?.image && (
                 <PostPreviewimage
                   image={p.featuredImage.image}
