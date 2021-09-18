@@ -23,8 +23,9 @@ interface LayoutProps {
 }
 
 export const PageHeader = styled.h2`
-  font-size: 2rem;
-  text-align: center;
+  font-size: 2.5rem;
+  margin-top: 2rem;
+  text-shadow: 1px 1px white, 2px 2px var(--clayton-orange);
 `
 
 export default function Layout({ bannerImage, children }: LayoutProps) {

@@ -6,9 +6,10 @@ import styled from "styled-components"
 import { graphql } from "gatsby"
 import { mapCardFields } from "../../utils/wpPostMapper"
 import { useInView } from "react-intersection-observer"
+import HorizontalRule from "../../utils/styles/HorizontalRule"
 
 const StyledHR = styled.hr`
-  margin: 1.45rem 2rem;
+  margin: 0;
 `
 
 const postsBlockSize = 10
@@ -38,7 +39,6 @@ const NewsPage = ({ data }) => {
       <SEO title="News &amp; Info" />
 
       <PageHeader>News &amp; Info</PageHeader>
-
       <StyledHR />
 
       <NewsPreviews posts={posts} />

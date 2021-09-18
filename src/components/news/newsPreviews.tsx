@@ -8,6 +8,10 @@ import { Link } from "gatsby"
 import HorizontalRule from "../../utils/styles/HorizontalRule"
 import { GatsbyImage } from "gatsby-plugin-image"
 
+const HR = styled(HorizontalRule)`
+  margin-bottom: 0;
+`
+
 const StyledLink = styled(Link)`
   grid-column: 1;
   text-decoration: none;
@@ -30,6 +34,7 @@ const StyledLink = styled(Link)`
   }
 
   h3 {
+    margin-top: 1.45rem;
     margin-bottom: 0.4rem;
   }
 
@@ -59,7 +64,7 @@ const PostPreviewWrapper = styled.div<PostPreviewWrapperStyleProps>`
 const PostPreviewimage = styled(GatsbyImage)`
   grid-column: 2 / span 3;
   grid-row: 1 / span 2;
-  max-height: 150px;
+  max-height: 200px;
   border-radius: 1%;
   mask-image: linear-gradient(
     to left,
@@ -74,6 +79,15 @@ interface Props {
 }
 
 export default function NewsPreviews({ posts }: Props) {
+  const formatExcerpt = (excerpt: string, slug: string): JSX.Element => {
+    return (
+      <p>
+        {excerpt.replace("Continue reading →", "")}
+        <Link to={slug}>Continue reading →</Link>
+      </p>
+    )
+  }
+
   return (
     <>
       <MobileComponent>
@@ -88,7 +102,7 @@ export default function NewsPreviews({ posts }: Props) {
                 <h4>{p.author}</h4>
                 <h4>{p.date}</h4>
               </StyledLink>
-              <p>{p.excerpt}</p>
+              {formatExcerpt(p.excerpt, p.slug)}
               {p.featuredImage?.image && (
                 <PostPreviewimage
                   image={p.featuredImage.image}
@@ -96,7 +110,7 @@ export default function NewsPreviews({ posts }: Props) {
                 />
               )}
             </PostPreviewWrapper>
-            <HorizontalRule />
+            <HR />
           </article>
         ))}
       </DesktopComponent>
