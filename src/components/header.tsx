@@ -6,7 +6,7 @@ import OutsideAlerter from "./eventOutsideWrapper"
 import NavMenu from "./menu"
 
 const StyledHeader = styled.header`
-  padding: 0.5rem;
+  padding: 0.5rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;

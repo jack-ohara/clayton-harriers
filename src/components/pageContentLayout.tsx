@@ -5,7 +5,7 @@ const ContentWrapper = styled.div`
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.45rem 1.45rem 1.45rem;
+  padding: 0 0 1.45rem 0;
   flex-grow: 1;
   display: flex;
   justify-content: space-between;
