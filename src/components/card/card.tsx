@@ -16,13 +16,13 @@ const cardStyles = css`
   margin: 0.5rem 0;
   color: inherit;
   text-decoration: none;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.1s ease-out;
   overflow: hidden;
 
   &:hover,
   &:active,
   &:focus {
-    transform: scale(1.03);
+    transform: scale(1.01);
     outline: none;
   }
 `

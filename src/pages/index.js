@@ -24,19 +24,21 @@ const BannerTextContainer = styled.div`
   text-align: center;
 `
 
-const StyledLink = styled(Link)`
-  padding: 0.5rem 1.1rem;
-  background: ${props => props.theme.colours.lightGrey};
-  border-radius: 3px;
-  margin: 0.5rem auto 0.5rem auto;
-  color: ${props => props.theme.colours.orange};
-  text-decoration: none;
-`
-
 const ContentWrapper = styled.div`
-  margin-top: 1.45em;
-  margin-bottom: 1.45em;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 3rem auto 0;
+  padding: 2rem;
+  border-radius: 3px;
+  background: var(--light-grey);
+  box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+    0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+  transform: skewX(-10deg);
+
+  & > * {
+    transform: skewX(10deg);
+  }
 `
 
 const IndexPage = ({ data }) => {
@@ -47,7 +49,9 @@ const IndexPage = ({ data }) => {
       <BannerTextContainer>
         <H1>Clayton-Le-Moors Harriers</H1>
 
-        <StyledLink to="/join-us">Join Us</StyledLink>
+        <ContentWrapper
+          dangerouslySetInnerHTML={{ __html: data.homePageContent.content }}
+        />
       </BannerTextContainer>
     </BackgroundBanner>
   )
@@ -55,10 +59,6 @@ const IndexPage = ({ data }) => {
   return (
     <Layout bannerImage={backgroundImage}>
       <SEO title="Home" />
-
-      <ContentWrapper
-        dangerouslySetInnerHTML={{ __html: data.homePageContent.content }}
-      />
 
       <CardScroller title="Latest Updates" posts={latestPosts} />
     </Layout>

@@ -6,7 +6,7 @@ import { graphql, StaticQuery } from "gatsby"
 const Wrapper = styled.section`
   position: relative;
   min-height: 30vw;
-  max-height: 70vh;
+  padding: 0 2rem;
 `
 
 const BgImage = styled(GatsbyImage)`
@@ -40,9 +40,7 @@ export default function BackgroundBanner({ children }: Props) {
     <StaticQuery
       query={graphql`
         query {
-          bannerImage: file(
-            relativePath: { eq: "clayton-runner-landscape.webp" }
-          ) {
+          bannerImage: file(relativePath: { eq: "clayton-runner-edit.png" }) {
             childImageSharp {
               gatsbyImageData(placeholder: BLURRED)
             }
