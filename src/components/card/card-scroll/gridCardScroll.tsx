@@ -7,6 +7,7 @@ import Card from "../card"
 const StyledSlider = styled(Slider)`
   width: 91%;
   margin: 0 auto;
+  max-width: var(--max-content-width);
 `
 
 const ArrowDiv = styled.div`

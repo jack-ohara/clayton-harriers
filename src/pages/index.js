@@ -2,19 +2,26 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
-import BackgroundBanner from "../components/background-banner"
 import CardScroller from "../components/card/card-scroll"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import { mapCardFields } from "../utils/wpPostMapper"
+
+const HeroSection = styled.section`
+  background: url("/clayton-runner-edit.png") center top no-repeat;
+  min-height: calc(100vh - 40px);
+  display: grid;
+  grid-template-rows: 1fr auto;
+`
 
 const H1 = styled.h1`
   font-size: calc(2.4rem + 2vw);
   z-index: 1;
-  color: ${props => props.theme.colours.lightGrey};
+  color: var(--light-grey);
   text-shadow: 2px 2px var(--clayton-orange);
   font-family: "Raleway", sans-serif;
   margin: 0;
   padding: 0 1.0875rem;
+  -webkit-text-stroke: 1px var(--dark-grey);
 `
 
 const BannerTextContainer = styled.div`
@@ -22,6 +29,7 @@ const BannerTextContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  min-height: 60vh;
 `
 
 const ContentWrapper = styled.div`
@@ -29,7 +37,7 @@ const ContentWrapper = styled.div`
   max-width: 800px;
   margin: 3rem auto 0;
   padding: 2rem;
-  border-radius: 3px;
+  border-radius: 2px;
   background: var(--light-grey);
   box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
     0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
@@ -41,26 +49,45 @@ const ContentWrapper = styled.div`
   }
 `
 
+const LatestUpdatesWrapper = styled.div`
+  margin-top: 6rem;
+
+  @media (max-width: 1200px) {
+    overflow-x: auto;
+  }
+`
+
 const IndexPage = ({ data }) => {
   const latestPosts = data.latestPostsData.nodes.map(e => mapCardFields(e))
 
-  const backgroundImage = (
-    <BackgroundBanner>
-      <BannerTextContainer>
-        <H1>Clayton-Le-Moors Harriers</H1>
+  // const backgroundImage = (
+  //   <BackgroundBanner>
+  //     <BannerTextContainer>
+  //       <H1>Clayton-Le-Moors Harriers</H1>
 
-        <ContentWrapper
-          dangerouslySetInnerHTML={{ __html: data.homePageContent.content }}
-        />
-      </BannerTextContainer>
-    </BackgroundBanner>
-  )
+  //       <ContentWrapper
+  //         dangerouslySetInnerHTML={{ __html: data.homePageContent.content }}
+  //       />
+  //     </BannerTextContainer>
+  //   </BackgroundBanner>
+  // )
 
   return (
-    <Layout bannerImage={backgroundImage}>
+    <Layout>
       <SEO title="Home" />
+      <HeroSection>
+        <BannerTextContainer>
+          <H1>Clayton-Le-Moors Harriers</H1>
 
-      <CardScroller title="Latest Updates" posts={latestPosts} />
+          <ContentWrapper
+            dangerouslySetInnerHTML={{ __html: data.homePageContent.content }}
+          />
+        </BannerTextContainer>
+
+        <LatestUpdatesWrapper>
+          <CardScroller title="Latest Updates" posts={latestPosts} />
+        </LatestUpdatesWrapper>
+      </HeroSection>
     </Layout>
   )
 }

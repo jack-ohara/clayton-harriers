@@ -7,6 +7,7 @@ import HorizontalRule from "../../../utils/styles/HorizontalRule"
 import BannerImage from "../../../images/card-banner.svg"
 import MobileComponent from "../../mobileComponent"
 import DesktopComponent from "../../desktopComponent"
+import { PageHeader } from "../../layout"
 
 const StyledHR = styled(HorizontalRule)`
   margin-bottom: 0.2rem;
@@ -32,7 +33,7 @@ interface Props {
 export default function CardScroll({ title, posts }: Props) {
   return (
     <div>
-      <Header>{title}</Header>
+      <PageHeader>{title}</PageHeader>
       <StyledHR />
 
       <HiddenBannerSvg />
