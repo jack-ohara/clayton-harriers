@@ -27,11 +27,6 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   background-image: none;
 
-  /* &:hover,
-  &:focus {
-    background: var(--light-grey);
-  } */
-
   &:hover > *,
   &:focus > * {
     outline: none;

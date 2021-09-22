@@ -21,10 +21,11 @@ const H1 = styled.h1`
   font-family: "Raleway", sans-serif;
   margin: 0;
   padding: 0 1.0875rem;
-  -webkit-text-stroke: 1px var(--dark-grey);
+  -webkit-text-stroke: 1px var(--black);
+  text-decoration: underline var(--light-grey) 4px;
 
   @media (max-width: 775px) {
-    font-size: 3.5rem;
+    font-size: 3.75rem;
   }
 `
 
@@ -34,6 +35,10 @@ const BannerTextContainer = styled.div`
   justify-content: space-between;
   text-align: center;
   padding: 16rem 1rem 4rem;
+
+  @media (max-width: 775px) {
+    padding-top: 1rem;
+  }
 `
 
 const ContentWrapper = styled.div`
@@ -54,12 +59,21 @@ const ContentWrapper = styled.div`
   }
 
   @media (max-width: 775px) {
-    font-size: 3.5rem;
+    font-size: 1rem;
+    transform: none;
+
+    & > * {
+      transform: none;
+    }
   }
 `
 
 const LatestUpdatesWrapper = styled.div`
   margin-top: 6rem;
+
+  @media (max-width: 775px) {
+    margin-top: 0;
+  }
 
   @media (min-width: 1200px) {
     display: flex;
