@@ -20,6 +20,7 @@ const cardStyles = css`
   text-decoration: none;
   transition: transform 0.1s ease-out;
   overflow: hidden;
+  color: var(--black);
   background: var(--light-grey);
 
   &:hover,

@@ -604,6 +604,7 @@ html {
     --clayton-orange: #FF6935;
     --light-grey: #F8F8F8;
     --dark-grey: #8A8A8A;
+    --black: #212020;
     --max-content-width: 1200px;
   }
 

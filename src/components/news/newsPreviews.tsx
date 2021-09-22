@@ -8,6 +8,16 @@ import { Link } from "gatsby"
 import HorizontalRule from "../../utils/styles/HorizontalRule"
 import { GatsbyImage } from "gatsby-plugin-image"
 
+const DesktopContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  article {
+    max-width: var(--max-content-width);
+  }
+`
+
 const HR = styled(HorizontalRule)`
   margin-bottom: 0;
 `
@@ -17,10 +27,10 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   background-image: none;
 
-  &:hover,
+  /* &:hover,
   &:focus {
     background: var(--light-grey);
-  }
+  } */
 
   &:hover > *,
   &:focus > * {
@@ -94,25 +104,29 @@ export default function NewsPreviews({ posts }: Props) {
         <CardPreviews posts={posts} />
       </MobileComponent>
       <DesktopComponent>
-        {posts.map((p, idx) => (
-          <article key={`desktop-news-post-preview-${idx}`}>
-            <PostPreviewWrapper postHasImage={Boolean(p.featuredImage?.image)}>
-              <StyledLink to={p.slug}>
-                <h3>{p.title}</h3>
-                <h4>{p.author}</h4>
-                <h4>{p.date}</h4>
-              </StyledLink>
-              {formatExcerpt(p.excerpt, p.slug)}
-              {p.featuredImage?.image && (
-                <PostPreviewimage
-                  image={p.featuredImage.image}
-                  alt={p.featuredImage.altText}
-                />
-              )}
-            </PostPreviewWrapper>
-            <HR />
-          </article>
-        ))}
+        <DesktopContentWrapper>
+          {posts.map((p, idx) => (
+            <article key={`desktop-news-post-preview-${idx}`}>
+              <PostPreviewWrapper
+                postHasImage={Boolean(p.featuredImage?.image)}
+              >
+                <StyledLink to={p.slug}>
+                  <h3>{p.title}</h3>
+                  <h4>{p.author}</h4>
+                  <h4>{p.date}</h4>
+                </StyledLink>
+                {formatExcerpt(p.excerpt, p.slug)}
+                {p.featuredImage?.image && (
+                  <PostPreviewimage
+                    image={p.featuredImage.image}
+                    alt={p.featuredImage.altText}
+                  />
+                )}
+              </PostPreviewWrapper>
+              <HR />
+            </article>
+          ))}
+        </DesktopContentWrapper>
       </DesktopComponent>
     </>
   )

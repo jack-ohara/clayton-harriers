@@ -42,6 +42,7 @@ const ContentWrapper = styled.div`
   margin: 3rem auto 0;
   padding: 2rem;
   border-radius: 2px;
+  color: var(--black);
   background: var(--light-grey);
   box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
     0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),

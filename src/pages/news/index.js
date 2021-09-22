@@ -11,6 +11,11 @@ const StyledHR = styled.hr`
   margin: 0;
 `
 
+const ContentWrapper = styled.div`
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+`
+
 const postsBlockSize = 10
 
 const NewsPage = ({ data }) => {
@@ -37,10 +42,12 @@ const NewsPage = ({ data }) => {
     <Layout>
       <SEO title="News &amp; Info" />
 
-      <PageHeader>News &amp; Info</PageHeader>
-      <StyledHR />
+      <ContentWrapper>
+        <PageHeader>News &amp; Info</PageHeader>
+        <StyledHR />
 
-      <NewsPreviews posts={posts} />
+        <NewsPreviews posts={posts} />
+      </ContentWrapper>
 
       <div ref={ref} />
     </Layout>

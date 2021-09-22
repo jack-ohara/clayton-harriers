@@ -9,6 +9,7 @@ const ContentWrapper = styled.div`
   justify-content: space-between;
   flex-direction: column;
   background: #212020eb;
+  color: var(--light-grey);
 `
 
 const Footer = styled.footer`
