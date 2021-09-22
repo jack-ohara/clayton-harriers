@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 interface Props {
   children: ReactNode
+  className?: string | undefined
 }
 
 const DesktopContentWrapper = styled.div`
@@ -11,6 +12,10 @@ const DesktopContentWrapper = styled.div`
   }
 `
 
-export default function DesktopComponent({ children }: Props) {
-  return <DesktopContentWrapper>{children}</DesktopContentWrapper>
+export default function DesktopComponent({ children, className }: Props) {
+  return (
+    <DesktopContentWrapper className={className}>
+      {children}
+    </DesktopContentWrapper>
+  )
 }

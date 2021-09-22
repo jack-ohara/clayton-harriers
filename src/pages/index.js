@@ -7,14 +7,14 @@ import { graphql } from "gatsby"
 import { mapCardFields } from "../utils/wpPostMapper"
 
 const HeroSection = styled.section`
-  background: url("/clayton-runner-edit.png") center top no-repeat;
+  background: url("/clayton-runner-no-noise.png") center top no-repeat;
   min-height: calc(100vh - 40px);
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: minmax(63vh, 1fr) auto;
 `
 
 const H1 = styled.h1`
-  font-size: calc(2.4rem + 2vw);
+  font-size: 6rem;
   z-index: 1;
   color: var(--light-grey);
   text-shadow: 2px 2px var(--clayton-orange);
@@ -22,14 +22,18 @@ const H1 = styled.h1`
   margin: 0;
   padding: 0 1.0875rem;
   -webkit-text-stroke: 1px var(--dark-grey);
+
+  @media (max-width: 775px) {
+    font-size: 3.5rem;
+  }
 `
 
 const BannerTextContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   text-align: center;
-  min-height: 60vh;
+  padding: 16rem 1rem 4rem;
 `
 
 const ContentWrapper = styled.div`
@@ -47,10 +51,19 @@ const ContentWrapper = styled.div`
   & > * {
     transform: skewX(10deg);
   }
+
+  @media (max-width: 775px) {
+    font-size: 3.5rem;
+  }
 `
 
 const LatestUpdatesWrapper = styled.div`
   margin-top: 6rem;
+
+  @media (min-width: 1200px) {
+    display: flex;
+    justify-content: center;
+  }
 
   @media (max-width: 1200px) {
     overflow-x: auto;
@@ -59,18 +72,6 @@ const LatestUpdatesWrapper = styled.div`
 
 const IndexPage = ({ data }) => {
   const latestPosts = data.latestPostsData.nodes.map(e => mapCardFields(e))
-
-  // const backgroundImage = (
-  //   <BackgroundBanner>
-  //     <BannerTextContainer>
-  //       <H1>Clayton-Le-Moors Harriers</H1>
-
-  //       <ContentWrapper
-  //         dangerouslySetInnerHTML={{ __html: data.homePageContent.content }}
-  //       />
-  //     </BannerTextContainer>
-  //   </BackgroundBanner>
-  // )
 
   return (
     <Layout>

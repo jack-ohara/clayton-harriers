@@ -6,7 +6,6 @@ import styled from "styled-components"
 import { graphql } from "gatsby"
 import { mapCardFields } from "../../utils/wpPostMapper"
 import { useInView } from "react-intersection-observer"
-import HorizontalRule from "../../utils/styles/HorizontalRule"
 
 const StyledHR = styled.hr`
   margin: 0;
