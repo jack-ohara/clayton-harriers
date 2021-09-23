@@ -18,6 +18,10 @@ const HiddenBannerSvg = styled(BannerImage)`
 
 const StyledHeader = styled(PageHeader)`
   margin-left: 1rem;
+
+  @media (max-width: 1200px) {
+    margin-bottom: 0.5rem;
+  }
 `
 
 interface Props {

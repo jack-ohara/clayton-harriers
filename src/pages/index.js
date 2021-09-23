@@ -27,6 +27,12 @@ const H1 = styled.h1`
   @media (max-width: 775px) {
     font-size: 3.75rem;
   }
+
+  @media (max-width: 1200px) {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+  }
 `
 
 const BannerTextContainer = styled.div`
@@ -38,6 +44,10 @@ const BannerTextContainer = styled.div`
 
   @media (max-width: 775px) {
     padding-top: 1rem;
+  }
+
+  @media (max-width: 1200px) {
+    min-height: calc(100vh - 85px);
   }
 `
 
@@ -82,6 +92,7 @@ const LatestUpdatesWrapper = styled.div`
 
   @media (max-width: 1200px) {
     overflow-x: auto;
+    margin-top: 3rem;
   }
 `
 
