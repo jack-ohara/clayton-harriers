@@ -26,32 +26,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Clayton-Le-Moors Harriers`,
+        short_name: `Clayton Harriers`,
         start_url: `/`,
-        background_color: `#FF8D00`,
-        theme_color: `#FF8D00`,
+        background_color: `##212020eb`,
+        theme_color: `##212020eb`,
         display: `minimal-ui`,
         icon: `src/images/whole-banner-square.svg`, // This path is relative to the root of the site.
-      },
-    },
-    {
-      resolve: "gatsby-transformer-remark",
-      options: {
-        plugins: [
-          {
-            resolve: "gatsby-remark-images",
-            options: {
-              maxWidth: 2048,
-            },
-          },
-          {
-            resolve: "gatsby-remark-copy-linked-files",
-            options: {
-              destinationDir: "static",
-            },
-          },
-        ],
       },
     },
     `gatsby-plugin-styled-components`,

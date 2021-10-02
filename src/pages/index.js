@@ -5,12 +5,19 @@ import styled from "styled-components"
 import CardScroller from "../components/card/card-scroll"
 import { graphql } from "gatsby"
 import { mapCardFields } from "../utils/wpPostMapper"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const HeroSection = styled.section`
-  background: url("/clayton-runner-no-noise.png") center top no-repeat;
-  min-height: calc(100vh - 40px);
+  /* background: url("https://res.cloudinary.com/clayton-le-moors-harriers/image/upload/f_auto,q_auto/v1633152362/clayton-runner-no-noise_xcea96.png")
+    center top no-repeat; */
+  /* min-height: calc(100vh - 40px); */
   display: grid;
-  grid-template-rows: minmax(63vh, 1fr) auto;
+  //grid-template-rows: minmax(63vh, 1fr) auto;
+`
+
+const BannerImage = styled(GatsbyImage)`
+  grid-area: 1/1;
+  z-index: 0;
 `
 
 const H1 = styled.h1`
@@ -36,11 +43,13 @@ const H1 = styled.h1`
 `
 
 const BannerTextContainer = styled.div`
+  grid-area: 1/1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
   padding: 16rem 1rem 4rem;
+  z-index: 1;
 
   @media (max-width: 775px) {
     padding-top: 1rem;
@@ -79,12 +88,6 @@ const ContentWrapper = styled.div`
 `
 
 const LatestUpdatesWrapper = styled.div`
-  margin-top: 6rem;
-
-  @media (max-width: 775px) {
-    margin-top: 0;
-  }
-
   @media (min-width: 1200px) {
     display: flex;
     justify-content: center;
@@ -92,7 +95,6 @@ const LatestUpdatesWrapper = styled.div`
 
   @media (max-width: 1200px) {
     overflow-x: auto;
-    margin-top: 3rem;
   }
 `
 
@@ -103,6 +105,11 @@ const IndexPage = ({ data }) => {
     <Layout>
       <SEO title="Home" />
       <HeroSection>
+        <BannerImage
+          image={data.bannerImage.childImageSharp.gatsbyImageData}
+          alt="clayton runner landscape"
+        />
+
         <BannerTextContainer>
           <H1>Clayton-Le-Moors Harriers</H1>
 
@@ -110,11 +117,11 @@ const IndexPage = ({ data }) => {
             dangerouslySetInnerHTML={{ __html: data.homePageContent.content }}
           />
         </BannerTextContainer>
-
-        <LatestUpdatesWrapper>
-          <CardScroller title="Latest Updates" posts={latestPosts} />
-        </LatestUpdatesWrapper>
       </HeroSection>
+
+      <LatestUpdatesWrapper>
+        <CardScroller title="Latest Updates" posts={latestPosts} />
+      </LatestUpdatesWrapper>
     </Layout>
   )
 }
@@ -123,6 +130,15 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query HomePageQuery {
+    bannerImage: file(relativePath: { eq: "clayton-runner-no-noise.png" }) {
+      childImageSharp {
+        gatsbyImageData(
+          formats: [AUTO, WEBP]
+          placeholder: BLURRED
+          quality: 100
+        )
+      }
+    }
     latestPostsData: allWpPost(
       limit: 12
       sort: { fields: date, order: DESC }

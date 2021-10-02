@@ -18,7 +18,7 @@ const cardStyles = css`
   margin: 0.5rem 0;
   color: inherit;
   text-decoration: none;
-  transition: transform 0.1s ease-out;
+  transition: transform 180ms ease-in;
   overflow: hidden;
   color: var(--black);
   background: var(--light-grey);
