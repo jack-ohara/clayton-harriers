@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react"
 import styled from "styled-components"
 
-const ContentWrapper = styled.div`
+const PageWrapper = styled.div`
   width: 100%;
   margin: 0 auto;
   flex-grow: 1;
@@ -12,6 +12,16 @@ const ContentWrapper = styled.div`
   color: var(--light-grey);
 `
 
+interface ContentWrapperStyleProps {
+  setMaxWidth: boolean
+}
+
+const ContentWrapper = styled.main<ContentWrapperStyleProps>`
+  max-width: ${props =>
+    props.setMaxWidth ? "var(--max-content-width)" : "unset"};
+  margin: 0 auto;
+`
+
 const Footer = styled.footer`
   margin: 2rem;
   text-align: center;
@@ -19,15 +29,17 @@ const Footer = styled.footer`
 
 interface PageContentLayoutProps {
   children: ReactNode
+  setMaxWidth: boolean
 }
 
 export default function PageContentLayout({
   children,
+  setMaxWidth,
 }: PageContentLayoutProps) {
   return (
-    <ContentWrapper>
-      <main>{children}</main>
+    <PageWrapper>
+      <ContentWrapper setMaxWidth={setMaxWidth}>{children}</ContentWrapper>
       <Footer>© {new Date().getFullYear()} Clayton-Le-Moors Harriers</Footer>
-    </ContentWrapper>
+    </PageWrapper>
   )
 }

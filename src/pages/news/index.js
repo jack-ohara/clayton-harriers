@@ -42,12 +42,12 @@ const NewsPage = ({ data }) => {
     <Layout>
       <SEO title="News &amp; Info" />
 
-      <ContentWrapper>
+      <div>
         <PageHeader>News &amp; Info</PageHeader>
         <StyledHR />
 
         <NewsPreviews posts={posts} />
-      </ContentWrapper>
+      </div>
 
       <div ref={ref} />
     </Layout>

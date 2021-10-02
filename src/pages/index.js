@@ -102,7 +102,7 @@ const IndexPage = ({ data }) => {
   const latestPosts = data.latestPostsData.nodes.map(e => mapCardFields(e))
 
   return (
-    <Layout>
+    <Layout setMaxWidth={false}>
       <SEO title="Home" />
       <HeroSection>
         <BannerImage

@@ -19,8 +19,8 @@ const Container = styled.div`
 `
 
 interface LayoutProps {
-  bannerImage?: JSX.Element
   children: ReactNode
+  setMaxWidth?: boolean
 }
 
 export const PageHeader = styled.h2`
@@ -31,14 +31,15 @@ export const PageHeader = styled.h2`
   text-shadow: 2px 2px var(--clayton-orange);
 `
 
-export default function Layout({ bannerImage, children }: LayoutProps) {
+export default function Layout({ children, setMaxWidth = true }: LayoutProps) {
   return (
     <ThemeProvider theme={siteTheme}>
       <GlobalStyles />
       <Container>
         <Header />
-        {bannerImage}
-        <PageContentLayout>{children}</PageContentLayout>
+        <PageContentLayout setMaxWidth={setMaxWidth}>
+          {children}
+        </PageContentLayout>
       </Container>
     </ThemeProvider>
   )
