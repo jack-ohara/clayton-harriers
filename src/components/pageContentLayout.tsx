@@ -17,9 +17,15 @@ interface ContentWrapperStyleProps {
 }
 
 const ContentWrapper = styled.main<ContentWrapperStyleProps>`
+  width: 100%;
   max-width: ${props =>
     props.setMaxWidth ? "var(--max-content-width)" : "unset"};
   margin: 0 auto;
+
+  @media (max-width: 1200px) {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
 `
 
 const Footer = styled.footer`

@@ -2,19 +2,9 @@ import React, { useState, useEffect } from "react"
 import NewsPreviews from "../../components/news/newsPreviews"
 import Layout, { PageHeader } from "../../components/layout"
 import SEO from "../../components/seo"
-import styled from "styled-components"
 import { graphql } from "gatsby"
 import { mapCardFields } from "../../utils/wpPostMapper"
 import { useInView } from "react-intersection-observer"
-
-const StyledHR = styled.hr`
-  margin: 0;
-`
-
-const ContentWrapper = styled.div`
-  max-width: var(--max-content-width);
-  margin: 0 auto;
-`
 
 const postsBlockSize = 10
 
@@ -44,7 +34,6 @@ const NewsPage = ({ data }) => {
 
       <div>
         <PageHeader>News &amp; Info</PageHeader>
-        <StyledHR />
 
         <NewsPreviews posts={posts} />
       </div>

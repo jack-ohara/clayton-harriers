@@ -18,6 +18,12 @@ const HeroSection = styled.section`
 const BannerImage = styled(GatsbyImage)`
   grid-area: 1/1;
   z-index: 0;
+
+  @media (min-width: 2048px) {
+    img {
+      object-fit: contain !important; // :(
+    }
+  }
 `
 
 const H1 = styled.h1`
