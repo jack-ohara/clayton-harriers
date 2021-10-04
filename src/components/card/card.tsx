@@ -8,26 +8,41 @@ import { Post } from "../../types/WpSharedTypes.js"
 
 const cardStyles = css`
   border-radius: 5px;
-  box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
-    0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
-    0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+  box-shadow: 0 0 1px hsl(0deg 0% 80% / 0.045), 0 0 2px hsl(0deg 0% 80% / 0.045),
+    0 0 4px hsl(0deg 0% 80% / 0.045), 0 0 8px hsl(0deg 0% 80% / 0.045),
+    0 0 16px hsl(0deg 0% 80% / 0.045);
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 500px;
   margin: 0.5rem 0;
-  color: inherit;
+  color: unset;
   text-decoration: none;
   transition: transform 180ms ease-in;
   overflow: hidden;
-  color: var(--black);
-  background: var(--light-grey);
 
-  &:hover,
-  &:active,
-  &:focus {
-    transform: scale(1.01);
+  img,
+  svg {
+    transition: transform 200ms ease-in !important;
+  }
+
+  &:hover img,
+  &:active img,
+  &:focus img,
+  &:hover svg,
+  &:active svg,
+  &:focus svg {
+    transform: scale(1.03);
     outline: none;
+  }
+
+  &:hover h4,
+  &:active h4,
+  &:focus h4,
+  &:hover h5,
+  &:active h5,
+  &:focus h5 {
+    text-decoration-color: unset;
   }
 `
 
@@ -55,7 +70,6 @@ const sharedImageStyles = css`
 const BannerImage = styled(CardBannerSVG)`
   ${sharedImageStyles}
   margin: 0 auto 0.5rem auto;
-  max-width: 120%;
   flex-grow: 1;
 `
 
@@ -68,12 +82,22 @@ const CardBox = styled.div`
   flex-grow: 1;
   padding: 0.5rem 1rem;
 
+  h4,
+  h5 {
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    margin: 0;
+    transition: text-decoration-color 100ms ease-in;
+  }
+
   h4 {
     margin: 0 0 0.5rem 0;
+    color: var(--clayton-orange);
   }
 
   h5 {
     margin: 0 0 0.3rem 0;
+    color: var(--dark-grey);
   }
 `
 

@@ -4,7 +4,8 @@ import { createGlobalStyle } from "styled-components"
 
 const GlobalStyles = createGlobalStyle`
 html {
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
   }
@@ -205,8 +206,8 @@ html {
   }
   body {
     color: hsla(0, 0%, 0%, 0.8);
-    font-family: "Source Sans Pro", sans-serif;
-    font-weight: normal;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
     word-wrap: break-word;
     font-kerning: normal;
     -moz-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
@@ -235,9 +236,6 @@ html {
     padding-top: 0;
     margin-bottom: 1.45rem;
     color: inherit;
-    font-family: -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto',
-      'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-      'Helvetica Neue', sans-serif;
     font-weight: bold;
     text-rendering: optimizeLegibility;
     font-size: 2rem;
@@ -253,9 +251,6 @@ html {
     padding-top: 0;
     margin-bottom: 1.45rem;
     color: inherit;
-    font-family: -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto',
-      'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-      'Helvetica Neue', sans-serif;
     font-weight: bold;
     text-rendering: optimizeLegibility;
     font-size: 1.51572rem;
@@ -271,9 +266,6 @@ html {
     padding-top: 0;
     margin-bottom: 1.45rem;
     color: inherit;
-    font-family: -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto',
-      'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-      'Helvetica Neue', sans-serif;
     font-weight: bold;
     text-rendering: optimizeLegibility;
     font-size: 1.31951rem;
@@ -289,9 +281,6 @@ html {
     padding-top: 0;
     margin-bottom: 1.45rem;
     color: inherit;
-    font-family: -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto',
-      'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-      'Helvetica Neue', sans-serif;
     font-weight: bold;
     text-rendering: optimizeLegibility;
     font-size: 1rem;
@@ -307,9 +296,6 @@ html {
     padding-top: 0;
     margin-bottom: 1.45rem;
     color: inherit;
-    font-family: -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto',
-      'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-      'Helvetica Neue', sans-serif;
     font-weight: bold;
     text-rendering: optimizeLegibility;
     font-size: 0.87055rem;
@@ -325,9 +311,6 @@ html {
     padding-top: 0;
     margin-bottom: 1.45rem;
     color: inherit;
-    font-family: -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto',
-      'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-      'Helvetica Neue', sans-serif;
     font-weight: bold;
     text-rendering: optimizeLegibility;
     font-size: 0.81225rem;
@@ -628,6 +611,12 @@ html {
 
   .wpcf7 textarea {
     min-width: 100%;
+  }
+
+  /* Fonts */
+  h1, h2, h3 {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
   }
 `
 

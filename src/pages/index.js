@@ -8,11 +8,7 @@ import { mapCardFields } from "../utils/wpPostMapper"
 import { GatsbyImage } from "gatsby-plugin-image"
 
 const HeroSection = styled.section`
-  /* background: url("https://res.cloudinary.com/clayton-le-moors-harriers/image/upload/f_auto,q_auto/v1633152362/clayton-runner-no-noise_xcea96.png")
-    center top no-repeat; */
-  /* min-height: calc(100vh - 40px); */
   display: grid;
-  //grid-template-rows: minmax(63vh, 1fr) auto;
 `
 
 const BannerImage = styled(GatsbyImage)`
@@ -31,11 +27,10 @@ const H1 = styled.h1`
   z-index: 1;
   color: var(--light-grey);
   text-shadow: 2px 2px var(--clayton-orange);
-  font-family: "Raleway", sans-serif;
+  font-family: 'Rubik', sans-serif;
   margin: 0;
   padding: 0 1.0875rem;
   -webkit-text-stroke: 1px var(--black);
-  text-decoration: underline var(--light-grey) 4px;
 
   @media (max-width: 775px) {
     font-size: 3.75rem;

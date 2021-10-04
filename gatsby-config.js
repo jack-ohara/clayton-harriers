@@ -4,6 +4,9 @@ module.exports = {
     description: `Welcome to Clayton-Le-Moors Harriers! Find all the latest news and info and get in touch if you're interested in joining!`,
     author: `Jack O'Hara`,
   },
+  flags: {
+    DEV_SSR: false
+  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
@@ -29,8 +32,8 @@ module.exports = {
         name: `Clayton-Le-Moors Harriers`,
         short_name: `Clayton Harriers`,
         start_url: `/`,
-        background_color: `##212020eb`,
-        theme_color: `##212020eb`,
+        background_color: `#212020eb`,
+        theme_color: `#212020eb`,
         display: `minimal-ui`,
         icon: `src/images/whole-banner-square.svg`, // This path is relative to the root of the site.
       },
@@ -70,6 +73,13 @@ module.exports = {
         rule: {
           include: /images/,
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [`Rubik\:400`, `Open Sans\:300`, ],
+        display: "swap",
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
