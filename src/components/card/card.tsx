@@ -71,6 +71,10 @@ const BannerImage = styled(CardBannerSVG)`
   ${sharedImageStyles}
   margin: 0 auto 0.5rem auto;
   flex-grow: 1;
+
+  @media(max-width: 1200px) {
+    max-width: 120%;
+  }
 `
 
 const FeaturedImage = styled(GatsbyImage)`
