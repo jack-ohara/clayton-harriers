@@ -1,11 +1,7 @@
 import React from "react"
 import { WpPost } from "../../types/WpPost"
-import MobileComponent from "../mobileComponent"
-import CardPreviews from "../card/cardPreviews"
-import DesktopComponent from "../desktopComponent"
 import styled from "styled-components"
 import { Link } from "gatsby"
-import HorizontalRule from "../../utils/styles/HorizontalRule"
 import { GatsbyImage } from "gatsby-plugin-image"
 
 const DesktopContentWrapper = styled.div`
@@ -100,37 +96,35 @@ export default function NewsPreviews({ posts }: Props) {
   const formatExcerpt = (excerpt: string, slug: string): JSX.Element => {
     return (
       <p>
-        {excerpt.replace("Continue reading →", "")}
+        {excerpt?.replace("Continue reading →", "")}
         <Link to={slug}>Continue reading →</Link>
       </p>
     )
   }
 
   return (
-    <>
-      <DesktopContentWrapper>
-        {posts.map((p, idx) => (
-          <Article key={`desktop-news-post-preview-${idx}`}>
-            <PostPreviewWrapper
-              to={p.slug}
-              postHasImage={Boolean(p.featuredImage?.image)}
-            >
-              <StyledLink to={p.slug}>
-                <h3>{p.title}</h3>
-                <h4>{p.author}</h4>
-                <h4>{p.date}</h4>
-              </StyledLink>
-              {formatExcerpt(p.excerpt, p.slug)}
-              {p.featuredImage?.image && (
-                <PostPreviewimage
-                  image={p.featuredImage.image}
-                  alt={p.featuredImage.altText}
-                />
-              )}
-            </PostPreviewWrapper>
-          </Article>
-        ))}
-      </DesktopContentWrapper>
-    </>
+    <DesktopContentWrapper>
+      {posts.map((p, idx) => (
+        <Article key={`desktop-news-post-preview-${idx}`}>
+          <PostPreviewWrapper
+            to={p.slug}
+            postHasImage={Boolean(p.featuredImage?.image)}
+          >
+            <StyledLink to={p.slug}>
+              <h3>{p.title}</h3>
+              <h4>{p.author}</h4>
+              <h4>{p.date}</h4>
+            </StyledLink>
+            {formatExcerpt(p.excerpt, p.slug)}
+            {p.featuredImage?.image && (
+              <PostPreviewimage
+                image={p.featuredImage.image}
+                alt={p.featuredImage.altText}
+              />
+            )}
+          </PostPreviewWrapper>
+        </Article>
+      ))}
+    </DesktopContentWrapper>
   )
 }
