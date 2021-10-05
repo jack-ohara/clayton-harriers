@@ -13,8 +13,9 @@ const cardStyles = css`
     0 0 16px hsl(0deg 0% 80% / 0.045);
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 500px;
+  width: 75vw;
+  max-width: 350px;
+  min-height: 100%;
   margin: 0.5rem 0;
   color: unset;
   text-decoration: none;
@@ -56,7 +57,7 @@ const NonLinkCardContainer = styled.div`
 
 const sharedImageStyles = css`
   border-radius: 5px 5px 0 0;
-  height: 160px;
+  max-height: 160px;
 
   img {
     border-radius: 5px 5px 0 0;
@@ -72,7 +73,7 @@ const BannerImage = styled(CardBannerSVG)`
   margin: 0 auto 0.5rem auto;
   flex-grow: 1;
 
-  @media(max-width: 1200px) {
+  @media (max-width: 1200px) {
     max-width: 120%;
   }
 `
@@ -83,7 +84,6 @@ const FeaturedImage = styled(GatsbyImage)`
 `
 
 const CardBox = styled.div`
-  flex-grow: 1;
   padding: 0.5rem 1rem;
 
   h4,
@@ -111,6 +111,11 @@ const Article = styled.article<CardStyleProps>`
   flex-direction: ${props => (props.horizontalLayout ? "row" : "column")};
   align-content: center;
   justify-content: space-between;
+`
+
+const Excerpt = styled.p`
+  margin: 0;
+  height: 210px;
 `
 
 interface CardStyleProps {
@@ -142,7 +147,7 @@ export default function Card({
         <h5>{author}</h5>
         <h5>{date}</h5>
         <HorizontalRule />
-        {excerpt}
+        <Excerpt>{excerpt?.replace(" Continue reading →", "")}</Excerpt>
       </CardBox>
     </Article>
   )
