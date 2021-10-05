@@ -614,6 +614,10 @@ html {
   }
 
   .wp-caption .gatsby-image-wrapper {
+    @media (max-width: 1200px) {
+      max-width: 96vw !important;
+    }
+
     max-width: 1200px !important;
   }
 
