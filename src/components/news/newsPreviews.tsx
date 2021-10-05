@@ -4,7 +4,7 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 
-const DesktopContentWrapper = styled.div`
+const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,8 +34,13 @@ const Article = styled.article`
 
 const StyledLink = styled(Link)`
   grid-column: 1;
+  grid-row: 1;
   background-image: none;
   text-decoration: none;
+
+  @media (max-width: 500px) {
+    grid-column: 1 / span 2;
+  }
 
   h3,
   h4 {
@@ -71,6 +76,10 @@ const PostPreviewWrapper = styled(Link)<PostPreviewWrapperStyleProps>`
     grid-column: 1 / span 2;
     grid-row: 2;
     margin: 0;
+
+    @media (max-width: 500px) {
+      grid-column: 1 / span 3;
+    }
   }
 `
 
@@ -86,6 +95,10 @@ const PostPreviewimage = styled(GatsbyImage)`
     rgba(0, 0, 0, 0)
   );
   margin: -0.5rem;
+
+  @media (max-width: 500px) {
+    grid-row: 1;
+  }
 `
 
 interface Props {
@@ -103,7 +116,7 @@ export default function NewsPreviews({ posts }: Props) {
   }
 
   return (
-    <DesktopContentWrapper>
+    <ContentWrapper>
       {posts.map((p, idx) => (
         <Article key={`desktop-news-post-preview-${idx}`}>
           <PostPreviewWrapper
@@ -125,6 +138,6 @@ export default function NewsPreviews({ posts }: Props) {
           </PostPreviewWrapper>
         </Article>
       ))}
-    </DesktopContentWrapper>
+    </ContentWrapper>
   )
 }

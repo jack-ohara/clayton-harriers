@@ -582,6 +582,10 @@ html {
     padding-right: 0;
   }
 
+  .gatsby-image-wrapper img {
+    max-width: 1200px;
+  }
+
   /* Custom Properties */
   :root {
     --clayton-orange: #FF6935;

@@ -15,6 +15,10 @@ const BannerImage = styled(GatsbyImage)`
   grid-area: 1/1;
   z-index: 0;
 
+  img {
+    max-width: unset;
+  }
+
   @media (min-width: 2048px) {
     img {
       object-fit: contain !important; // :(
@@ -27,7 +31,7 @@ const H1 = styled.h1`
   z-index: 1;
   color: var(--light-grey);
   text-shadow: 2px 2px var(--clayton-orange);
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
   margin: 0;
   padding: 0 1.0875rem;
   -webkit-text-stroke: 1px var(--black);
