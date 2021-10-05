@@ -16,7 +16,7 @@ const BannerImage = styled(GatsbyImage)`
   z-index: 0;
 
   img {
-    max-width: unset;
+    max-width: unset !important;
   }
 
   @media (min-width: 2048px) {

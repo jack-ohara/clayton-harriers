@@ -5,7 +5,7 @@ module.exports = {
     author: `Jack O'Hara`,
   },
   flags: {
-    DEV_SSR: false
+    DEV_SSR: false,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -65,6 +65,10 @@ module.exports = {
             },
           },
         },
+        html: {
+          imageMaxWidth: 1200,
+          generateWebpImages: true,
+        },
       },
     },
     {
@@ -78,7 +82,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`Rubik\:400`, `Open Sans\:300`, ],
+        fonts: [`Rubik\:400`, `Open Sans\:300`],
         display: "swap",
       },
     },
