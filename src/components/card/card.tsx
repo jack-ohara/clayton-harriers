@@ -8,22 +8,42 @@ import { Post } from "../../types/WpSharedTypes.js"
 
 const cardStyles = css`
   border-radius: 5px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 0 1px hsl(0deg 0% 80% / 0.045), 0 0 2px hsl(0deg 0% 80% / 0.045),
+    0 0 4px hsl(0deg 0% 80% / 0.045), 0 0 8px hsl(0deg 0% 80% / 0.045),
+    0 0 16px hsl(0deg 0% 80% / 0.045);
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 500px;
+  width: 75vw;
+  max-width: 350px;
+  min-height: 100%;
   margin: 0.5rem 0;
-  color: inherit;
+  color: unset;
   text-decoration: none;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 180ms ease-in;
   overflow: hidden;
 
-  &:hover,
-  &:active,
-  &:focus {
+  img,
+  svg {
+    transition: transform 200ms ease-in !important;
+  }
+
+  &:hover img,
+  &:active img,
+  &:focus img,
+  &:hover svg,
+  &:active svg,
+  &:focus svg {
     transform: scale(1.03);
     outline: none;
+  }
+
+  &:hover h4,
+  &:active h4,
+  &:focus h4,
+  &:hover h5,
+  &:active h5,
+  &:focus h5 {
+    text-decoration-color: unset;
   }
 `
 
@@ -51,8 +71,11 @@ const sharedImageStyles = css`
 const BannerImage = styled(CardBannerSVG)`
   ${sharedImageStyles}
   margin: 0 auto 0.5rem auto;
-  max-width: 120%;
   flex-grow: 1;
+
+  @media (max-width: 1200px) {
+    max-width: 120%;
+  }
 `
 
 const FeaturedImage = styled(GatsbyImage)`
@@ -61,15 +84,24 @@ const FeaturedImage = styled(GatsbyImage)`
 `
 
 const CardBox = styled.div`
-  flex-grow: 1;
   padding: 0.5rem 1rem;
+
+  h4,
+  h5 {
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    margin: 0;
+    transition: text-decoration-color 100ms ease-in;
+  }
 
   h4 {
     margin: 0 0 0.5rem 0;
+    color: var(--clayton-orange);
   }
 
   h5 {
     margin: 0 0 0.3rem 0;
+    color: var(--dark-grey);
   }
 `
 
@@ -81,11 +113,16 @@ const Article = styled.article<CardStyleProps>`
   justify-content: space-between;
 `
 
+const Excerpt = styled.p`
+  margin: 0;
+  /* height: 210px; */
+`
+
 interface CardStyleProps {
   horizontalLayout: boolean
 }
 
-type CardProps = Post
+export type CardProps = Post
 
 export default function Card({
   slug,
@@ -110,7 +147,7 @@ export default function Card({
         <h5>{author}</h5>
         <h5>{date}</h5>
         <HorizontalRule />
-        {excerpt}
+        <Excerpt>{excerpt?.replace(" Continue reading →", "")}</Excerpt>
       </CardBox>
     </Article>
   )

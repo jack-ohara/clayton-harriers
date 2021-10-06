@@ -6,7 +6,7 @@ export const getLocalDateFormat = (
     month: "long",
     day: "2-digit",
     year:
-      date.getFullYear() === new Date().getFullYear() && includeCurrentYear
+      date.getFullYear() !== new Date().getFullYear() || includeCurrentYear
         ? "numeric"
         : undefined,
   })

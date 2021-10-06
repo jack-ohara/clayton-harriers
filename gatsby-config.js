@@ -4,6 +4,9 @@ module.exports = {
     description: `Welcome to Clayton-Le-Moors Harriers! Find all the latest news and info and get in touch if you're interested in joining!`,
     author: `Jack O'Hara`,
   },
+  flags: {
+    DEV_SSR: false,
+  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
@@ -26,32 +29,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Clayton-Le-Moors Harriers`,
+        short_name: `Clayton Harriers`,
         start_url: `/`,
-        background_color: `#FF8D00`,
-        theme_color: `#FF8D00`,
+        background_color: `#212020eb`,
+        theme_color: `#212020eb`,
         display: `minimal-ui`,
         icon: `src/images/whole-banner-square.svg`, // This path is relative to the root of the site.
-      },
-    },
-    {
-      resolve: "gatsby-transformer-remark",
-      options: {
-        plugins: [
-          {
-            resolve: "gatsby-remark-images",
-            options: {
-              maxWidth: 2048,
-            },
-          },
-          {
-            resolve: "gatsby-remark-copy-linked-files",
-            options: {
-              destinationDir: "static",
-            },
-          },
-        ],
       },
     },
     `gatsby-plugin-styled-components`,
@@ -81,6 +65,10 @@ module.exports = {
             },
           },
         },
+        html: {
+          imageMaxWidth: 1200,
+          generateWebpImages: true,
+        },
       },
     },
     {
@@ -89,6 +77,13 @@ module.exports = {
         rule: {
           include: /images/,
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [`Rubik\:400`, `Open Sans\:300`],
+        display: "swap",
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

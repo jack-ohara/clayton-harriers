@@ -8,11 +8,6 @@ const CardContainer = styled.div`
   flex-direction: row;
   overflow-x: auto;
   padding: 10px 0 40px 0;
-
-  a {
-    min-width: 65vw;
-    min-height: 100%;
-  }
 `
 
 const CardWrapper = styled.div`

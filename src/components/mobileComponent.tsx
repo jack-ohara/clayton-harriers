@@ -6,7 +6,7 @@ interface Props {
 }
 
 const MobileContentWrapper = styled.div`
-  @media (min-width: 815px) {
+  @media (min-width: 1200px) {
     display: none;
   }
 `

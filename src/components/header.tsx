@@ -5,13 +5,19 @@ import styled from "styled-components"
 import OutsideAlerter from "./eventOutsideWrapper"
 import NavMenu from "./menu"
 
+const HeaderContainer = styled.div`
+  width: 100%;
+  background: var(--light-grey);
+  border-bottom: 4px groove var(--clayton-orange);
+`
+
 const StyledHeader = styled.header`
-  padding: 0.5rem;
+  padding: 0.5rem 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
   margin: auto;
+  max-width: 1200px;
 `
 
 const LogoLink = styled(Link)`
@@ -35,7 +41,7 @@ export default function Header() {
         }
       `}
       render={imageData => (
-        <div>
+        <HeaderContainer>
           <StyledHeader>
             <LogoLink to="/">
               <GatsbyImage
@@ -52,7 +58,7 @@ export default function Header() {
               <NavMenu mobileMenuOpen={open} setMobileMenuOpen={setOpen} />
             </OutsideAlerter>
           </StyledHeader>
-        </div>
+        </HeaderContainer>
       )}
     />
   )

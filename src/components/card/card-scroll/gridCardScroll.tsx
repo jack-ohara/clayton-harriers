@@ -4,6 +4,13 @@ import styled from "styled-components"
 import { Post } from "../../../types/WpSharedTypes"
 import Card from "../card"
 
+const StyledSlider = styled(Slider)`
+  width: 91%;
+  margin: 0 auto 1rem;
+  max-width: var(--max-content-width);
+  border-radius: 4px;
+`
+
 const ArrowDiv = styled.div`
   &.slick-arrow {
     height: 2rem;
@@ -26,6 +33,7 @@ const ArrowDiv = styled.div`
       color: var(--clayton-orange);
       font-size: 2rem;
       opacity: 0.75;
+      transition: opacity 90ms ease-out;
     }
   }
 `
@@ -107,7 +115,7 @@ export default function GridCardScroll({ posts }: Props) {
   const batches = getPostBatches(posts)
 
   return (
-    <Slider {...settings}>
+    <StyledSlider {...settings}>
       {batches.map((b, idx) => (
         <div key={`grid-scroll-${idx}`}>
           <CardContainer>
@@ -117,6 +125,6 @@ export default function GridCardScroll({ posts }: Props) {
           </CardContainer>
         </div>
       ))}
-    </Slider>
+    </StyledSlider>
   )
 }

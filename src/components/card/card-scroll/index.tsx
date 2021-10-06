@@ -3,14 +3,10 @@ import HorizontalCardScroll from "./horizontalCardScroll"
 import { Post } from "../../../types/WpSharedTypes"
 import GridCardScroll from "./gridCardScroll"
 import styled from "styled-components"
-import HorizontalRule from "../../../utils/styles/HorizontalRule"
 import BannerImage from "../../../images/card-banner.svg"
 import MobileComponent from "../../mobileComponent"
 import DesktopComponent from "../../desktopComponent"
-
-const StyledHR = styled(HorizontalRule)`
-  margin-bottom: 0.2rem;
-`
+import { PageHeader } from "../../layout"
 
 // Something weird is making the banner SVGs in the cards lose the colours
 // but having one on this page seems to resolve the issue, so I shove
@@ -20,8 +16,12 @@ const HiddenBannerSvg = styled(BannerImage)`
   top: -500px;
 `
 
-const Header = styled.h2`
-  text-align: left;
+const StyledHeader = styled(PageHeader)`
+  margin-left: 1rem;
+
+  @media (max-width: 1200px) {
+    margin-bottom: 0.5rem;
+  }
 `
 
 interface Props {
@@ -32,8 +32,7 @@ interface Props {
 export default function CardScroll({ title, posts }: Props) {
   return (
     <div>
-      <Header>{title}</Header>
-      <StyledHR />
+      <StyledHeader>{title}</StyledHeader>
 
       <HiddenBannerSvg />
       <MobileComponent>

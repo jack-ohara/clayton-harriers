@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from "react"
-import CardPreviews from "../../components/card/cardPreviews"
+import NewsPreviews from "../../components/news/newsPreviews"
 import Layout, { PageHeader } from "../../components/layout"
 import SEO from "../../components/seo"
-import styled from "styled-components"
 import { graphql } from "gatsby"
 import { mapCardFields } from "../../utils/wpPostMapper"
 import { useInView } from "react-intersection-observer"
-
-const StyledHR = styled.hr`
-  margin: 1.45rem 2rem;
-`
 
 const postsBlockSize = 10
 
@@ -37,11 +32,11 @@ const NewsPage = ({ data }) => {
     <Layout>
       <SEO title="News &amp; Info" />
 
-      <PageHeader>News &amp; Info</PageHeader>
+      <div>
+        <PageHeader>News &amp; Info</PageHeader>
 
-      <StyledHR />
-
-      <CardPreviews posts={posts} />
+        <NewsPreviews posts={posts} />
+      </div>
 
       <div ref={ref} />
     </Layout>
@@ -65,7 +60,13 @@ export const pageQuery = graphql`
         featuredImage {
           node {
             localFile {
-              publicURL
+              childImageSharp {
+                gatsbyImageData(
+                  formats: [AUTO, WEBP]
+                  placeholder: BLURRED
+                  layout: FULL_WIDTH
+                )
+              }
             }
             altText
           }

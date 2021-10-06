@@ -29,6 +29,7 @@ const Nav = styled.nav`
       margin: 0;
       position: relative;
       padding: 0 0.7rem;
+      z-index: 10;
     }
 
     & > li:first-of-type {
@@ -209,7 +210,6 @@ function DropdownMenuItem({ title, children }: DropdownMenuItemProps) {
         <DropdownArrow $isActiveRoute={hasActiveChild}>
           <polygon points="0,0 0,8 8,4" />
         </DropdownArrow>
-        {"  "}
         {title}
       </NavItemTitle>
       <DropdownList>{children}</DropdownList>
