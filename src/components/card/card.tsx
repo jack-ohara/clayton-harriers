@@ -57,7 +57,7 @@ const NonLinkCardContainer = styled.div`
 
 const sharedImageStyles = css`
   border-radius: 5px 5px 0 0;
-  max-height: 160px;
+  height: 160px;
 
   img {
     border-radius: 5px 5px 0 0;
@@ -115,14 +115,14 @@ const Article = styled.article<CardStyleProps>`
 
 const Excerpt = styled.p`
   margin: 0;
-  height: 210px;
+  /* height: 210px; */
 `
 
 interface CardStyleProps {
   horizontalLayout: boolean
 }
 
-type CardProps = Post
+export type CardProps = Post
 
 export default function Card({
   slug,

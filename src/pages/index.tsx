@@ -9,6 +9,11 @@ import { GatsbyImage } from "gatsby-plugin-image"
 
 const HeroSection = styled.section`
   display: grid;
+
+  @media (max-width: 1200px) {
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+  }
 `
 
 const BannerImage = styled(GatsbyImage)`

@@ -1,13 +1,13 @@
 import React from "react"
 import Layout, { PageHeader } from "../../components/layout"
 import SEO from "../../components/seo"
-import CardPreviews from "../../components/card/cardPreviews"
 import { graphql } from "gatsby"
 import { AllWpEventsResult, WpEventResult } from "../../types/WpEvent"
 import { CardProps } from "../../components/card/card"
 import { getImage } from "gatsby-plugin-image"
 import { getEventDate } from "../../utils/dateFormatter"
 import { stripHtml } from "../../utils/wpPostMapper"
+import FixturePreviews from "../../components/fixturePreviews"
 
 interface Props {
   data: { allWpEvent: AllWpEventsResult }
@@ -49,7 +49,7 @@ export default function FixturesPage({ data }: Props) {
 
       <PageHeader>Fixtures &amp; Results</PageHeader>
 
-      <CardPreviews posts={getCards(data.allWpEvent.nodes)} />
+      <FixturePreviews fixtures={getCards(data.allWpEvent.nodes)} />
     </Layout>
   )
 }
