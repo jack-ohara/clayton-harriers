@@ -22,15 +22,15 @@ const RollOfHonourPage = ({ data }) => {
       }
     }
 
-    return {
-      image: data.defaultFeaturedImage.childImageSharp.gatsbyImageData,
-      alt: "Clayton-le-moors Harriers logo",
-    }
+    return null
   }
 
   const getSlug = pageSlug => {
     if (typeof window !== "undefined") {
-      return `${window.location.pathname}/${pageSlug}`
+      return `${window.location.pathname.replace(
+        /(^.+)(\/)$/,
+        "$1"
+      )}/${pageSlug}`
     }
 
     return ""
@@ -72,7 +72,10 @@ export default RollOfHonourPage
 
 export const pageQuery = graphql`
   query RollOfHonourPageQuery {
-    allWpPage(filter: { uri: { regex: "/^/roll-of-honour/.+$/" } }) {
+    allWpPage(
+      filter: { uri: { regex: "/^/roll-of-honour/.+$/" } }
+      sort: { fields: modified, order: ASC }
+    ) {
       nodes {
         title
         slug
@@ -82,7 +85,7 @@ export const pageQuery = graphql`
               childImageSharp {
                 gatsbyImageData(
                   formats: [AUTO, WEBP]
-                  placeholder: TRACED_SVG
+                  placeholder: BLURRED
                   layout: FULL_WIDTH
                 )
               }
@@ -92,35 +95,5 @@ export const pageQuery = graphql`
         }
       }
     }
-    defaultFeaturedImage: file(
-      relativePath: { eq: "harriers-logo-transparent.png" }
-    ) {
-      childImageSharp {
-        gatsbyImageData(formats: [AUTO, WEBP], placeholder: BLURRED)
-      }
-    }
   }
 `
-
-// export const pageQuery = graphql`
-//   query RollOfHonourPostsQuery {
-//     allMarkdownRemark(
-//       sort: { fields: frontmatter___date, order: DESC }
-//       filter: { fields: { slug: { regex: "/roll-of-honour/" } } }
-//     ) {
-//       edges {
-//         node {
-//           excerpt(pruneLength: 300)
-//           frontmatter {
-//             title
-//             date
-//             featuredImage
-//           }
-//           fields {
-//             slug
-//           }
-//         }
-//       }
-//     }
-//   }
-// `

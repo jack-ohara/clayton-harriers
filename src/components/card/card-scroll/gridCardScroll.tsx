@@ -9,6 +9,11 @@ const StyledSlider = styled(Slider)`
   margin: 0 auto 1rem;
   max-width: var(--max-content-width);
   border-radius: 4px;
+
+  & .slick-track {
+    display: flex;
+    align-items: center;
+  }
 `
 
 const ArrowDiv = styled.div`

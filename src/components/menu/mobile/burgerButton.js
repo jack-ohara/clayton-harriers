@@ -13,7 +13,7 @@ const StyledBurger = styled.button`
   cursor: pointer;
   padding: 0;
   margin: 0.5rem;
-  z-index: 10;
+  z-index: 1001;
 
   &:focus {
     outline: none;
@@ -49,6 +49,7 @@ const Burger = ({ open, setOpen }) => {
       aria-label="menu button"
       open={open}
       onClick={() => (open ? setOpen(false) : setOpen(true))}
+      id="menu-burger-button"
     >
       <div />
       <div />

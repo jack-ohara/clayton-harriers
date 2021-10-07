@@ -17,10 +17,6 @@ export const MenuItemStyles = css<MenuItemProps>`
   @media (max-width: 576px) {
     font-size: ${props => (props.$small ? "1.2rem" : "1.5rem")};
   }
-
-  @media (min-width: 815px) {
-    line-height: 1rem;
-  }
 `
 
 const StyledLink = styled(Link)`

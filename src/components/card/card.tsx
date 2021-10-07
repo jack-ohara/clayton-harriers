@@ -72,6 +72,7 @@ const BannerImage = styled(CardBannerSVG)`
   ${sharedImageStyles}
   margin: 0 auto 0.5rem auto;
   flex-grow: 1;
+  max-height: 160px;
 
   @media (max-width: 1200px) {
     max-width: 120%;
@@ -113,16 +114,20 @@ const Article = styled.article<CardStyleProps>`
   justify-content: space-between;
 `
 
-const Excerpt = styled.p`
+interface ExcerptStyleProps {
+  $height?: number | undefined
+}
+
+const Excerpt = styled.p<ExcerptStyleProps>`
   margin: 0;
-  /* height: 210px; */
+  height: ${props => (props.$height ? `${props.$height}px` : "unset")};
 `
 
 interface CardStyleProps {
   horizontalLayout: boolean
 }
 
-export type CardProps = Post
+export type CardProps = Post & { paragraphHeight?: number | undefined }
 
 export default function Card({
   slug,
@@ -132,6 +137,7 @@ export default function Card({
   date,
   excerpt,
   horizontalLayout = false,
+  paragraphHeight = undefined,
 }: CardProps) {
   const cardImage = !featuredImage?.image ? (
     <BannerImage alt="Clayton-le-moors Harriers banner logo" />
@@ -147,7 +153,9 @@ export default function Card({
         <h5>{author}</h5>
         <h5>{date}</h5>
         <HorizontalRule />
-        <Excerpt>{excerpt?.replace(" Continue reading →", "")}</Excerpt>
+        <Excerpt $height={paragraphHeight}>
+          {excerpt?.replace(" Continue reading →", "")}
+        </Excerpt>
       </CardBox>
     </Article>
   )
