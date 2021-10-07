@@ -74,7 +74,9 @@ const SimpleNavCard = ({ title, featuredImage, slug }) => {
       <HeadingContainer>
         <CardHeading>{title}</CardHeading>
       </HeadingContainer>
-      <Image image={featuredImage.image} alt={featuredImage.alt} />
+      {featuredImage && (
+        <Image image={featuredImage.image} alt={featuredImage.alt} />
+      )}
     </StyledLink>
   )
 }

@@ -22,15 +22,15 @@ const RollOfHonourPage = ({ data }) => {
       }
     }
 
-    return {
-      image: data.defaultFeaturedImage.childImageSharp.gatsbyImageData,
-      alt: "Clayton-le-moors Harriers logo",
-    }
+    return null
   }
 
   const getSlug = pageSlug => {
     if (typeof window !== "undefined") {
-      return `${window.location.pathname}/${pageSlug}`
+      return `${window.location.pathname.replace(
+        /(^.+)(\/)$/,
+        "$1"
+      )}/${pageSlug}`
     }
 
     return ""
@@ -93,13 +93,6 @@ export const pageQuery = graphql`
             altText
           }
         }
-      }
-    }
-    defaultFeaturedImage: file(
-      relativePath: { eq: "harriers-logo-transparent.png" }
-    ) {
-      childImageSharp {
-        gatsbyImageData(formats: [AUTO, WEBP], placeholder: BLURRED)
       }
     }
   }
