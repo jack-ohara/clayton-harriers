@@ -72,7 +72,10 @@ export default RollOfHonourPage
 
 export const pageQuery = graphql`
   query RollOfHonourPageQuery {
-    allWpPage(filter: { uri: { regex: "/^/roll-of-honour/.+$/" } }) {
+    allWpPage(
+      filter: { uri: { regex: "/^/roll-of-honour/.+$/" } }
+      sort: { fields: modified, order: ASC }
+    ) {
       nodes {
         title
         slug
@@ -101,26 +104,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-// export const pageQuery = graphql`
-//   query RollOfHonourPostsQuery {
-//     allMarkdownRemark(
-//       sort: { fields: frontmatter___date, order: DESC }
-//       filter: { fields: { slug: { regex: "/roll-of-honour/" } } }
-//     ) {
-//       edges {
-//         node {
-//           excerpt(pruneLength: 300)
-//           frontmatter {
-//             title
-//             date
-//             featuredImage
-//           }
-//           fields {
-//             slug
-//           }
-//         }
-//       }
-//     }
-//   }
-// `
