@@ -24,8 +24,6 @@ const WpPage = ({
 
         <PageHeader>{title}</PageHeader>
 
-        <HorizontalRule />
-
         <div dangerouslySetInnerHTML={{ __html: content }} />
       </TemplateWrapper>
     </Layout>

@@ -72,6 +72,7 @@ const BannerImage = styled(CardBannerSVG)`
   ${sharedImageStyles}
   margin: 0 auto 0.5rem auto;
   flex-grow: 1;
+  max-height: 160px;
 
   @media (max-width: 1200px) {
     max-width: 120%;
@@ -115,7 +116,7 @@ const Article = styled.article<CardStyleProps>`
 
 const Excerpt = styled.p`
   margin: 0;
-  /* height: 210px; */
+  height: 210px;
 `
 
 interface CardStyleProps {

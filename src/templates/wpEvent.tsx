@@ -140,8 +140,6 @@ export default function WpEvent({ data: { wpEvent: event } }: QueryResult) {
           {getContact(event.linkedData.organizer?.name, event.author.node.name)}
           {getLocation(event)}
         </BottomInfoLine>
-
-        <HorizontalRule />
       </PageHead>
 
       <EventDetails>
