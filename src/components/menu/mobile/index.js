@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
-import { StaticQuery, graphql } from "gatsby"
 import StyledLink from "../../styledLink"
 import isActiveRoute from "../../../utils/isActiveRoute"
+import OutsideAlerter from "../../eventOutsideWrapper"
 
 const StyledMenu = styled.nav`
   display: flex;
@@ -166,31 +166,44 @@ const getMenuItems = (menuItems, closeMenuFunction, isOpen) => {
 }
 
 const Menu = ({ menuData, open, setOpen }) => {
+  const navRef = useRef(null)
+
+  useEffect(() => {
+    const handleClickOutside = event => {
+      const wasMenuButtonClick = document
+        .querySelector("#menu-burger-button")
+        .contains(event.target)
+
+      if (!wasMenuButtonClick && !navRef.current.contains(event.target)) {
+        setOpen(false)
+      }
+    }
+
+    document.addEventListener("click", handleClickOutside)
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside)
+    }
+  })
+
   const closeMenuFunction = () => {
     setOpen(false)
   }
 
   return (
-    <StyledMenu open={open}>
+    <StyledMenu ref={navRef} open={open}>
       <MenuItem title="Home" to="/" closeFunction={closeMenuFunction} />
       <ItemDivider />
       <CollapsableMenuItem title="News &amp; Info" resetOpen={!open}>
-        <MenuItem
-          title="News"
-          to="/news"
-          small
-          closeFunction={closeMenuFunction}
-        />
+        <MenuItem title="News" to="/news" closeFunction={closeMenuFunction} />
         <MenuItem
           title="Training"
           to="/training"
-          small
           closeFunction={closeMenuFunction}
         />
         <MenuItem
           title="Roll Of Honour"
           to="/roll-of-honour"
-          small
           closeFunction={closeMenuFunction}
         />
       </CollapsableMenuItem>
@@ -199,7 +212,6 @@ const Menu = ({ menuData, open, setOpen }) => {
         <MenuItem
           title="Welcome"
           to="/juniors"
-          small
           closeFunction={closeMenuFunction}
         />
       </CollapsableMenuItem>

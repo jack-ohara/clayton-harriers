@@ -50,13 +50,7 @@ export default function Header() {
                 loading="eager"
               />
             </LogoLink>
-
-            <OutsideAlerter
-              events={["mousedown", "scroll"]}
-              handleEvent={() => setOpen(false)}
-            >
-              <NavMenu mobileMenuOpen={open} setMobileMenuOpen={setOpen} />
-            </OutsideAlerter>
+            <NavMenu mobileMenuOpen={open} setMobileMenuOpen={setOpen} />
           </StyledHeader>
         </HeaderContainer>
       )}
