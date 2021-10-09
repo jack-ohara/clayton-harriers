@@ -626,6 +626,31 @@ html {
     font-family: 'Rubik', sans-serif;
     font-weight: 400;
   }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: .9em;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--black);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--clayton-orange);
+    border-radius: 100vw;
+    opacity: 1;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ff6935d1;
+  }
+
+  @supports (scrollbar-color: var(--clayton-orange) var(--black)) {
+    * {
+      scrollbar-color: var(--clayton-orange) var(--black);
+    }
+  }
 `
 
 export default GlobalStyles
