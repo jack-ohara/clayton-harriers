@@ -27,10 +27,7 @@ const NewsPage = ({ data }) => {
       postsRevealed + postsBlockSize
     )
 
-    console.table(nextPosts)
-
     nextPosts = nextPosts.map(e => mapCardFields(e, "/news"))
-    console.table(nextPosts)
 
     setPosts(prevPosts => [...prevPosts, ...nextPosts])
     setPostsRevealed(prev => prev + postsBlockSize)

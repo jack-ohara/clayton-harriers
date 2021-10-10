@@ -1,8 +1,9 @@
-import { Link } from "gatsby"
+import { graphql, Link, StaticQuery } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
 import styled from "styled-components"
 import { Post } from "../types/WpSharedTypes"
+import CardBannerSVG from "../images/card-banner.svg"
 
 const Article = styled.article`
   max-width: var(--max-content-width);
@@ -35,8 +36,8 @@ interface PostPreviewWrapperStyleProps {
 const PostPreviewWrapper = styled(Link)<PostPreviewWrapperStyleProps>`
   display: grid;
   grid-template-columns: ${props =>
-    props.$postHasImage ? "3fr 40px 1fr" : "1fr"};
-  grid-template-rows: 1fr 1fr;
+    props.$postHasImage ? "3fr 40px 1fr" : "2fr 1fr"};
+  grid-auto-rows: min-content;
   grid-row-gap: 1em;
   color: unset;
   text-decoration: unset;
@@ -58,10 +59,6 @@ const InfoArea = styled.div`
   background-image: none;
   text-decoration: none;
 
-  @media (max-width: 500px) {
-    grid-column: 1 / span 2;
-  }
-
   h3,
   h4 {
     text-decoration: underline;
@@ -82,7 +79,7 @@ const InfoArea = styled.div`
 
 const PostPreviewimage = styled(GatsbyImage)`
   grid-column: 2 / span 3;
-  grid-row: 1 / span 2;
+  grid-row: 1;
   max-height: 200px;
   border-radius: 1%;
   mask-image: linear-gradient(
@@ -94,8 +91,23 @@ const PostPreviewimage = styled(GatsbyImage)`
 
   margin: -0.5rem;
 
-  @media (max-width: 500px) {
-    grid-row: 1;
+  @media (min-width: 500px) {
+    grid-row: 1 / span 2;
+  }
+`
+
+const BannerImage = styled(CardBannerSVG)`
+  grid-column: 2 / span 3;
+  grid-row: 1;
+  border-radius: 1%;
+  margin: -0.5rem;
+  max-width: 100%;
+  max-height: 100px;
+  position: relative;
+  right: -30px;
+
+  @media (min-width: 500px) {
+    display: none;
   }
 `
 
@@ -112,8 +124,6 @@ export default function PostPreviewRow({ post }: Props) {
     ) : undefined
   }
 
-  console.log(post.slug)
-
   return (
     <Article>
       <PostPreviewWrapper
@@ -126,11 +136,13 @@ export default function PostPreviewRow({ post }: Props) {
           <h4>{post.date}</h4>
         </InfoArea>
         {formatExcerpt(post.excerpt)}
-        {post.featuredImage?.image && (
+        {post.featuredImage?.image ? (
           <PostPreviewimage
             image={post.featuredImage.image}
             alt={post.featuredImage.altText}
           />
+        ) : (
+          <BannerImage />
         )}
       </PostPreviewWrapper>
     </Article>
