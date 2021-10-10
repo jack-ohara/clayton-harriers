@@ -10,7 +10,9 @@ const postsBlockSize = 10
 
 const NewsPage = ({ data }) => {
   const [posts, setPosts] = useState(
-    data.allWpPost.nodes.slice(0, postsBlockSize).map(e => mapCardFields(e))
+    data.allWpPost.nodes
+      .slice(0, postsBlockSize)
+      .map(e => mapCardFields(e, "/news"))
   )
   const [postsRevealed, setPostsRevealed] = useState(postsBlockSize)
   const [ref, inView] = useInView({})
@@ -20,9 +22,15 @@ const NewsPage = ({ data }) => {
   }, [inView])
 
   const loadMorePosts = () => {
-    const nextPosts = data.allWpPost.nodes
-      .slice(postsRevealed, postsRevealed + postsBlockSize)
-      .map(e => mapCardFields(e))
+    let nextPosts = data.allWpPost.nodes.slice(
+      postsRevealed,
+      postsRevealed + postsBlockSize
+    )
+
+    console.table(nextPosts)
+
+    nextPosts = nextPosts.map(e => mapCardFields(e, "/news"))
+    console.table(nextPosts)
 
     setPosts(prevPosts => [...prevPosts, ...nextPosts])
     setPostsRevealed(prev => prev + postsBlockSize)

@@ -112,6 +112,8 @@ export default function PostPreviewRow({ post }: Props) {
     ) : undefined
   }
 
+  console.log(post.slug)
+
   return (
     <Article>
       <PostPreviewWrapper

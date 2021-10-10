@@ -2,9 +2,15 @@ import { getImage } from "gatsby-plugin-image"
 import { Post } from "../types/WpSharedTypes"
 import { getLocalFormatFromString } from "./dateFormatter"
 
-export const mapCardFields = (wpPost): Post => {
+export const mapCardFields = (
+  wpPost: any,
+  uriPrefix?: string | undefined
+): Post => {
   const post: Post = {
-    slug: wpPost.uri,
+    slug:
+      uriPrefix && !wpPost.uri.startsWith(uriPrefix)
+        ? `${uriPrefix}${wpPost.uri}`
+        : wpPost.uri,
     featuredImage: {
       image: getImage(wpPost.featuredImage?.node.localFile),
       altText: wpPost.featuredImage?.node.altText,

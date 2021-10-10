@@ -109,7 +109,9 @@ const LatestUpdatesWrapper = styled.div`
 `
 
 const IndexPage = ({ data }) => {
-  const latestPosts = data.latestPostsData.nodes.map(e => mapCardFields(e))
+  const latestPosts = data.latestPostsData.nodes.map(e =>
+    mapCardFields(e, "/news")
+  )
 
   return (
     <Layout setMaxWidth={false}>

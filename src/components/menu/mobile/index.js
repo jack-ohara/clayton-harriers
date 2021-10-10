@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
 import StyledLink from "../../styledLink"
 import isActiveRoute from "../../../utils/isActiveRoute"
-import OutsideAlerter from "../../eventOutsideWrapper"
 
 const StyledMenu = styled.nav`
   display: flex;
