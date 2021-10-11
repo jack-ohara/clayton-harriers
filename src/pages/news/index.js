@@ -20,9 +20,12 @@ const NewsPage = ({ data }) => {
   }, [inView])
 
   const loadMorePosts = () => {
-    const nextPosts = data.allWpPost.nodes
-      .slice(postsRevealed, postsRevealed + postsBlockSize)
-      .map(e => mapCardFields(e))
+    let nextPosts = data.allWpPost.nodes.slice(
+      postsRevealed,
+      postsRevealed + postsBlockSize
+    )
+
+    nextPosts = nextPosts.map(e => mapCardFields(e))
 
     setPosts(prevPosts => [...prevPosts, ...nextPosts])
     setPostsRevealed(prev => prev + postsBlockSize)

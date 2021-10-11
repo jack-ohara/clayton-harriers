@@ -2,7 +2,6 @@ import { Link, graphql, StaticQuery } from "gatsby"
 import React, { useState } from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import styled from "styled-components"
-import OutsideAlerter from "./eventOutsideWrapper"
 import NavMenu from "./menu"
 
 const HeaderContainer = styled.div`
@@ -12,7 +11,7 @@ const HeaderContainer = styled.div`
 `
 
 const StyledHeader = styled.header`
-  padding: 0.5rem 8px;
+  padding-block: 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
