@@ -36,7 +36,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       actions.createPage({
         // It's best practice to use the uri field from WPGraphQL nodes when
         // building
-        path: `news${post.uri}`,
+        path: post.uri,
         component: postTemplate,
         context: post,
       })
