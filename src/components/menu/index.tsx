@@ -20,6 +20,7 @@ export default function NavMenu({ mobileMenuOpen, setMobileMenuOpen }: Props) {
             menuItems {
               nodes {
                 label
+                url
                 parentId
                 childItems {
                   nodes {
