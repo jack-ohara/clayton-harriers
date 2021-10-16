@@ -157,7 +157,6 @@ const DropdownLi = styled.li`
 
 const getMenuItems = menuItems => {
   return menuItems.map(item => {
-    console.log(item)
     return (
       <React.Fragment key={`menu-item-${item.label}`}>
         {item.childItems.nodes.length ? (
