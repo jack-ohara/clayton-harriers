@@ -1,4 +1,3 @@
-import { graphql, StaticQuery } from "gatsby"
 import React, { ReactNode } from "react"
 import styled from "styled-components"
 import isActiveRoute from "../../../utils/isActiveRoute"
@@ -158,6 +157,7 @@ const DropdownLi = styled.li`
 
 const getMenuItems = menuItems => {
   return menuItems.map(item => {
+    console.log(item)
     return (
       <React.Fragment key={`menu-item-${item.label}`}>
         {item.childItems.nodes.length ? (
@@ -230,28 +230,7 @@ export default function Menu({
 }: Props) {
   return (
     <Nav>
-      <ul>
-        <MenuItem to="/">Home</MenuItem>
-        <DropdownMenuItem title="News &amp; Info">
-          <MenuItem to="/news" showBackgroundOnHover small>
-            News
-          </MenuItem>
-          <MenuItem to="/training" showBackgroundOnHover small>
-            Training
-          </MenuItem>
-          <MenuItem to="/roll-of-honour" showBackgroundOnHover small>
-            Roll Of Honour
-          </MenuItem>
-        </DropdownMenuItem>
-        <DropdownMenuItem title="Juniors">
-          <MenuItem to="/juniors" showBackgroundOnHover small>
-            Welcome
-          </MenuItem>
-        </DropdownMenuItem>
-        <MenuItem to="/fixtures">Fixtures &amp; Results</MenuItem>
-        {getMenuItems(nodes.filter(item => !item.parentId))}
-        <MenuItem to="/join-us">Join Us</MenuItem>
-      </ul>
+      <ul>{getMenuItems(nodes.filter(item => !item.parentId))}</ul>
     </Nav>
   )
 }

@@ -191,46 +191,11 @@ const Menu = ({ menuData, open, setOpen }) => {
 
   return (
     <StyledMenu ref={navRef} open={open}>
-      <MenuItem title="Home" to="/" closeFunction={closeMenuFunction} />
-      <ItemDivider />
-      <CollapsableMenuItem title="News &amp; Info" resetOpen={!open}>
-        <MenuItem title="News" to="/news" closeFunction={closeMenuFunction} />
-        <MenuItem
-          title="Training"
-          to="/training"
-          closeFunction={closeMenuFunction}
-        />
-        <MenuItem
-          title="Roll Of Honour"
-          to="/roll-of-honour"
-          closeFunction={closeMenuFunction}
-        />
-      </CollapsableMenuItem>
-      <ItemDivider />
-      <CollapsableMenuItem title="Juniors" resetOpen={!open}>
-        <MenuItem
-          title="Welcome"
-          to="/juniors"
-          closeFunction={closeMenuFunction}
-        />
-      </CollapsableMenuItem>
-      <ItemDivider />
-      <MenuItem
-        title="Fixtures &amp; Results"
-        to="/fixtures"
-        closeFunction={closeMenuFunction}
-      />
-      <ItemDivider />
       {getMenuItems(
         menuData.wpMenu.menuItems.nodes.filter(item => !item.parentId),
         closeMenuFunction,
         open
       )}
-      <MenuItem
-        title="Join Us"
-        to="/join-us"
-        closeFunction={closeMenuFunction}
-      />
     </StyledMenu>
   )
 }

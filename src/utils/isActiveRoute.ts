@@ -9,5 +9,5 @@ export default function isActiveRoute(targetRoute: string) {
 
   const currentRoute = window.location.pathname.replace(/(^.+)(\/)$/, "$1")
 
-  return currentRoute === targetRoute.replace(/(^.+)(\/)$/, "$1")
+  return currentRoute === targetRoute?.replace(/(^.+)(\/)$/, "$1")
 }
