@@ -6,6 +6,7 @@ import styled from "styled-components"
 import SimpleNavCard from "../../components/card/simpleNavCard"
 import { graphql } from "gatsby"
 import { getImage } from "gatsby-plugin-image"
+import { FeaturedImage } from "../../types/WpSharedTypes"
 
 const CardContainer = styled.div`
   display: flex;
@@ -13,8 +14,29 @@ const CardContainer = styled.div`
   justify-content: space-around;
 `
 
-const RollOfHonourPage = ({ data }) => {
-  const getFeaturedImage = featuredImage => {
+const RohNavCard = styled(SimpleNavCard)`
+  height: 300px;
+
+  img {
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+`
+
+interface Props {
+  data: {
+    allWpPage: {
+      nodes: {
+        title: string;
+        slug: string;
+        featuredImage: FeaturedImage
+      }[]
+    }
+  }
+}
+
+const RollOfHonourPage = ({ data }: Props) => {
+  const getFeaturedImage = (featuredImage: FeaturedImage) => {
     if (featuredImage) {
       return {
         image: getImage(featuredImage?.node.localFile),
@@ -25,7 +47,7 @@ const RollOfHonourPage = ({ data }) => {
     return null
   }
 
-  const getSlug = pageSlug => {
+  const getSlug = (pageSlug: string): string => {
     if (typeof window !== "undefined") {
       return `${window.location.pathname.replace(
         /(^.+)(\/)$/,
@@ -43,6 +65,7 @@ const RollOfHonourPage = ({ data }) => {
       <PageHeader>Roll Of Honour</PageHeader>
       <HorizontalRule />
 
+      Hello world
       <p>
         The runners in our club have achieved so many great things over the
         years and this page is here in recognition of those accolades.
@@ -56,7 +79,7 @@ const RollOfHonourPage = ({ data }) => {
 
       <CardContainer>
         {data.allWpPage.nodes.map((e, idx) => (
-          <SimpleNavCard
+          <RohNavCard
             title={e.title}
             featuredImage={getFeaturedImage(e.featuredImage)}
             slug={getSlug(e.slug)}
