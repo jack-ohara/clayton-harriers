@@ -68,9 +68,9 @@ const CardHeading = styled.h3`
   transition: text-decoration-color 100ms ease-in;
 `
 
-const SimpleNavCard = ({ title, featuredImage, slug }) => {
+const SimpleNavCard = ({ title, featuredImage, slug, className }) => {
   return (
-    <StyledLink to={slug}>
+    <StyledLink to={slug} className={className}>
       <HeadingContainer>
         <CardHeading>{title}</CardHeading>
       </HeadingContainer>
