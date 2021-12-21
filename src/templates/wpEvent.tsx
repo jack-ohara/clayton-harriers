@@ -1,6 +1,5 @@
 import React from "react"
 import SEO from "../components/seo"
-import HorizontalRule from "../utils/styles/HorizontalRule.js"
 import styled from "styled-components"
 import LocationPinIcon from "../images/location-pin.svg"
 import Layout, { PageHeader } from "../components/layout"
@@ -16,7 +15,7 @@ interface QueryResult {
 }
 
 const PageHead = styled.div`
-  margin-bottom: 0.5rem;
+  margin-block: 0.5rem;
 `
 
 const EventDetails = styled.div``
