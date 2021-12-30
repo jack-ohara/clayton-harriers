@@ -22,6 +22,7 @@ const StyledLink = styled(Link)`
 
   img {
     transition: transform 200ms ease-in !important;
+    object-position: top !important;
   }
 
   &:hover img,
@@ -41,6 +42,7 @@ const StyledLink = styled(Link)`
 const Image = styled(GatsbyImage)`
   grid-area: 1/1;
   width: 100%;
+  height: 100%;
 `
 
 const HeadingContainer = styled.span`
