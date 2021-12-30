@@ -1,9 +1,18 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import Layout, { PageHeader } from "../components/layout"
 import SEO from "../components/seo"
-import HorizontalRule from "../utils/styles/HorizontalRule.js"
 import { graphql } from "gatsby"
+import { addFormHandling } from "../utils/cf7-forms"
+
+interface QueryResult {
+  data: {
+    wpPage: {
+      title: string
+      content: string
+    }
+  }
+}
 
 const TemplateWrapper = styled.section`
   td,
@@ -16,7 +25,17 @@ const WpPage = ({
   data: {
     wpPage: { title, content },
   },
-}) => {
+}: QueryResult) => {
+  useEffect(() => {
+    const cf7Form = document.querySelector(
+      "form.wpcf7-form"
+    ) as HTMLFormElement | null
+
+    if (cf7Form) {
+      addFormHandling(cf7Form)
+    }
+  }, [])
+
   return (
     <Layout>
       <TemplateWrapper>

@@ -573,14 +573,6 @@ html {
     padding-top: 0.725rem;
     padding-bottom: calc(0.725rem - 1px);
   }
-  th:first-child,
-  td:first-child {
-    padding-left: 0;
-  }
-  th:last-child,
-  td:last-child {
-    padding-right: 0;
-  }
 
   /* Custom Properties */
   :root {
@@ -619,6 +611,47 @@ html {
     }
 
     max-width: 1200px !important;
+  }
+
+  .wp-caption .aligncenter {
+    margin-inline: auto;
+  }
+
+  .wp-block-image figure.aligncenter {
+    text-align: center;
+  }
+
+  .wp-block-image figure.alignleft {
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 0;
+  }
+
+  .wp-block-image figure.alignright {
+    float: right;
+    margin-left: 1em;
+    margin-bottom: 0;
+  }
+
+  .wp-block-image figcaption {
+    font-size: 0.8em;
+    font-style: italic;
+  }
+
+  .wp-custom-center .wp-block-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+  }
+
+  .wp-block-button a:hover {
+    text-decoration: underline;
+  }
+
+  .wpcf7-form-control.is-invalid {
+    border: 2px solid red;
   }
 
   /* Fonts */

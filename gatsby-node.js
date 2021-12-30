@@ -45,7 +45,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const { allWpPage } = result.data
 
-  const pageTemplate = require.resolve(`./src/templates/wpPage.js`)
+  const pageTemplate = require.resolve(`./src/templates/wpPage.tsx`)
 
   if (allWpPage.nodes.length) {
     allWpPage.nodes.map(page => {

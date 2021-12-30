@@ -11,12 +11,16 @@ const HeaderContainer = styled.div`
 `
 
 const StyledHeader = styled.header`
-  padding-block: 0.5rem;
+  padding: 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: auto;
   max-width: 1200px;
+
+  @media (min-width: 1200px) {
+    padding-inline: 0;
+  }
 `
 
 const LogoLink = styled(Link)`
