@@ -1,3 +1,9 @@
+require("dotenv").config({
+  path: `.env`,
+})
+
+console.log(process.env)
+
 module.exports = {
   siteMetadata: {
     title: `Clayton-Le-Moors Harriers`,
@@ -42,7 +48,7 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        url: `https://www.claytonlemoors.org.uk/graphql`,
+        url: `${process.env.GATSBY_WP_SITE_URL}/graphql`,
         schema: {
           timeout: 600000,
           requestConcurrency: 10,

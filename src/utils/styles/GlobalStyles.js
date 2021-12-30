@@ -650,6 +650,10 @@ html {
     text-decoration: underline;
   }
 
+  .wpcf7-form-control.is-invalid {
+    border: 2px solid red;
+  }
+
   /* Fonts */
   h1, h2, h3 {
     font-family: 'Rubik', sans-serif;
