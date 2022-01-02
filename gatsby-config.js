@@ -46,7 +46,7 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        url: `${process.env.GATSBY_WP_SITE_URL}/graphql` || `https://wp.claytonlemoors.org.uk/graphql`,
+        url: process.env.GATSBY_WP_SITE_URL ? `${process.env.GATSBY_WP_SITE_URL}/graphql` : `https://wp.claytonlemoors.org.uk/graphql`,
         schema: {
           timeout: 600000,
           requestConcurrency: 10,
