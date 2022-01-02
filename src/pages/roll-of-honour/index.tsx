@@ -27,8 +27,8 @@ interface Props {
   data: {
     allWpPage: {
       nodes: {
-        title: string;
-        slug: string;
+        title: string
+        slug: string
         featuredImage: FeaturedImage
       }[]
     }
@@ -65,7 +65,6 @@ const RollOfHonourPage = ({ data }: Props) => {
       <PageHeader>Roll Of Honour</PageHeader>
       <HorizontalRule />
 
-      Hello world
       <p>
         The runners in our club have achieved so many great things over the
         years and this page is here in recognition of those accolades.

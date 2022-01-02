@@ -27,9 +27,7 @@ const WpPage = ({
   },
 }: QueryResult) => {
   useEffect(() => {
-    const cf7Form = document.querySelector(
-      "form.wpcf7-form"
-    ) as HTMLFormElement | null
+    const cf7Form = document.querySelector<HTMLFormElement>("form.wpcf7-form")
 
     if (cf7Form) {
       addFormHandling(cf7Form)
