@@ -44,6 +44,11 @@ export default function SEO({
             name: "description",
             content: description || siteDate.site.siteMetadata.description,
           },
+          {
+            property: "og:image",
+            content:
+              "https://claytonlemoors.org.uk/clayton-runner-no-noise.png",
+          },
           { property: "og:title", content: title },
           {
             property: "og:description",
